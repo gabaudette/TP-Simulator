@@ -15,7 +15,8 @@ namespace TP_Simulator
 
         static public void Deserialize(string filename)
         {
-            Scenario.Deserialize(filename);
+            Scenario scenario = Scenario.Instance;
+            scenario.Deserialize(filename);
         }
     }
  }
