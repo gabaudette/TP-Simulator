@@ -52,6 +52,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientFactory.cs" />
     <Compile Include="Fire.cs" />
+    <Compile Include="GeographicalPosition.cs" />
     <Compile Include="Marchandise.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="ObserverPlane.cs" />
