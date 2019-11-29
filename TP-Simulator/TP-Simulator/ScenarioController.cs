@@ -5,9 +5,6 @@ namespace TP_Simulator
 {
     static class ScenarioController
     {
-        /// <summary>
-        /// Point d'entrée principal de l'application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -16,5 +13,4 @@ namespace TP_Simulator
             Application.Run(new SimulatorGUI());
         }
     }
-
 }
