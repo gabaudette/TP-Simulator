@@ -1,4 +1,7 @@
-﻿namespace TP_Simulator
+﻿using System.IO;
+using System.Xml.Serialization;
+
+namespace TP_Simulator
 {
     public sealed class Scenario
     {
@@ -13,6 +16,14 @@
                     instance = new Scenario();
                 }
                 return instance;
+            }
+        }
+        public static void Deserialize(string filename)
+        {
+            XmlSerializer xd = new XmlSerializer(typeof(Scenario));
+            using (StreamReader rd = new StreamReader(filename))
+            {
+                Scenario scenario = xd.Deserialize(rd) as Scenario;
             }
         }
     }
