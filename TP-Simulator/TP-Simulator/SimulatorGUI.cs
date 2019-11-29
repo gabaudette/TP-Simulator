@@ -16,12 +16,12 @@ namespace TP_Simulator
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
             openFileDialog.Filter = "XML Files (*.xml) | *.xml";
-            openFileDialog.RestoreDirectory = true;
+            //openFileDialog.RestoreDirectory = true;
 
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-                ScenarioController.Deserialize(fileInfo.Name);
+                ScenarioController.Deserialize(fileInfo.FullName);
             }
         }
 
