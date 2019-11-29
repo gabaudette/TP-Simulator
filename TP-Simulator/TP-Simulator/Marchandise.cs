@@ -2,6 +2,10 @@
 {
     class Marchandise : Client
     {
-        public Marchandise(string name) : base(name) { }
+        public int Weight { get; private set; }
+        public Marchandise(string name, int weight) : base(name)
+        {
+            Weight = weight;
+        }
     }
 }
