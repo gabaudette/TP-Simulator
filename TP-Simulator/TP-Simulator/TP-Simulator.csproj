@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Aircraft.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="SimulatorGUI.cs">
       <SubType>Form</SubType>
     </Compile>
