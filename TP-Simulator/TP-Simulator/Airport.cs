@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class Airport
+    public class Airport
     {
     }
 }
