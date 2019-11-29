@@ -13,7 +13,7 @@ namespace TP_Simulator
             Application.Run(new SimulatorGUI());
         }
 
-        static public void Deserialize()
+        static public void Deserialize(string name)
         {
 
         }
