@@ -20,11 +20,8 @@ namespace TP_Simulator
 
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //string filePath = openFileDialog.FileName;
-                FileStream fileStream = (FileStream)openFileDialog.OpenFile();
                 FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
                 ScenarioController.Deserialize(fileInfo.Name);
-                fileStream.Close();
             }
         }
 
