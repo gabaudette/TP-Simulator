@@ -12,5 +12,10 @@ namespace TP_Simulator
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SimulatorGUI());
         }
+
+        static public void Deserialize()
+        {
+
+        }
     }
 }
