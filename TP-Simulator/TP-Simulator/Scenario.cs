@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace TP_Simulator
 {
     //TODO : Deleguate
-    public sealed class Scenario
+    public class Scenario
     {
         private static Scenario instance = null;
         public List<Airport> Airports { get; set; }
