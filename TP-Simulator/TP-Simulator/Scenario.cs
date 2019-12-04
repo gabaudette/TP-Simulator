@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using System;
 
 namespace TP_Simulator
 {
@@ -33,6 +34,8 @@ namespace TP_Simulator
             {
                 Scenario sce = xd.Deserialize(rd) as Scenario;
                 Airports = sce­.Airports;
+
+                Console.WriteLine("test");
                 
             }
         }

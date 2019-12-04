@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    abstract class RescueAircraft : Aircraft
+    public abstract class RescueAircraft : Aircraft
     {
     }
 }

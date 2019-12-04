@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class WaterBomber : RescueAircraft
+    public class WaterBomber : RescueAircraft
     {
     }
 }

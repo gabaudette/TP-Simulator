@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class RescueHelicopter : RescueAircraft
+    public class RescueHelicopter : RescueAircraft
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    abstract class PassengerAircraft : Aircraft
+    public abstract class PassengerAircraft : Aircraft
     {
     }
 }

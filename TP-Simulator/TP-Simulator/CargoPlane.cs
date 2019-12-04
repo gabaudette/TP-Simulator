@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class CargoPlane : PassengerAircraft
+    public class CargoPlane : PassengerAircraft
     {
     }
 }

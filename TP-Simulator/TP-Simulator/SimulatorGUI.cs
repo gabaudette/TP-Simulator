@@ -25,9 +25,7 @@ namespace TP_Simulator
             }
         }
 
-        private void FichierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }
