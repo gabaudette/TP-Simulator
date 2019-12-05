@@ -33,9 +33,9 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aéroports = new System.Windows.Forms.GroupBox();
-            this.lsvAirport = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
+            this.lsvAirport = new System.Windows.Forms.ListView();
             this.lsvClient = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -45,6 +45,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listView6 = new System.Windows.Forms.ListView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picAircraft = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.Aéroports.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -53,6 +54,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAircraft)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -78,7 +80,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(158, 34);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
@@ -93,15 +95,6 @@
             this.Aéroports.TabIndex = 1;
             this.Aéroports.TabStop = false;
             this.Aéroports.Text = "Aéroports";
-            // 
-            // lsvAirport
-            // 
-            this.lsvAirport.HideSelection = false;
-            this.lsvAirport.Location = new System.Drawing.Point(6, 29);
-            this.lsvAirport.Name = "lsvAirport";
-            this.lsvAirport.Size = new System.Drawing.Size(534, 229);
-            this.lsvAirport.TabIndex = 0;
-            this.lsvAirport.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox1
             // 
@@ -122,6 +115,15 @@
             this.listView2.Size = new System.Drawing.Size(606, 229);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // lsvAirport
+            // 
+            this.lsvAirport.HideSelection = false;
+            this.lsvAirport.Location = new System.Drawing.Point(6, 29);
+            this.lsvAirport.Name = "lsvAirport";
+            this.lsvAirport.Size = new System.Drawing.Size(534, 229);
+            this.lsvAirport.TabIndex = 0;
+            this.lsvAirport.UseCompatibleStateImageBehavior = false;
             // 
             // lsvClient
             // 
@@ -217,12 +219,25 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // picAircraft
+            // 
+            this.picAircraft.BackColor = System.Drawing.Color.Transparent;
+            this.picAircraft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAircraft.BackgroundImage")));
+            this.picAircraft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picAircraft.Image = ((System.Drawing.Image)(resources.GetObject("picAircraft.Image")));
+            this.picAircraft.Location = new System.Drawing.Point(401, 595);
+            this.picAircraft.Name = "picAircraft";
+            this.picAircraft.Size = new System.Drawing.Size(40, 28);
+            this.picAircraft.TabIndex = 6;
+            this.picAircraft.TabStop = false;
+            // 
             // SimulatorGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1567, 1227);
+            this.Controls.Add(this.picAircraft);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -241,6 +256,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAircraft)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +280,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListView listView6;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picAircraft;
     }
 }
 
