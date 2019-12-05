@@ -13,6 +13,7 @@ namespace TP_Simulator
         public string Name { get; set; }
         public int Speed { get; set; }
         public int Maintenance { get; set; }
+        enum TrackColor { Red, Yellow, Blue, Green, Grey };
 
         public Aircraft() { }
     }

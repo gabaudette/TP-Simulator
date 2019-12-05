@@ -56,7 +56,7 @@
     <Compile Include="ClientFactory.cs" />
     <Compile Include="Fire.cs" />
     <Compile Include="FlyingState.cs" />
-    <Compile Include="GeographicalPosition.cs" />
+    <Compile Include="GeoPosition.cs" />
     <Compile Include="LandingState.cs" />
     <Compile Include="LoadingState.cs" />
     <Compile Include="MaintenanceSate.cs" />

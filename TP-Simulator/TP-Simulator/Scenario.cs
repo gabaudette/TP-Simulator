@@ -9,6 +9,7 @@ namespace TP_Simulator
     {
         private static Scenario instance = null;
         public List<Airport> Airports { get; set; }
+        public List<Aircraft> FlyingAicrafts { get; set; }
 
         private Scenario()
         {
