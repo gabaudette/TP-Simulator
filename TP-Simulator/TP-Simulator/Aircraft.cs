@@ -9,6 +9,11 @@ namespace TP_Simulator
     [XmlInclude(typeof(RescueHelicopter))]
     public abstract class Aircraft
     {
-       public Aircraft() { }
+        public Airport airport { get; set; }
+        public string Name { get; set; }
+        public int Speed { get; set; }
+        public int Maintenance { get; set; }
+
+        public Aircraft() { }
     }
 }
