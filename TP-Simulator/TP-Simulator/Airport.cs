@@ -12,12 +12,15 @@ namespace TP_Simulator
         public int MinMarchandise { get; set; }
         public int MaxMarchandise { get; set; }
         public List<Aircraft> Aircrafts { get; set; }
+        Scenario scenario { get; set; }
 
         public Airport() { }
         
         public void Reviver(Scenario scenario)
         {
-            
+            this.scenario = scenario;
+            foreach(Aircraft aircraft in Aircrafts)
+                aircraft.airport = this;
         }
     }
 }
