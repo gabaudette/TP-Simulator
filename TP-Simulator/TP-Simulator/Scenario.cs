@@ -10,6 +10,7 @@ namespace TP_Simulator
         private static Scenario instance = null;
         public List<Airport> Airports { get; set; }
         public List<Aircraft> FlyingAicrafts { get; set; }
+        private Timer timer;
 
         private Scenario()
         {
@@ -39,6 +40,11 @@ namespace TP_Simulator
                     airport.Reviver(this);
                 }
             }
+        }
+
+        public void StartTimer()
+        {
+            this.timer = new Timer();
         }
     }
 }
