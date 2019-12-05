@@ -35,9 +35,11 @@ namespace TP_Simulator
                 Scenario scenario = xd.Deserialize(rd) as Scenario;
 
                 Airports = sce­nario.Airports;
-                //foreach (Airport airport in Airports)
-                //   airport.Reviver(this);
-                Console.WriteLine("test");
+                foreach(Airport airport in Airports)
+                {
+
+                }
+              
             }
         }
     }
