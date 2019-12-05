@@ -2,10 +2,9 @@
 {
     class MaintenanceSate : StateAircraft
     {
-
         protected override void Do()
         {
-            throw new System.NotImplementedException();
+            //base.aircraft.Maintenance = 0; TODO:Access maintenance time of the aircraft
         }
     }
 }
