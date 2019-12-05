@@ -10,7 +10,8 @@ namespace TP_Simulator
         {
             InitializeComponent();
 
-            picAircraft.BringToFront();
+            picMap.Controls.Add(picAircraft);
+            fillLsvAircraft();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace TP_Simulator
             }
         }
 
-        private void fillLsvAirport(int airportList){ // param est vraiment tres temporaire
+        private void fillLsvAirport(){ 
 
             lsvAirport.Clear();
 
@@ -40,9 +41,9 @@ namespace TP_Simulator
 
 
             //Remplis les colonnes
-            lsvAirport.Columns[0].Width = 110;
-            lsvAirport.Columns[1].Width = 40;
-            lsvAirport.Columns[2].Width = 40;
+            lsvAirport.Columns[0].Width = 125;
+            lsvAirport.Columns[1].Width = 80;
+            lsvAirport.Columns[2].Width = 80;
 
             /*
             //Remplis les données
@@ -53,7 +54,7 @@ namespace TP_Simulator
             */
         }
 
-        private void fillLsvAircraft(int aircraftList)
+        private void fillLsvAircraft()
         {
             lsvAircraft.Clear();
 
@@ -62,15 +63,15 @@ namespace TP_Simulator
             //Ajoute les colonnes
             lsvAircraft.Columns.Add("Nom");
             lsvAircraft.Columns.Add("Type");
-            lsvAircraft.Columns.Add("Destination"); // ??
+            lsvAircraft.Columns.Add("Destination");
             lsvAircraft.Columns.Add("États");
 
 
             //Remplis les colonnes
             lsvAircraft.Columns[0].Width = 110;
-            lsvAircraft.Columns[1].Width = 40;
-            lsvAircraft.Columns[2].Width = 40;
-            lsvAircraft.Columns[2].Width = 40;
+            lsvAircraft.Columns[1].Width = 60;
+            lsvAircraft.Columns[2].Width = 100;
+            lsvAircraft.Columns[2].Width = 70;
 
             /*
             //Remplis les données
@@ -93,9 +94,9 @@ namespace TP_Simulator
 
 
             //Remplis les colonnes
-            lsvAircraft.Columns[0].Width = 110;
-            lsvAircraft.Columns[1].Width = 40;
-            lsvAircraft.Columns[2].Width = 40;
+            lsvClient.Columns[0].Width = 150;
+            lsvClient.Columns[1].Width = 70;
+            lsvClient.Columns[2].Width = 90;
 
             /*
             //Remplis les données
@@ -103,6 +104,12 @@ namespace TP_Simulator
             {
                 lsvAirport.Items.Add(new ListViewItem(new string[] {  }));
             }*/
+        }
+
+        private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillLsvAircraft();
+            fillLsvClients();
         }
     }
 }
