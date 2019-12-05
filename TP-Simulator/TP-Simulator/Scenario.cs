@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using System;
 
 namespace TP_Simulator
 {
@@ -21,9 +20,7 @@ namespace TP_Simulator
             get
             {
                 if (instance == null)
-                {
                     instance = new Scenario();
-                }
                 return instance;
             }
         }
@@ -36,10 +33,7 @@ namespace TP_Simulator
 
                 Airports = sce­nario.Airports;
                 foreach(Airport airport in Airports)
-                {
-
-                }
-              
+                    airport.Reviver(this);
             }
         }
     }
