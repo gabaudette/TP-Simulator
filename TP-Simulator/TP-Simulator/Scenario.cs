@@ -5,7 +5,7 @@ using System;
 
 namespace TP_Simulator
 {
-    //TODO : Deleguate
+    //TODO : Delegate
     public class Scenario
     {
         private static Scenario instance = null;
@@ -32,11 +32,12 @@ namespace TP_Simulator
             XmlSerializer xd = new XmlSerializer(typeof(Scenario));
             using (StreamReader rd = new StreamReader(filename))
             {
-                Scenario sce = xd.Deserialize(rd) as Scenario;
-                Airports = sce­.Airports;
+                Scenario scenario = xd.Deserialize(rd) as Scenario;
 
+                Airports = sce­nario.Airports;
+                //foreach (Airport airport in Airports)
+                //   airport.Reviver(this);
                 Console.WriteLine("test");
-                
             }
         }
     }
