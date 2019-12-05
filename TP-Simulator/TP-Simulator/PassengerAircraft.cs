@@ -1,6 +1,8 @@
 ﻿namespace TP_Simulator
 {
-    public abstract class PassengerAircraft : Aircraft
+    public class PassengerAircraft : Aircraft
     {
+        public int LoadingTime { get; set; }
+        public int UnloadingTime { get; set; }
     }
 }
