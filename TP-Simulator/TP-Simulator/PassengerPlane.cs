@@ -2,5 +2,6 @@
 {
     public class PassengerPlane : PassengerAircraft
     {
+        public int Capacity { get; set; }
     }
 }
