@@ -55,7 +55,11 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientFactory.cs" />
     <Compile Include="Fire.cs" />
+    <Compile Include="FlyingState.cs" />
     <Compile Include="GeographicalPosition.cs" />
+    <Compile Include="LandingState.cs" />
+    <Compile Include="LoadingState.cs" />
+    <Compile Include="MaintenanceSate.cs" />
     <Compile Include="Marchandise.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="ObserverPlane.cs" />
@@ -74,7 +78,10 @@
     </Compile>
     <Compile Include="ScenarioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateAircraft.cs" />
+    <Compile Include="TakeOffState.cs" />
     <Compile Include="Timer.cs" />
+    <Compile Include="UnloadingState.cs" />
     <Compile Include="WaterBomber.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
