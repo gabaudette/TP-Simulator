@@ -24,8 +24,5 @@ namespace TP_Simulator
                 ScenarioController.Deserialize(fileInfo.FullName);
             }
         }
-
-
-
     }
 }
