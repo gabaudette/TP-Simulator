@@ -24,6 +24,7 @@ namespace TP_Simulator
                 return instance;
             }
         }
+
         public void Deserialize(string filename)
         {
             XmlSerializer xd = new XmlSerializer(typeof(Scenario));
@@ -33,7 +34,9 @@ namespace TP_Simulator
 
                 Airports = sce­nario.Airports;
                 foreach(Airport airport in Airports)
+                {
                     airport.Reviver(this);
+                }
             }
         }
     }
