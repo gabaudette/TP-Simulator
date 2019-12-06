@@ -9,7 +9,9 @@ namespace TP_Simulator
     public class Scenario
     {
         private static Scenario instance = null;
+        [XmlIgnore]
         public Timer Timer { get; set; }
+        [XmlIgnore]
         public bool Pause { get; private set; }
         
         public List<Airport> Airports { get; set; }
