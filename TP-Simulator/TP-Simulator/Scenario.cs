@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Xml.Serialization;
 
 namespace TP_Simulator
@@ -61,7 +62,12 @@ namespace TP_Simulator
 
         public void Start()
         {
-            Pause = false;
+            while (!Pause)
+            {
+                Loop();
+                Thread.Sleep(1000);
+
+            }
         }
 
         public void Stop()
@@ -72,6 +78,7 @@ namespace TP_Simulator
         public void Loop()
         {
             Timer.AddTick();
+            Timer.IsTimeClient();
             TickNotifier();
         }
     }
