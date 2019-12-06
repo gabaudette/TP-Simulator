@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class RescueTeam : PositionableAirportClient
+    class RescueTeam : PositionableClient
     {
         public RescueTeam(int posX, int posY) : base(posX, posY) { }
     }
