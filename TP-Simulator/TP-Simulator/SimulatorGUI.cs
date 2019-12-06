@@ -162,6 +162,7 @@ namespace TP_Simulator
         public void OnTick()
         {
             labTimer.Text = scenario.Timer.ToString();
+            labTimer.Refresh();
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
