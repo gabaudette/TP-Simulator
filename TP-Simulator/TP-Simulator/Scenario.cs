@@ -10,32 +10,32 @@ namespace TP_Simulator
     public class Scenario
     {
         private static Scenario instance = null;
-        public Timer timer { get; set; }
-        private bool pause { get; set; }
+        public Timer Timer { get; set; }
+        private bool Pause { get; set; }
         
         public List<Airport> Airports { get; set; }
         public List<Aircraft> FlyingAicrafts { get; set; }
         [XmlIgnore]
-        public AirportNotifier airportNotifier { get; set; }
+        public AirportNotifier AirportNotifier { get; set; }
 
         [XmlIgnore]
-        public TickNotifier tickNotifier { get; set; }
+        public TickNotifier TickNotifier { get; set; }
 
 
 
         private Scenario()
         {
             Airports = new List<Airport>();
-            this.timer = new Timer();
-            pause = false;
+            this.Timer = new Timer();
+            Pause = false;
         }
 
 
 
         public void SetView(SimulatorGUI view)
         {
-            airportNotifier = new AirportNotifier(view.onDeserialize);
-            tickNotifier = new TickNotifier(view.onTick);
+            AirportNotifier = new AirportNotifier(view.onDeserialize);
+            TickNotifier = new TickNotifier(view.onTick);
         }
 
         public static Scenario Instance
@@ -61,25 +61,25 @@ namespace TP_Simulator
                     airport.Reviver(this);
                 }
 
-                loop();
-                airportNotifier();
+                Loop();
+                AirportNotifier();
                 
             }
         }
 
         public void Start()
         {
-            pause = false;
+            Pause = false;
         }
         public void Stop()
         {
-            pause = true;
+            Pause = true;
         }
 
-        public void loop()
+        public void Loop()
         {
-            timer.addTick();
-            tickNotifier();
+            Timer.addTick();
+            TickNotifier();
  
         }
     }
