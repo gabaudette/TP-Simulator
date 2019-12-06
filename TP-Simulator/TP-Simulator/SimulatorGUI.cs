@@ -20,13 +20,13 @@ namespace TP_Simulator
 
             picMap.Controls.Add(labTimer);
             labTimer.Location = new Point(950, 10);
-            setListView();
+            SetListView();
             //picMap.Controls.Add(picAircraft);
 
 
         }
 
-        private void setListView()
+        private void SetListView()
         {
             lsvAirport.View = View.Details;
 
@@ -79,29 +79,30 @@ namespace TP_Simulator
             openFileDialog.Filter = "XML Files (*.xml) | *.xml";
             //openFileDialog.RestoreDirectory = true;
 
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
                 ScenarioController.Deserialize(fileInfo.FullName);
             }
         }
 
-        private void fillLsvAirport(string name, string longitude, string latitude){ 
-
-            lsvAirport.Items.Add(new ListViewItem(new string[] { name,longitude,latitude }));
-            
-        }
-
-        private void fillLsvAircraft(string name, string type, string state,string destination)
+        private void FillLsvAirport(string name, string longitude, string latitude)
         {
 
-           lsvAircraft.Items.Add(new ListViewItem(new string[] { name,type,destination, state }));
+            lsvAirport.Items.Add(new ListViewItem(new string[] { name, longitude, latitude }));
 
         }
 
-        private void fillLsvClients()
+        private void FillLsvAircraft(string name, string type, string state, string destination)
         {
-            lsvAirport.Items.Add(new ListViewItem(new string[] {  }));
+
+            lsvAircraft.Items.Add(new ListViewItem(new string[] { name, type, destination, state }));
+
+        }
+
+        private void FillLsvClients()
+        {
+            lsvAirport.Items.Add(new ListViewItem(new string[] { }));
 
         }
 
@@ -118,10 +119,10 @@ namespace TP_Simulator
             {
                 aircraft = scenario.Airports[lsvAirport.FocusedItem.Index].Aircrafts[i].ToString();
                 aircraftList = aircraft.Split(',').ToList();
-                fillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
+                FillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
             }
 
-            
+
         }
 
         private void PicAircraft_Click(object sender, EventArgs e)
@@ -129,7 +130,7 @@ namespace TP_Simulator
 
         }
 
-        public void onDeserialize()
+        public void OnDeserialize()
         {
             string airport;
             List<string> airportList = new List<string>();
@@ -138,12 +139,13 @@ namespace TP_Simulator
             {
                 airport = scenario.Airports[i].ToString();
                 airportList = airport.Split(',').ToList();
-                fillLsvAirport(airportList[0], airportList[1], airportList[2]);
-                createAirportIcon(Convert.ToInt32(airportList[1]), Convert.ToInt32(airportList[2]));
+                FillLsvAirport(airportList[0], airportList[1], airportList[2]);
+                CreateAirportIcon(Convert.ToInt32(airportList[1]), Convert.ToInt32(airportList[2]));
             }
         }
 
-        private void createAirportIcon(int posX, int posY) {
+        private void CreateAirportIcon(int posX, int posY)
+        {
 
             PictureBox pb = new PictureBox
             {
@@ -157,23 +159,22 @@ namespace TP_Simulator
             pb.BringToFront();
         }
 
-
-        public void onTick()
+        public void OnTick()
         {
             labTimer.Text = scenario.Timer.ToString();
         }
 
-        private void nextStepToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Loop();
         }
 
-        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Stop();
         }
 
-        private void unpauseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UnpauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Start();
         }
