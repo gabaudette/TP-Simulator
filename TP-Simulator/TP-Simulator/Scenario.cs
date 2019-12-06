@@ -21,16 +21,12 @@ namespace TP_Simulator
         [XmlIgnore]
         public TickNotifier TickNotifier { get; set; }
 
-
-
         private Scenario()
         {
             Airports = new List<Airport>();
             this.Timer = new Timer();
             Pause = false;
         }
-
-
 
         public void SetView(SimulatorGUI view)
         {
@@ -60,10 +56,8 @@ namespace TP_Simulator
                 {
                     airport.Reviver(this);
                 }
-
                 Loop();
                 AirportNotifier();
-                
             }
         }
 
@@ -71,6 +65,7 @@ namespace TP_Simulator
         {
             Pause = false;
         }
+
         public void Stop()
         {
             Pause = true;
@@ -80,7 +75,6 @@ namespace TP_Simulator
         {
             Timer.AddTick();
             TickNotifier();
- 
         }
     }
 }
