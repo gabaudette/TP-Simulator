@@ -6,7 +6,7 @@
 
         public override string ToString()
         {
-            return $"{Name},Cargo,{currentState.ToString()},Cuba";
+            return $"{Name},Cargo,{CurrentState.ToString()},Cuba";
         }
     }
 }
