@@ -14,11 +14,11 @@ namespace TP_Simulator
         public int Speed { get; set; }
         public int Maintenance { get; set; }
         enum TrackColor { Red, Yellow, Blue, Green, Grey };
-        public StateAircraft currentState { get; set; }
+        public StateAircraft CurrentState { get; set; }
 
         public Aircraft() {
 
-            currentState = new LoadingState();
+            CurrentState = new LoadingState();
 
         }
 
