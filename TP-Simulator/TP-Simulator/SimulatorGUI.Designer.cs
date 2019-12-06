@@ -46,6 +46,7 @@
             this.listView6 = new System.Windows.Forms.ListView();
             this.picMap = new System.Windows.Forms.PictureBox();
             this.picAircraft = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.Aéroports.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -65,7 +66,7 @@
             this.fichierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1567, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1567, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,7 +75,7 @@
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 30);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fichierToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -118,6 +119,7 @@
             // 
             // lsvAirport
             // 
+            this.lsvAirport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvAirport.HideSelection = false;
             this.lsvAirport.Location = new System.Drawing.Point(6, 29);
             this.lsvAirport.Name = "lsvAirport";
@@ -128,6 +130,7 @@
             // 
             // lsvClient
             // 
+            this.lsvClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvClient.HideSelection = false;
             this.lsvClient.Location = new System.Drawing.Point(6, 29);
             this.lsvClient.Name = "lsvClient";
@@ -169,6 +172,7 @@
             // 
             // lsvAircraft
             // 
+            this.lsvAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvAircraft.HideSelection = false;
             this.lsvAircraft.Location = new System.Drawing.Point(5, 28);
             this.lsvAircraft.Name = "lsvAircraft";
@@ -229,6 +233,19 @@
             this.picAircraft.Size = new System.Drawing.Size(129, 101);
             this.picAircraft.TabIndex = 6;
             this.picAircraft.TabStop = false;
+            this.picAircraft.Click += new System.EventHandler(this.PicAircraft_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(1143, 1082);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 29);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "label1";
             // 
             // SimulatorGUI
             // 
@@ -236,6 +253,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1567, 1227);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.picAircraft);
             this.Controls.Add(this.picMap);
             this.Controls.Add(this.groupBox4);
@@ -280,6 +298,7 @@
         private System.Windows.Forms.ListView listView6;
         private System.Windows.Forms.PictureBox picMap;
         private System.Windows.Forms.PictureBox picAircraft;
+        private System.Windows.Forms.Label label1;
     }
 }
 

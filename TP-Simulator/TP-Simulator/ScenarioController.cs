@@ -5,12 +5,16 @@ namespace TP_Simulator
 {
     static class ScenarioController
     {
+        static SimulatorGUI GUI;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SimulatorGUI());
+            Scenario scenario = Scenario.Instance;
+            GUI = new SimulatorGUI();
+            scenario.SetView(GUI);
+            Application.Run(GUI);
         }
 
         static public void Deserialize(string filename)

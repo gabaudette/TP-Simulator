@@ -8,5 +8,6 @@
             //aircraft = new Aircraft();
         }
         protected abstract void Do();
+
     }
 }

@@ -22,5 +22,10 @@ namespace TP_Simulator
             foreach(Aircraft aircraft in Aircrafts)
                 aircraft.airport = this;
         }
+
+        public override string ToString()
+        {
+            return $"{Name},{X},{Y},{MinPassenger},{MaxPassenger},{MinMarchandise},{MaxPassenger}";
+        }
     }
 }

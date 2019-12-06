@@ -1,37 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace TP_Simulator
 {
+    public delegate void AirportNotifier();
+
     public partial class SimulatorGUI : Form
     {
+        Scenario scenario = Scenario.Instance;
+
         public SimulatorGUI()
         {
             InitializeComponent();
-
+            
             picMap.Controls.Add(picAircraft);
-            fillLsvAircraft();
+            setListView();
+
+
         }
 
-        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void setListView()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "c:\\";
-            openFileDialog.Filter = "XML Files (*.xml) | *.xml";
-            //openFileDialog.RestoreDirectory = true;
-
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-                ScenarioController.Deserialize(fileInfo.FullName);
-            }
-        }
-
-        private void fillLsvAirport(){ 
-
-            lsvAirport.Clear();
-
             lsvAirport.View = View.Details;
 
             //Ajoute les colonnes
@@ -41,22 +33,9 @@ namespace TP_Simulator
 
 
             //Remplis les colonnes
-            lsvAirport.Columns[0].Width = 125;
+            lsvAirport.Columns[0].Width = 115;
             lsvAirport.Columns[1].Width = 80;
             lsvAirport.Columns[2].Width = 80;
-
-            /*
-            //Remplis les données
-            for (int i = 0; i < airportList.Count; i++)
-            {
-                lsvAirport.Items.Add(new ListViewItem(new string[] {  inséré donnée ici  }));
-            }
-            */
-        }
-
-        private void fillLsvAircraft()
-        {
-            lsvAircraft.Clear();
 
             lsvAircraft.View = View.Details;
 
@@ -70,19 +49,9 @@ namespace TP_Simulator
             //Remplis les colonnes
             lsvAircraft.Columns[0].Width = 110;
             lsvAircraft.Columns[1].Width = 60;
-            lsvAircraft.Columns[2].Width = 100;
-            lsvAircraft.Columns[2].Width = 70;
+            lsvAircraft.Columns[2].Width = 120;
+            lsvAircraft.Columns[3].Width = 70;
 
-            /*
-            //Remplis les données
-            for (int i = 0; i < aircraftList.Count; i++)
-            {
-                lsvAirport.Items.Add(new ListViewItem(new string[] { inséré donnée ici }));
-            }*/
-        }
-
-        private void fillLsvClients()
-        {
             lsvClient.Clear();
 
             lsvClient.View = View.Details;
@@ -97,19 +66,76 @@ namespace TP_Simulator
             lsvClient.Columns[0].Width = 150;
             lsvClient.Columns[1].Width = 70;
             lsvClient.Columns[2].Width = 90;
+        }
 
-            /*
-            //Remplis les données
-            for (int i = 0; i < aircraftList.Count; i++)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "C:\\Users\\1536621\\Desktop\\GitHub\\TP-Simulator\\TP-Simulator\\TP-Simulator\\bin\\Debug";
+            openFileDialog.Filter = "XML Files (*.xml) | *.xml";
+            //openFileDialog.RestoreDirectory = true;
+
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                lsvAirport.Items.Add(new ListViewItem(new string[] {  }));
-            }*/
+                FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+                ScenarioController.Deserialize(fileInfo.FullName);
+            }
+        }
+
+        private void fillLsvAirport(string name, string longitude, string latitude){ 
+
+            lsvAirport.Items.Add(new ListViewItem(new string[] { name,longitude,latitude }));
+            
+        }
+
+        private void fillLsvAircraft(string name, string type, string state,string destination)
+        {
+
+           lsvAircraft.Items.Add(new ListViewItem(new string[] { name,type,state,destination}));
+
+        }
+
+        private void fillLsvClients()
+        {
+            lsvAirport.Items.Add(new ListViewItem(new string[] {  }));
+
         }
 
         private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillLsvAircraft();
-            fillLsvClients();
+            Console.Clear();
+            Console.WriteLine(scenario.Airports[lsvAirport.FocusedItem.Index].ToString());
+
+            lsvAircraft.Items.Clear();
+            List<string> aircraftList = new List<string>();
+            string aircraft;
+
+            for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Aircrafts.Count; i++)
+            {
+                aircraft = scenario.Airports[lsvAirport.FocusedItem.Index].Aircrafts[i].ToString();
+                aircraftList = aircraft.Split(',').ToList();
+                fillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
+            }
+
+            
+        }
+
+        private void PicAircraft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void onDeserialize()
+        {
+            string airport;
+            List<string> airportList = new List<string>();
+
+            for (int i = 0; i < scenario.Airports.Count; i++)
+            {
+                airport = scenario.Airports[i].ToString();
+                airportList = airport.Split(',').ToList();
+                fillLsvAirport(airportList[0].ToString(), airportList[1].ToString(), airportList[2].ToString());
+            }
         }
     }
 }

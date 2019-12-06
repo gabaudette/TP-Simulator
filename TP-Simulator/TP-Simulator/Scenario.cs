@@ -13,11 +13,18 @@ namespace TP_Simulator
         
         public List<Airport> Airports { get; set; }
         public List<Aircraft> FlyingAicrafts { get; set; }
+        [XmlIgnore]
+        public AirportNotifier airportNotifier { get; set; }
         
 
         private Scenario()
         {
             Airports = new List<Airport>();
+        }
+
+        public void SetView(SimulatorGUI view)
+        {
+            airportNotifier = new AirportNotifier(view.onDeserialize);
         }
 
         public static Scenario Instance
@@ -42,26 +49,21 @@ namespace TP_Simulator
                 {
                     airport.Reviver(this);
                 }
+                airportNotifier();
+                Start();
             }
-
-
-            for (int i = 0; i < Airports.Count; i++)
-            {
-                Console.WriteLine(Airports[i].Name);
-
-                for (int y = 0; y < Airports[i].Aircrafts.Count; y++)
-                {
-                    Console.WriteLine(Airports[i].Aircrafts[y]);
-                }
-            }
-
         }
 
-        public void StartTimer()
+        public void Start()
         {
             this.timer = new Timer();
         }
         public void StopTimer()
+        {
+            
+        }
+
+        public void progressQuestGo()
         {
             
         }
