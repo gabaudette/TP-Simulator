@@ -1,9 +1,9 @@
 ﻿namespace TP_Simulator
 {
-    class Fire : nonAirportClient
+    class Fire : PositionableAirportClient
     {
         public int FireSpan { get; private set; }
-        public Fire(int fireSpan, int posX,int posY) : base(posX,posY)
+        public Fire(int fireSpan, int posX, int posY) : base(posX, posY)
         {
             FireSpan = fireSpan;
         }
