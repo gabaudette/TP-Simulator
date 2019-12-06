@@ -8,5 +8,10 @@ namespace TP_Simulator
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return $"Atterissage";
+        }
     }
 }

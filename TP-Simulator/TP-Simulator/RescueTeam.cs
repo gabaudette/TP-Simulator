@@ -1,7 +1,7 @@
 ﻿namespace TP_Simulator
 {
-    class RescueTeam : Client
+    class RescueTeam : nonAirportClient
     {
-        public RescueTeam(string name) : base(name) { }
+        public RescueTeam(int posX, int posY) : base(posX, posY) { }
     }
 }

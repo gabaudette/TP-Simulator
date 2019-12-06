@@ -1,7 +1,7 @@
 ﻿namespace TP_Simulator
 {
-    class Observer : Client
+    class Observer : nonAirportClient
     {
-        public Observer(string name) : base(name) { }
+        public Observer(int posX, int posY) : base(posX,posY) { }
     }
 }

@@ -45,8 +45,13 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listView6 = new System.Windows.Forms.ListView();
             this.picMap = new System.Windows.Forms.PictureBox();
-            this.picAircraft = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labTimer = new System.Windows.Forms.Label();
+            this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unpauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.Aéroports.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -55,18 +60,18 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAircraft)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fichierToolStripMenuItem});
+            this.fichierToolStripMenuItem,
+            this.actionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1567, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1047, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,13 +80,13 @@
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fichierToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(158, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
@@ -90,9 +95,11 @@
             this.Aéroports.Controls.Add(this.groupBox1);
             this.Aéroports.Controls.Add(this.lsvAirport);
             this.Aéroports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aéroports.Location = new System.Drawing.Point(14, 36);
+            this.Aéroports.Location = new System.Drawing.Point(9, 23);
+            this.Aéroports.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Aéroports.Name = "Aéroports";
-            this.Aéroports.Size = new System.Drawing.Size(435, 264);
+            this.Aéroports.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Aéroports.Size = new System.Drawing.Size(290, 172);
             this.Aéroports.TabIndex = 1;
             this.Aéroports.TabStop = false;
             this.Aéroports.Text = "Aéroports";
@@ -101,9 +108,11 @@
             // 
             this.groupBox1.Controls.Add(this.listView2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(618, 0);
+            this.groupBox1.Location = new System.Drawing.Point(412, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(618, 264);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(412, 172);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -111,9 +120,10 @@
             // listView2
             // 
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(6, 29);
+            this.listView2.Location = new System.Drawing.Point(4, 19);
+            this.listView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(606, 229);
+            this.listView2.Size = new System.Drawing.Size(405, 150);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
@@ -121,9 +131,10 @@
             // 
             this.lsvAirport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvAirport.HideSelection = false;
-            this.lsvAirport.Location = new System.Drawing.Point(6, 29);
+            this.lsvAirport.Location = new System.Drawing.Point(4, 19);
+            this.lsvAirport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvAirport.Name = "lsvAirport";
-            this.lsvAirport.Size = new System.Drawing.Size(423, 229);
+            this.lsvAirport.Size = new System.Drawing.Size(283, 150);
             this.lsvAirport.TabIndex = 0;
             this.lsvAirport.UseCompatibleStateImageBehavior = false;
             this.lsvAirport.SelectedIndexChanged += new System.EventHandler(this.LsvAirport_SelectedIndexChanged);
@@ -132,9 +143,10 @@
             // 
             this.lsvClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvClient.HideSelection = false;
-            this.lsvClient.Location = new System.Drawing.Point(6, 29);
+            this.lsvClient.Location = new System.Drawing.Point(4, 19);
+            this.lsvClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvClient.Name = "lsvClient";
-            this.lsvClient.Size = new System.Drawing.Size(490, 229);
+            this.lsvClient.Size = new System.Drawing.Size(328, 150);
             this.lsvClient.TabIndex = 0;
             this.lsvClient.UseCompatibleStateImageBehavior = false;
             // 
@@ -143,9 +155,11 @@
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.lsvClient);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(455, 36);
+            this.groupBox2.Location = new System.Drawing.Point(303, 23);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(504, 264);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(336, 172);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clients";
@@ -154,9 +168,11 @@
             // 
             this.groupBox3.Controls.Add(this.listView4);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(618, 0);
+            this.groupBox3.Location = new System.Drawing.Point(412, 0);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(618, 264);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(412, 172);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -164,9 +180,10 @@
             // listView4
             // 
             this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(6, 29);
+            this.listView4.Location = new System.Drawing.Point(4, 19);
+            this.listView4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(606, 229);
+            this.listView4.Size = new System.Drawing.Size(405, 150);
             this.listView4.TabIndex = 0;
             this.listView4.UseCompatibleStateImageBehavior = false;
             // 
@@ -174,9 +191,10 @@
             // 
             this.lsvAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvAircraft.HideSelection = false;
-            this.lsvAircraft.Location = new System.Drawing.Point(5, 28);
+            this.lsvAircraft.Location = new System.Drawing.Point(3, 18);
+            this.lsvAircraft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvAircraft.Name = "lsvAircraft";
-            this.lsvAircraft.Size = new System.Drawing.Size(576, 229);
+            this.lsvAircraft.Size = new System.Drawing.Size(385, 150);
             this.lsvAircraft.TabIndex = 0;
             this.lsvAircraft.UseCompatibleStateImageBehavior = false;
             // 
@@ -185,9 +203,11 @@
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.lsvAircraft);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(965, 36);
+            this.groupBox4.Location = new System.Drawing.Point(643, 23);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(588, 264);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Size = new System.Drawing.Size(392, 172);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Avions";
@@ -196,9 +216,11 @@
             // 
             this.groupBox5.Controls.Add(this.listView6);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(618, 0);
+            this.groupBox5.Location = new System.Drawing.Point(412, 0);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(618, 264);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Size = new System.Drawing.Size(412, 172);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
@@ -206,9 +228,10 @@
             // listView6
             // 
             this.listView6.HideSelection = false;
-            this.listView6.Location = new System.Drawing.Point(6, 29);
+            this.listView6.Location = new System.Drawing.Point(4, 19);
+            this.listView6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView6.Name = "listView6";
-            this.listView6.Size = new System.Drawing.Size(606, 229);
+            this.listView6.Size = new System.Drawing.Size(405, 150);
             this.listView6.TabIndex = 0;
             this.listView6.UseCompatibleStateImageBehavior = false;
             // 
@@ -216,51 +239,84 @@
             // 
             this.picMap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picMap.BackgroundImage")));
             this.picMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picMap.Location = new System.Drawing.Point(14, 306);
+            this.picMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMap.Location = new System.Drawing.Point(9, 199);
+            this.picMap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picMap.Name = "picMap";
-            this.picMap.Size = new System.Drawing.Size(1539, 909);
+            this.picMap.Size = new System.Drawing.Size(1026, 591);
             this.picMap.TabIndex = 5;
             this.picMap.TabStop = false;
             // 
-            // picAircraft
+            // labTimer
             // 
-            this.picAircraft.BackColor = System.Drawing.Color.Transparent;
-            this.picAircraft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAircraft.BackgroundImage")));
-            this.picAircraft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picAircraft.Image = ((System.Drawing.Image)(resources.GetObject("picAircraft.Image")));
-            this.picAircraft.Location = new System.Drawing.Point(402, 634);
-            this.picAircraft.Name = "picAircraft";
-            this.picAircraft.Size = new System.Drawing.Size(129, 101);
-            this.picAircraft.TabIndex = 6;
-            this.picAircraft.TabStop = false;
-            this.picAircraft.Click += new System.EventHandler(this.PicAircraft_Click);
+            this.labTimer.AutoSize = true;
+            this.labTimer.BackColor = System.Drawing.Color.Transparent;
+            this.labTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTimer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labTimer.Location = new System.Drawing.Point(968, 210);
+            this.labTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labTimer.Name = "labTimer";
+            this.labTimer.Size = new System.Drawing.Size(44, 20);
+            this.labTimer.TabIndex = 7;
+            this.labTimer.Text = "0:00";
             // 
-            // label1
+            // actionToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(1143, 1082);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 29);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.actionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nextStepToolStripMenuItem,
+            this.pauseToolStripMenuItem,
+            this.unpauseToolStripMenuItem,
+            this.fastForwardToolStripMenuItem,
+            this.forwardToolStripMenuItem});
+            this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
+            this.actionToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
+            this.actionToolStripMenuItem.Text = "Action";
+            // 
+            // nextStepToolStripMenuItem
+            // 
+            this.nextStepToolStripMenuItem.Name = "nextStepToolStripMenuItem";
+            this.nextStepToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nextStepToolStripMenuItem.Text = "Next step";
+            this.nextStepToolStripMenuItem.Click += new System.EventHandler(this.nextStepToolStripMenuItem_Click);
+            // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Text = "Pause";
+            // 
+            // unpauseToolStripMenuItem
+            // 
+            this.unpauseToolStripMenuItem.Name = "unpauseToolStripMenuItem";
+            this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unpauseToolStripMenuItem.Text = "Unpause";
+            // 
+            // fastForwardToolStripMenuItem
+            // 
+            this.fastForwardToolStripMenuItem.Name = "fastForwardToolStripMenuItem";
+            this.fastForwardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fastForwardToolStripMenuItem.Text = "Fast Forward";
+            // 
+            // forwardToolStripMenuItem
+            // 
+            this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
+            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.forwardToolStripMenuItem.Text = "Forward";
             // 
             // SimulatorGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1567, 1227);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.picAircraft);
+            this.ClientSize = new System.Drawing.Size(1047, 803);
+            this.Controls.Add(this.labTimer);
             this.Controls.Add(this.picMap);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Aéroports);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SimulatorGUI";
             this.ShowIcon = false;
             this.Text = "Simulator";
@@ -273,7 +329,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAircraft)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,8 +352,13 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListView listView6;
         private System.Windows.Forms.PictureBox picMap;
-        private System.Windows.Forms.PictureBox picAircraft;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labTimer;
+        private System.Windows.Forms.ToolStripMenuItem actionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextStepToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unpauseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fastForwardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forwardToolStripMenuItem;
     }
 }
 

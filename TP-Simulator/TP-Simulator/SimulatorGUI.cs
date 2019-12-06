@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace TP_Simulator
 {
     public delegate void AirportNotifier();
+    public delegate void TickNotifier();
 
     public partial class SimulatorGUI : Form
     {
@@ -15,9 +17,11 @@ namespace TP_Simulator
         public SimulatorGUI()
         {
             InitializeComponent();
-            
-            picMap.Controls.Add(picAircraft);
+
+            picMap.Controls.Add(labTimer);
+            labTimer.Location = new Point(950, 10);
             setListView();
+            //picMap.Controls.Add(picAircraft);
 
 
         }
@@ -71,7 +75,7 @@ namespace TP_Simulator
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "C:\\Users\\1536621\\Desktop\\GitHub\\TP-Simulator\\TP-Simulator\\TP-Simulator\\bin\\Debug";
+            openFileDialog.InitialDirectory = "C:\\Users\\Christophe\\Desktop\\Github\\TP-Builder\\TP-Builder\\WindowsFormsApp1\\bin\\Debug";
             openFileDialog.Filter = "XML Files (*.xml) | *.xml";
             //openFileDialog.RestoreDirectory = true;
 
@@ -91,7 +95,7 @@ namespace TP_Simulator
         private void fillLsvAircraft(string name, string type, string state,string destination)
         {
 
-           lsvAircraft.Items.Add(new ListViewItem(new string[] { name,type,state,destination}));
+           lsvAircraft.Items.Add(new ListViewItem(new string[] { name,type,destination, state }));
 
         }
 
@@ -134,8 +138,34 @@ namespace TP_Simulator
             {
                 airport = scenario.Airports[i].ToString();
                 airportList = airport.Split(',').ToList();
-                fillLsvAirport(airportList[0].ToString(), airportList[1].ToString(), airportList[2].ToString());
+                fillLsvAirport(airportList[0], airportList[1], airportList[2]);
+                createAirportIcon(Convert.ToInt32(airportList[1]), Convert.ToInt32(airportList[2]));
             }
+        }
+
+        private void createAirportIcon(int posX, int posY) {
+
+            PictureBox pb = new PictureBox
+            {
+                Size = new Size(20, 20),
+                Location = new Point(posX, posY),
+                Image = Properties.Resources.airport,
+                BackColor = Color.Black,
+            };
+
+            picMap.Controls.Add(pb);
+            pb.BringToFront();
+        }
+
+
+        public void onTick()
+        {
+            labTimer.Text = scenario.timer.ToString();
+        }
+
+        private void nextStepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scenario.loop();
         }
     }
 }

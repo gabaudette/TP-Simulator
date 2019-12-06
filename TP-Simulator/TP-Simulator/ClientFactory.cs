@@ -12,12 +12,12 @@
                 clientFactory = new ClientFactory();
             return clientFactory;
         }
-
+        /*
         public static Client CreateRescueTeam(string name)
         {
             return new RescueTeam(name);
         }
-
+        
         public static Client CreateFire(string name, int fireSpan)
         {
             return new Fire(name,fireSpan);
@@ -36,6 +36,6 @@
         public static Client CreateObserver(string name)
         {
             return new Observer(name);
-        }
+        }*/
     }
 }

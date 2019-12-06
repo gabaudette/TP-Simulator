@@ -1,11 +1,16 @@
 ﻿namespace TP_Simulator
 {
-    class Fire : Client
+    class Fire : nonAirportClient
     {
         public int FireSpan { get; private set; }
-        public Fire(string name, int fireSpan) : base(name)
+        public Fire(int fireSpan, int posX,int posY) : base(posX,posY)
         {
             FireSpan = fireSpan;
+        }
+
+        public override string ToString()
+        {
+            return $"Incendie d'envergure {FireSpan} détecté en {PosX} {PosY}";
         }
     }
 }

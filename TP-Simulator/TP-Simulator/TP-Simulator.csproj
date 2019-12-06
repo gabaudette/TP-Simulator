@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Aircraft.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="AirportClient.cs" />
     <Compile Include="CargoPlane.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientFactory.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="LoadingState.cs" />
     <Compile Include="MaintenanceSate.cs" />
     <Compile Include="Marchandise.cs" />
+    <Compile Include="nonAirportClient.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="ObserverPlane.cs" />
     <Compile Include="Passenger.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SimulatorGUI.resx">
       <DependentUpon>SimulatorGUI.cs</DependentUpon>
@@ -107,6 +110,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Image1.png" />
+    <None Include="Resources\waterbomber.png" />
+    <None Include="Resources\signal.png" />
+    <None Include="Resources\passengerAirplane.png" />
+    <None Include="Resources\observer.png" />
+    <None Include="Resources\montain.png" />
+    <None Include="Resources\helicopter.png" />
+    <None Include="Resources\fire.png" />
+    <None Include="Resources\airplane.png" />
+    <None Include="Resources\airport.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

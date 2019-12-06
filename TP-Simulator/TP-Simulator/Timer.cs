@@ -13,8 +13,10 @@
         public void addTick ()
         {
             if (currentMinute == 45)
+            {
                 currentHour++;
-
+                currentMinute = 0;
+            }
             else
                 currentMinute += 15;
         }
