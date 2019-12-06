@@ -2,32 +2,32 @@
 {
     public class Timer
     {
-        public int currentMinute{ get; set; }
-        public int currentHour { get; set; }
+        public int CurrentMinute{ get; set; }
+        public int CurrentHour { get; set; }
         public Timer()
         {
-            currentHour = 0;
-            currentMinute = 0;
+            CurrentHour = 0;
+            CurrentMinute = 0;
         }
 
         public void addTick ()
         {
-            if (currentMinute == 45)
+            if (CurrentMinute == 45)
             {
-                currentHour++;
-                currentMinute = 00;
+                CurrentHour++;
+                CurrentMinute = 00;
             }
             else
-                currentMinute += 15;
+                CurrentMinute += 15;
         }
 
 
         public override string ToString()
         {
-            if (currentMinute == 0)
-                return $"{currentHour} : {currentMinute}0";
+            if (CurrentMinute == 0)
+                return $"{CurrentHour} : {CurrentMinute}0";
             else
-                return $"{currentHour} : {currentMinute}";
+                return $"{CurrentHour} : {CurrentMinute}";
             
         }
     }
