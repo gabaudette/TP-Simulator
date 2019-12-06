@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    class Observer : nonAirportClient
+    class Observer : PositionableAirportClient
     {
         public Observer(int posX, int posY) : base(posX,posY) { }
     }
