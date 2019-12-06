@@ -10,9 +10,9 @@ namespace TP_Simulator
     {
         public Airport Airport { get; set; }
         public int Amount { get; set; }
-        public string Destination { get; set; }
+        public Airport Destination { get; set; }
 
-        public AirportClient(int amount, Airport airport, string destination) 
+        public AirportClient(int amount, Airport airport, Airport destination) 
         {
             Airport = airport;
             Amount = amount;

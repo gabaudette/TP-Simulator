@@ -167,5 +167,15 @@ namespace TP_Simulator
         {
             scenario.loop();
         }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scenario.Stop();
+        }
+
+        private void unpauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scenario.Start();
+        }
     }
 }

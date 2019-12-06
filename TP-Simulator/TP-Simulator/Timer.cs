@@ -15,7 +15,7 @@
             if (currentMinute == 45)
             {
                 currentHour++;
-                currentMinute = 0;
+                currentMinute = 00;
             }
             else
                 currentMinute += 15;
@@ -24,7 +24,11 @@
 
         public override string ToString()
         {
-            return $"{currentHour} : {currentMinute}";
+            if (currentMinute == 0)
+                return $"{currentHour} : {currentMinute}0";
+            else
+                return $"{currentHour} : {currentMinute}";
+            
         }
     }
 }

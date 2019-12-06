@@ -284,12 +284,14 @@
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // unpauseToolStripMenuItem
             // 
             this.unpauseToolStripMenuItem.Name = "unpauseToolStripMenuItem";
             this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unpauseToolStripMenuItem.Text = "Unpause";
+            this.unpauseToolStripMenuItem.Click += new System.EventHandler(this.unpauseToolStripMenuItem_Click);
             // 
             // fastForwardToolStripMenuItem
             // 

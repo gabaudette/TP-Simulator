@@ -13,29 +13,29 @@
             return clientFactory;
         }
         /*
-        public static Client CreateRescueTeam(string name)
+        public static Client CreateRescueTeam()
         {
-            return new RescueTeam(name);
+            return new RescueTeam();
         }
         
-        public static Client CreateFire(string name, int fireSpan)
+        public static Client CreateFire()
         {
-            return new Fire(name,fireSpan);
+            return new Fire();
         }
 
-        public static Client CreatePassenger(string name)
+        public static Client CreatePassenger()
         {
-            return new Passenger(name);
+            return new Passenger();
         }
 
-        public static Client CreateMarchandise(string name, int weight)
+        public static Client CreateMarchandise()
         {
-            return new Marchandise(name, weight);
+            return new Marchandise();
         }
 
-        public static Client CreateObserver(string name)
+        public static Client CreateObserver()
         {
-            return new Observer(name);
+            return new Observer();
         }*/
     }
 }

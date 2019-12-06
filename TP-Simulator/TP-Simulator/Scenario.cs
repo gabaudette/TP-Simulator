@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml.Serialization;
 using System;
+using System.Threading;
 
 namespace TP_Simulator
 {
@@ -68,19 +69,18 @@ namespace TP_Simulator
 
         public void Start()
         {
-            
+            pause = false;
         }
         public void Stop()
         {
-            
+            pause = true;
         }
 
         public void loop()
         {
-
-                timer.addTick();
-
-                tickNotifier();
+            timer.addTick();
+            tickNotifier();
+ 
         }
     }
 }
