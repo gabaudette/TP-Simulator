@@ -11,12 +11,13 @@ namespace TP_Simulator
         private Timer timer;
         
         public List<Airport> Airports { get; set; }
-        public List<Aircraft> FlyingAicrafts { get; set; }
+        public List<Aircraft> FlyingAircrafts { get; set; }
         
 
         private Scenario()
         {
             Airports = new List<Airport>();
+            this.timer = new Timer();
         }
 
         public static Scenario Instance
@@ -44,11 +45,11 @@ namespace TP_Simulator
             }
         }
 
-        public void StartTimer()
+        public void Start()
         {
-            this.timer = new Timer();
+            
         }
-        public void StopTimer()
+        public void Stop()
         {
             
         }
