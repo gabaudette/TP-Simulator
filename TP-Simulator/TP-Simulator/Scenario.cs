@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using System;
-using System.Threading;
 
 namespace TP_Simulator
 {
@@ -11,7 +9,7 @@ namespace TP_Simulator
     {
         private static Scenario instance = null;
         public Timer Timer { get; set; }
-        private bool Pause { get; set; }
+        public bool Pause { get; private set; }
         
         public List<Airport> Airports { get; set; }
         public List<Aircraft> FlyingAicrafts { get; set; }
@@ -24,7 +22,7 @@ namespace TP_Simulator
         private Scenario()
         {
             Airports = new List<Airport>();
-            this.Timer = new Timer();
+            Timer = new Timer();
             Pause = false;
         }
 
