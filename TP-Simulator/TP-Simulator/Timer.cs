@@ -29,5 +29,13 @@
             else
                 return $"{CurrentHour} : {CurrentMinute}";
         }
+
+        public bool IsTimeClient()
+        {
+            if (CurrentHour % 1 == 0 && CurrentMinute == 0)
+                return true;
+            return false;
+        }
+
     }
 }
