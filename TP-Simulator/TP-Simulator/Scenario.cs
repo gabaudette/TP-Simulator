@@ -15,11 +15,13 @@ namespace TP_Simulator
         public List<Aircraft> FlyingAicrafts { get; set; }
         [XmlIgnore]
         public AirportNotifier airportNotifier { get; set; }
+
         
 
         private Scenario()
         {
             Airports = new List<Airport>();
+            this.timer = new Timer();
         }
 
         public void SetView(SimulatorGUI view)
@@ -56,9 +58,9 @@ namespace TP_Simulator
 
         public void Start()
         {
-            this.timer = new Timer();
+            
         }
-        public void StopTimer()
+        public void Stop()
         {
             
         }
