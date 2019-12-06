@@ -277,21 +277,21 @@
             this.nextStepToolStripMenuItem.Name = "nextStepToolStripMenuItem";
             this.nextStepToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nextStepToolStripMenuItem.Text = "Next step";
-            this.nextStepToolStripMenuItem.Click += new System.EventHandler(this.nextStepToolStripMenuItem_Click);
+            this.nextStepToolStripMenuItem.Click += new System.EventHandler(this.NextStepToolStripMenuItem_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
             // unpauseToolStripMenuItem
             // 
             this.unpauseToolStripMenuItem.Name = "unpauseToolStripMenuItem";
             this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unpauseToolStripMenuItem.Text = "Unpause";
-            this.unpauseToolStripMenuItem.Click += new System.EventHandler(this.unpauseToolStripMenuItem_Click);
+            this.unpauseToolStripMenuItem.Click += new System.EventHandler(this.UnpauseToolStripMenuItem_Click);
             // 
             // fastForwardToolStripMenuItem
             // 
