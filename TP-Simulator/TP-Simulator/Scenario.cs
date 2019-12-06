@@ -34,8 +34,8 @@ namespace TP_Simulator
 
         public void SetView(SimulatorGUI view)
         {
-            AirportNotifier = new AirportNotifier(view.onDeserialize);
-            TickNotifier = new TickNotifier(view.onTick);
+            AirportNotifier = new AirportNotifier(view.OnDeserialize);
+            TickNotifier = new TickNotifier(view.OnTick);
         }
 
         public static Scenario Instance
@@ -78,7 +78,7 @@ namespace TP_Simulator
 
         public void Loop()
         {
-            Timer.addTick();
+            Timer.AddTick();
             TickNotifier();
  
         }
