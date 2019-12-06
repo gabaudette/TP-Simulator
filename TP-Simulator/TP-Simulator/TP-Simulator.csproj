@@ -62,7 +62,7 @@
     <Compile Include="LoadingState.cs" />
     <Compile Include="MaintenanceSate.cs" />
     <Compile Include="Marchandise.cs" />
-    <Compile Include="nonAirportClient.cs" />
+    <Compile Include="PositionableClient.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="ObserverPlane.cs" />
     <Compile Include="Passenger.cs" />
