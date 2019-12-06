@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using System;
 
 namespace TP_Simulator
 {
@@ -43,6 +44,18 @@ namespace TP_Simulator
                     airport.Reviver(this);
                 }
             }
+
+
+            for (int i = 0; i < Airports.Count; i++)
+            {
+                Console.WriteLine(Airports[i].Name);
+
+                for (int y = 0; y < Airports[i].Aircrafts.Count; y++)
+                {
+                    Console.WriteLine(Airports[i].Aircrafts[y]);
+                }
+            }
+
         }
 
         public void Start()
