@@ -2,7 +2,7 @@
 {
     class Passenger : AirportClient
     {
-        public Passenger(int amount,Airport airport, Airport destination) : base(amount,airport,destination) { }
+        public Passenger(int amount, Airport airport, Airport destination) : base(amount, airport, destination) { }
 
         public override string ToString()
         {
