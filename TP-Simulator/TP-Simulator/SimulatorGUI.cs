@@ -160,12 +160,12 @@ namespace TP_Simulator
 
         public void onTick()
         {
-            labTimer.Text = scenario.timer.ToString();
+            labTimer.Text = scenario.Timer.ToString();
         }
 
         private void nextStepToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            scenario.loop();
+            scenario.Loop();
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
