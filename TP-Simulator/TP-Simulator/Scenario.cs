@@ -71,7 +71,7 @@ namespace TP_Simulator
             while (!Pause)
             {
                 Loop();
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
             }
         }
 
