@@ -19,7 +19,6 @@ namespace TP_Simulator
         public Aircraft() {
 
             CurrentState = new LoadingState();
-
         }
 
         public override string ToString()
