@@ -2,7 +2,7 @@
 {
     class UnloadingState : StateAircraft
     {
-        protected override void Do()
+        public override void Do()
         {
             
         }
