@@ -4,7 +4,7 @@ namespace TP_Simulator
 {
     class LoadingState : StateAircraft
     {
-        protected override void Do()
+        public override void Do()
         {
             throw new NotImplementedException();
         }
