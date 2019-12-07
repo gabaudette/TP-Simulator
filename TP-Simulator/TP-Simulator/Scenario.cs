@@ -58,9 +58,8 @@ namespace TP_Simulator
 
                 Airports = sce­nario.Airports;
                 foreach(Airport airport in Airports)
-                {
                     airport.Reviver(this);
-                }
+
                 Loop();
                 AirportNotifier();
             }

@@ -14,7 +14,8 @@ namespace TP_Simulator
         public int Speed { get; set; }
         public int Maintenance { get; set; }
         enum TrackColor { Red, Yellow, Blue, Green, Grey };
-        public StateAircraft CurrentState { get; set; }
+        [XmlIgnore]
+        public StateAircraft CurrentState { get; protected set; }
 
         public Aircraft() {
 

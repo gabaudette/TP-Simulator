@@ -6,6 +6,5 @@
         {
         }
         protected abstract void Do();
-
     }
 }
