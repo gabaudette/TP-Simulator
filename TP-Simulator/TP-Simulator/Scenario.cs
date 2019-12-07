@@ -22,6 +22,8 @@ namespace TP_Simulator
         [XmlIgnore]
         public TickNotifier TickNotifier { get; set; }
 
+        private ClientFactory clientFactory;
+
         private Scenario()
         {
             Airports = new List<Airport>();
@@ -68,7 +70,6 @@ namespace TP_Simulator
             {
                 Loop();
                 Thread.Sleep(1000);
-
             }
         }
 
@@ -80,7 +81,12 @@ namespace TP_Simulator
         public void Loop()
         {
             Timer.AddTick();
-            Timer.IsTimeClient();
+            this.clientFactory = ClientFactory.GetClientFactory();
+            if (Timer.HourPassed()) {
+                //int amount = 
+                //ClientFactory.CreatePassenger();
+            }
+
             TickNotifier();
         }
     }
