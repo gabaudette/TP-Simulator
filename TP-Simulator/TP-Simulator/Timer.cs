@@ -30,12 +30,11 @@
                 return $"{CurrentHour} : {CurrentMinute}";
         }
 
-        public bool IsTimeClient()
+        public bool HourPassed()
         {
             if (CurrentHour % 1 == 0 && CurrentMinute == 0)
                 return true;
             return false;
         }
-
     }
 }
