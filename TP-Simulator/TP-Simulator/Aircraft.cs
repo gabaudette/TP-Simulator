@@ -15,11 +15,16 @@ namespace TP_Simulator
         public int Maintenance { get; set; }
         enum TrackColor { Red, Yellow, Blue, Green, Grey };
         [XmlIgnore]
-        public StateAircraft CurrentState { get; protected set; }
+        public StateAircraft CurrentState { get; set; }
 
         public Aircraft() {
 
             CurrentState = new LoadingState();
+        }
+
+        public void Request()
+        {
+            CurrentState.Do(this);
         }
 
         public override string ToString()
