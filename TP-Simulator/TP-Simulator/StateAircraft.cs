@@ -5,6 +5,7 @@
         public StateAircraft()
         {
         }
-        public abstract void Do();
+        public abstract void Do(Aircraft aircraft);
+        public abstract void ChangeState(Aircraft aircraft);
     }
 }
