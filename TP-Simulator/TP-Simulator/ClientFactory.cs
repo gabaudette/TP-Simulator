@@ -1,9 +1,11 @@
-﻿namespace TP_Simulator
+﻿using System;
+
+namespace TP_Simulator
 {
     public sealed class ClientFactory
     {
         private static ClientFactory clientFactory;
-
+        private Random rnd;
         private ClientFactory() { }
 
         public static ClientFactory GetClientFactory()
@@ -18,9 +20,10 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Client CreateRescueTeam(int x, int y)
+        public static Client CreateRescueTeam()
         {
-            return new RescueTeam(x, y);
+            int[] pos = clientFactory.getRandomPos();
+            return new RescueTeam(pos[0], pos[1]);
         }
         /// <summary>
         /// Create a fire client
@@ -29,9 +32,11 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Client CreateFire(int fireSpan, int x, int y)
-        {
-            return new Fire(fireSpan, x, y);
+        public static Client CreateFire()
+        {           
+            int[] pos = clientFactory.getRandomPos();
+            int fireSpan = clientFactory.getRandomNumber(1,4);
+            return new Fire(fireSpan, pos[0],pos[1]);
         }
         //TODO: Check assign airport (for destination) in scenario (Simulator UML Schema)
         /// <summary>
@@ -41,9 +46,11 @@
         /// <param name="airport"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static Client CreatePassenger(int amount, Airport airport, Airport destination)
+        public static Client CreatePassenger(Airport airport, Airport destination)
         {
-            return new Passenger(amount, airport, destination);
+            int amount = clientFactory.getRandomNumber(10, 50);
+
+            return new Passenger(amount,airport,destination);
         }
         /// <summary>
         /// Create a marchandise client
@@ -53,8 +60,9 @@
         /// <param name="destination"></param>
         /// <returns></returns>
         //TODO: Check assign airport (for destination) in scenario (Simulator UML Schema)
-        public static Client CreateMarchandise(int amount, Airport airport, Airport destination)
+        public static Client CreateMarchandise(Airport airport, Airport destination)
         {
+            int amount = clientFactory.getRandomNumber(10, 50);
             return new Marchandise(amount, airport, destination);
         }
         /// <summary>
@@ -63,9 +71,23 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Client CreateObserver(int x, int y)
+        public static Client CreateObserver()
         {
-            return new Observer(x, y);
+            int[] pos = clientFactory.getRandomPos();
+            return new Observer(pos[0], pos[1]);
+        }
+
+        private int getRandomNumber(int min, int max)
+        {
+            rnd = new Random(DateTime.Now.Millisecond);
+            return rnd.Next(min, max);
+        }
+
+        private int[] getRandomPos()
+        {
+            rnd = new Random(DateTime.Now.Millisecond);
+            int[] tabPos = {rnd.Next(0, 1026), rnd.Next(0, 591) };
+            return tabPos;
         }
     }
 }
