@@ -13,7 +13,9 @@ namespace TP_Simulator
         public Timer Timer { get; set; }
         [XmlIgnore]
         public bool Pause { get; private set; }
-        
+        [XmlIgnore]
+        public System.Random Rnd { get; private set; }
+
         public List<Airport> Airports { get; set; }
         public List<Aircraft> FlyingAicrafts { get; set; }
         [XmlIgnore]
@@ -83,7 +85,8 @@ namespace TP_Simulator
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
             if (Timer.HourPassed()) {
-                //int amount = 
+                // ?? Im I doing shit ???
+                //int amount = Rnd.Next(1, 4);
                 //ClientFactory.CreatePassenger();
             }
 
