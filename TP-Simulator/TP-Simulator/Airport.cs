@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿ using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace TP_Simulator
 {
@@ -14,10 +15,18 @@ namespace TP_Simulator
         public List<Aircraft> Aircrafts { get; set; }
         Scenario scenario { get; set; }
 
-        public Airport() { }
+        [XmlIgnore]
+        public List<Client> Clients { get; set; }
+
+        public Airport() {
+
+            Clients = new List<Client>();
+        
+        }
         
         public void Reviver(Scenario scenario)
         {
+            
             this.scenario = scenario;
             foreach(Aircraft aircraft in Aircrafts)
                 aircraft.airport = this;
