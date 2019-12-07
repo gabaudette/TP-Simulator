@@ -2,9 +2,17 @@
 {
     class MaintenanceSate : StateAircraft
     {
-        public override void Do()
+        public override void Do(Aircraft aircraft)
         {
-            //base.aircraft.Maintenance = 0; TODO:Access maintenance time of the aircraft
+            if (aircraft.Maintenance == 0)
+                ChangeState(aircraft);
+            else
+               aircraft.Maintenance--;
+            
+        }
+        public override void ChangeState(Aircraft aircraft)
+        {
+            aircraft.CurrentState = new LoadingState();
         }
     }
 }
