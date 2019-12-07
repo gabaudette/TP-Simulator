@@ -4,9 +4,14 @@ namespace TP_Simulator
 {
     class LandingState : StateAircraft
     {
-        public override void Do()
+        public override void Do(Aircraft aircraft)
         {
-            throw new NotImplementedException();
+            ChangeState(aircraft);
+        }
+
+        public override void ChangeState(Aircraft aircraft)
+        {
+            aircraft.CurrentState = new UnloadingState();
         }
 
         public override string ToString()
