@@ -9,6 +9,8 @@ namespace TP_Simulator
 {
     public delegate void AirportNotifier();
     public delegate void TickNotifier();
+    public delegate void HourNotifier();
+
 
     public partial class SimulatorGUI : Form
     {
@@ -146,7 +148,6 @@ namespace TP_Simulator
 
         private void CreateAirportIcon(int posX, int posY)
         {
-
             PictureBox pb = new PictureBox
             {
                 Size = new Size(20, 20),
@@ -163,6 +164,11 @@ namespace TP_Simulator
         {
             labTimer.Text = scenario.Timer.ToString();
             labTimer.Refresh();
+        }
+
+        public void OnHour()
+        {
+            //Afficher les nouveaux clients sur la map (observer,fire,rescue)
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
