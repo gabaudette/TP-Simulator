@@ -5,6 +5,6 @@
         public StateAircraft()
         {
         }
-        protected abstract void Do();
+        public abstract void Do();
     }
 }
