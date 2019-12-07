@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace TP_Simulator
+﻿namespace TP_Simulator
 {
+    //TODO ? Create a new Sup Class (Passenger/Cargo Plane State)
     class LoadingState : StateAircraft
     {
         public override void Do()
         {
-            throw new NotImplementedException();
+
         }
 
         public override string ToString()

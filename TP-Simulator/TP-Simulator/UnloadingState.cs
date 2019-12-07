@@ -2,6 +2,7 @@
 {
     class UnloadingState : StateAircraft
     {
+        //TODO ? Create a new Sup Class (Passenger/Cargo Plane State)
         public override void Do()
         {
             
