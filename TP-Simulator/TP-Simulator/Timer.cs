@@ -32,9 +32,12 @@
 
         public bool HourPassed()
         {
-            if (CurrentHour % 1 == 0 && CurrentMinute == 0)
-                return true;
-            return false;
+            return CurrentHour % 1 == 0 && CurrentMinute == 0;
+        }
+
+        public bool ThirtyPassed()
+        {
+           return (CurrentMinute == 30)
         }
     }
 }
