@@ -37,7 +37,7 @@
 
         public bool ThirtyPassed()
         {
-           return (CurrentMinute == 30)
+            return (CurrentMinute == 30);
         }
     }
 }
