@@ -59,19 +59,9 @@ namespace TP_Simulator
             lsvAircraft.Columns[3].Width = 70;
 
             lsvClient.Clear();
-
             lsvClient.View = View.Details;
-
-            //Ajoute les colonnes
-            lsvClient.Columns.Add("Nombre");
-            lsvClient.Columns.Add("Type");
-            lsvClient.Columns.Add("Destination");
-
-
-            //Remplis les colonnes
-            lsvClient.Columns[0].Width = 150;
-            lsvClient.Columns[1].Width = 70;
-            lsvClient.Columns[2].Width = 90;
+            lsvClient.Columns.Add("Clients");
+            lsvClient.Columns[0].Width = lsvClient.Width - 10;
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,15 +87,12 @@ namespace TP_Simulator
 
         private void FillLsvAircraft(string name, string type, string state, string destination)
         {
-
             lsvAircraft.Items.Add(new ListViewItem(new string[] { name, type, destination, state }));
-
         }
 
-        private void FillLsvClients()
+        private void FillLsvClients(string data)
         {
-            lsvAirport.Items.Add(new ListViewItem(new string[] { }));
-
+            lsvClient.Items.Add(new ListViewItem(new string[] { data }));
         }
 
         private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,6 +101,7 @@ namespace TP_Simulator
             Console.WriteLine(scenario.Airports[lsvAirport.FocusedItem.Index].ToString());
 
             lsvAircraft.Items.Clear();
+            lsvClient.Items.Clear();
             List<string> aircraftList = new List<string>();
             string aircraft;
 
@@ -122,6 +110,11 @@ namespace TP_Simulator
                 aircraft = scenario.Airports[lsvAirport.FocusedItem.Index].Aircrafts[i].ToString();
                 aircraftList = aircraft.Split(',').ToList();
                 FillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
+            }
+
+            for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Clients.Count; i++)
+            {
+                FillLsvClients(scenario.Airports[lsvAirport.FocusedItem.Index].Clients[i].ToString());
             }
 
 
