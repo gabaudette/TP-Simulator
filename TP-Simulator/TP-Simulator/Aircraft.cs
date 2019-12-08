@@ -1,4 +1,4 @@
-﻿using System.Xml.Serialization;
+﻿ using System.Xml.Serialization;
 
 namespace TP_Simulator
 {
@@ -18,7 +18,7 @@ namespace TP_Simulator
         public StateAircraft CurrentState { get; set; }
 
         public Aircraft() {
-
+            
             CurrentState = new LoadingState();
         }
 
