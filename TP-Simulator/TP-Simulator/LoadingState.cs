@@ -5,12 +5,18 @@
     {
         public override void Do(Aircraft aircraft)
         {
+            PassengerAircraft passAircraft = (PassengerAircraft)aircraft;
+
+            if (passAircraft.LoadingTime == 0)
+                ChangeState(passAircraft);
+            else
+                passAircraft.LoadingTime--;
 
         }
 
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new TakeOffState();
+            aircraft.CurrentState = new FlyingState();
         }
 
         public override string ToString()
