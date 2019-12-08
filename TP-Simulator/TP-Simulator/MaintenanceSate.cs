@@ -12,7 +12,7 @@
         }
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new LoadingState();
+            aircraft.CurrentState = new WaitingState();
         }
     }
 }
