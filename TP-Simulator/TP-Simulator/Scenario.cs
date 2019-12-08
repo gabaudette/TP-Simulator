@@ -27,6 +27,8 @@ namespace TP_Simulator
         private ClientFactory clientFactory;
         [XmlIgnore]
         public PositionableClient LastClient { get; set; }
+        [XmlIgnore]
+        public List <PositionableClient> ActiveClient { get; set; }
 
         [XmlIgnore]
         Airport closestAirport = new Airport();
@@ -90,49 +92,14 @@ namespace TP_Simulator
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
             if (Timer.HourPassed()) {
-                Console.WriteLine("Client generer");
-                LastClient = new PositionableClient();
-                Rnd = new Random(DateTime.Now.Millisecond);
-                int nbCall;
-                int destinationID;
 
-                //Observator
-                LastClient = (PositionableClient)ClientFactory.CreateObserver();
-                addClientToAirport(LastClient,1);
+                generateClient();
 
-                //Fire
-                nbCall = Rnd.Next(1, 3);
-                for (int i = 0; i < nbCall; i++)
-                {
-                    LastClient = (PositionableClient)ClientFactory.CreateFire();
-                    addClientToAirport(LastClient,2);
-                }
+                
 
-                //ResuceTeam
-                nbCall = Rnd.Next(1, 2);
-                for (int i = 0; i < nbCall; i++)
-                {
-                    LastClient = (PositionableClient)ClientFactory.CreateRescueTeam();
-                    addClientToAirport(LastClient,3);
-                }
-
-                //Passenger
-                for (int i = 0; i < Airports.Count; i++)
-                {
-                    destinationID = Rnd.Next(0, Airports.Count);
-                    ClientFactory.CreatePassenger(Airports[i], Airports[destinationID]);
-                }
-
-                //Marchandise
-                for (int i = 0; i < Airports.Count; i++)
-                {
-                    destinationID = Rnd.Next(0, Airports.Count);
-                    ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]);
-                }
-
-                HourNotifier();
+                //HourNotifier();
             }
-
+            doAircraft();
             TickNotifier();
         }
 
@@ -164,6 +131,67 @@ namespace TP_Simulator
                 }  
             }
             return closestAirport;
+        }
+
+        public void generateClient()
+        {
+            Console.WriteLine("Client generer");
+            LastClient = new PositionableClient();
+            ActiveClient = new List<PositionableClient>();
+            Rnd = new Random(DateTime.Now.Millisecond);
+            int nbCall;
+            int destinationID;
+
+            //Observator
+            LastClient = (PositionableClient)ClientFactory.CreateObserver();
+            addClientToAirport(LastClient, 1);
+            ActiveClient.Add(LastClient);
+
+            //Fire
+            nbCall = Rnd.Next(1, 3);
+            for (int i = 0; i < nbCall; i++)
+            {
+                LastClient = (PositionableClient)ClientFactory.CreateFire();
+                addClientToAirport(LastClient, 2);
+                ActiveClient.Add(LastClient);
+            }
+
+            //ResuceTeam
+            nbCall = Rnd.Next(1, 2);
+            for (int i = 0; i < nbCall; i++)
+            {
+                LastClient = (PositionableClient)ClientFactory.CreateRescueTeam();
+                addClientToAirport(LastClient, 3);
+                ActiveClient.Add(LastClient);
+            }
+
+            //Passenger
+            for (int i = 0; i < Airports.Count; i++)
+            {
+                destinationID = Rnd.Next(0, Airports.Count);
+                ClientFactory.CreatePassenger(Airports[i], Airports[destinationID]);
+                ActiveClient.Add(LastClient);
+            }
+
+            //Marchandise
+            for (int i = 0; i < Airports.Count; i++)
+            {
+                destinationID = Rnd.Next(0, Airports.Count);
+                ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]);
+                ActiveClient.Add(LastClient);
+            }
+        }
+
+        public void doAircraft()
+        {
+            for (int i = 0; i < Airports.Count; i++)
+            {
+                for (int y = 0; y < Airports[i].Aircrafts.Count; y++)
+                {
+                    Airports[i].Aircrafts[y].CurrentState.Do(Airports[i].Aircrafts[y]);
+                     
+                }
+            }
         }
 
     }
