@@ -63,7 +63,6 @@ namespace TP_Simulator
             {
                 if (Aircrafts[i] is RescueHelicopter)
                     return true;
-
             }
             return false;
         }
