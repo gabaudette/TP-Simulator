@@ -2,6 +2,12 @@
 {
     public class PassengerPlane : PassengerAircraft
     {
-        public int Capacity { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name},Passager,{CurrentState.ToString()},Cuba";
+        }
     }
+
+
 }
