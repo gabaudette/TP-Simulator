@@ -113,11 +113,7 @@ namespace TP_Simulator
             }
 
             for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Clients.Count; i++)
-            {
                 FillLsvClients(scenario.Airports[lsvAirport.FocusedItem.Index].Clients[i].ToString());
-            }
-
-
         }
 
         private void PicAircraft_Click(object sender, EventArgs e)
@@ -145,11 +141,12 @@ namespace TP_Simulator
             {
                 Size = new Size(20, 20),
                 Location = new Point(posX, posY),
-                Image = Properties.Resources.airport,
+                Image = Properties.Resources.airplane,
                 BackColor = Color.Black,
             };
 
             picMap.Controls.Add(pb);
+            pb.Refresh();
             pb.BringToFront();
         }
 
@@ -161,7 +158,70 @@ namespace TP_Simulator
 
         public void OnHour()
         {
-            //Afficher les nouveaux clients sur la map (observer,fire,rescue)
+
+
+            foreach (PositionableClient client in scenario.ActiveClient) 
+            { 
+                if (client is Fire)
+                {
+                    PictureBox pbClient = new PictureBox
+                    {
+                        Size = new Size(15, 15),
+                        Location = new Point(client.PosX, client.PosY),
+                        Image = Properties.Resources.fire,
+                        BackColor = Color.Black,
+                    };
+                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
+                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                    {
+                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
+                    }
+                    pbClient.Image = bitmap;
+                    pbClient.Refresh();
+                    picMap.Controls.Add(pbClient);
+                }
+                else if (client is Observer)
+                {
+                    PictureBox pbClient = new PictureBox
+                    {
+                        Size = new Size(15, 15),
+                        Location = new Point(client.PosX, client.PosY),
+                        Image = Properties.Resources.observer,
+                        BackColor = Color.Black,
+                    };
+                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
+                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                    {
+                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
+                    }
+                    pbClient.Image = bitmap;
+                    pbClient.Refresh();
+                    picMap.Controls.Add(pbClient);
+                }
+                else if (client is RescueTeam)
+                {
+                    PictureBox pbClient = new PictureBox
+                    {
+                        Size = new Size(15, 15),
+                        Location = new Point(client.PosX, client.PosY),
+                        Image = Properties.Resources.signal,
+                        BackColor = Color.Black,
+                    };
+                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
+                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                    {
+                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
+                    }
+                    pbClient.Image = bitmap;
+                    pbClient.Refresh();
+                    picMap.Controls.Add(pbClient);
+                }
+            }
+        }
+
+        private void DrawClients(Graphics graphics, int posX, int posY)
+        {
+
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
