@@ -31,5 +31,8 @@ namespace TP_Simulator
         {
             return $"{Name}";
         }
+
+        public abstract void moveAicraft(Aircraft aircraft);
+
     }
 }
