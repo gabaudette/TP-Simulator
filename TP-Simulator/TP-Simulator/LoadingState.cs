@@ -5,8 +5,7 @@
     {
         public override void Do(Aircraft aircraft)
         {
-            if(aircraft)
-            ChangeState(aircraft);
+
         }
 
         public override void ChangeState(Aircraft aircraft)
