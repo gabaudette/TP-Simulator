@@ -19,9 +19,7 @@ namespace TP_Simulator
         public List<Client> Clients { get; set; }
 
         public Airport() {
-
             Clients = new List<Client>();
-        
         }
         
         public void Reviver(Scenario scenario)
@@ -35,6 +33,39 @@ namespace TP_Simulator
         public override string ToString()
         {
             return $"{Name},{X},{Y},{MinPassenger},{MaxPassenger},{MinMarchandise},{MaxPassenger}";
+        }
+
+        public bool hasWaterBomber()
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] is WaterBomber)
+                    return true;
+
+            }
+            return false;
+        }
+
+        public bool hasObserverPlane()
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] is ObserverPlane)
+                    return true;
+
+            }
+            return false;
+        }
+
+        public bool hasRescueHelicopter()
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] is RescueHelicopter)
+                    return true;
+
+            }
+            return false;
         }
     }
 }
