@@ -61,7 +61,6 @@
     <Compile Include="Fire.cs" />
     <Compile Include="FlyingState.cs" />
     <Compile Include="GeoPosition.cs" />
-    <Compile Include="LandingState.cs" />
     <Compile Include="LoadingState.cs" />
     <Compile Include="MaintenanceSate.cs" />
     <Compile Include="Marchandise.cs" />
@@ -84,7 +83,6 @@
     <Compile Include="ScenarioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateAircraft.cs" />
-    <Compile Include="TakeOffState.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="UnloadingState.cs" />
     <Compile Include="WaitingState.cs" />
@@ -117,6 +115,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\waterbomber.png" />
+    <None Include="Properties\signal.png" />
+    <None Include="Properties\passengerAirplane.png" />
+    <None Include="Properties\observer.png" />
+    <None Include="Properties\montain.png" />
+    <None Include="Properties\airplane.png" />
+    <None Include="Properties\airport.png" />
+    <None Include="Properties\download_img.png" />
+    <None Include="Properties\fire.png" />
+    <None Include="Properties\helicopter.png" />
     <Content Include="Properties\Image1.png" />
     <None Include="Resources\waterbomber.png" />
     <None Include="Resources\signal.png" />
