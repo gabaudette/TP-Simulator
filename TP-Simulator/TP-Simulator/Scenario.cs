@@ -90,20 +90,22 @@ namespace TP_Simulator
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
             if (Timer.HourPassed()) {
+                Console.WriteLine("Client generer");
                 LastClient = new PositionableClient();
                 Rnd = new Random(DateTime.Now.Millisecond);
                 int nbCall;
                 int destinationID;
+
                 //Observator
                 LastClient = (PositionableClient)ClientFactory.CreateObserver();
-                addClientToAirport(LastClient);
+                addClientToAirport(LastClient,1);
 
                 //Fire
                 nbCall = Rnd.Next(1, 3);
                 for (int i = 0; i < nbCall; i++)
                 {
                     LastClient = (PositionableClient)ClientFactory.CreateFire();
-                    addClientToAirport(LastClient);
+                    addClientToAirport(LastClient,2);
                 }
 
                 //ResuceTeam
@@ -111,7 +113,7 @@ namespace TP_Simulator
                 for (int i = 0; i < nbCall; i++)
                 {
                     LastClient = (PositionableClient)ClientFactory.CreateRescueTeam();
-                    addClientToAirport(LastClient);
+                    addClientToAirport(LastClient,3);
                 }
 
                 //Passenger
@@ -134,31 +136,33 @@ namespace TP_Simulator
             TickNotifier();
         }
 
-        private void addClientToAirport(PositionableClient paramClient)
+        private void addClientToAirport(PositionableClient paramClient, int type)
         {
             
-            closestAirport = getClosestAirport(paramClient.PosX, paramClient.PosY);
+            closestAirport = getClosestAirport(paramClient, type);
             closestAirport.Clients.Add(paramClient);
         }
 
-        public Airport getClosestAirport(int posX,int posY)
+        public Airport getClosestAirport(PositionableClient paramClient, int type)
         {
             Airport closestAirport = new Airport();
-
+            int posX = paramClient.PosX;
+            int posY = paramClient.PosY;
             double distance = 10000;
 
             for (int i = 0; i < Airports.Count; i++)
             {
-               double newDistance = Math.Sqrt((Math.Pow(Airports[i].Y - posY,2)) + (Math.Pow(Airports[i].X - posX, 2)));
-
-                if (newDistance < distance)
+                if ((Airports[i].hasObserverPlane() && type == 1) || (Airports[i].hasWaterBomber() && type == 2) || (Airports[i].hasRescueHelicopter() && type == 3))
                 {
-                    distance = newDistance;
-                    closestAirport = Airports[i];
-                }
-                
-            }
+                    double newDistance = Math.Sqrt((Math.Pow(Airports[i].Y - posY, 2)) + (Math.Pow(Airports[i].X - posX, 2)));
 
+                    if (newDistance < distance)
+                    {
+                        distance = newDistance;
+                        closestAirport = Airports[i];
+                    }
+                }  
+            }
             return closestAirport;
         }
 
