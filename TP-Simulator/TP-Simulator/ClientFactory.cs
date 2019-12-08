@@ -5,7 +5,6 @@ namespace TP_Simulator
     public sealed class ClientFactory
     {
         private static ClientFactory clientFactory;
-        private Random rnd;
         private ClientFactory() { }
 
         public static ClientFactory GetClientFactory()
@@ -62,7 +61,7 @@ namespace TP_Simulator
         //TODO: Check assign airport (for destination) in scenario (Simulator UML Schema)
         public static Client CreateMarchandise(Airport airport, Airport destination)
         {
-            int amount = clientFactory.getRandomNumber(10, 50);
+            int amount = clientFactory.getRandomNumber(10, 100);
             return new Marchandise(amount, airport, destination);
         }
         /// <summary>
@@ -79,13 +78,13 @@ namespace TP_Simulator
 
         private int getRandomNumber(int min, int max)
         {
-            rnd = new Random(DateTime.Now.Millisecond);
+            Random rnd = new Random(DateTime.Now.Millisecond);
             return rnd.Next(min, max);
         }
 
         private int[] getRandomPos()
         {
-            rnd = new Random(DateTime.Now.Millisecond);
+            Random rnd = new Random(DateTime.Now.Millisecond);
             int[] tabPos = {rnd.Next(0, 1026), rnd.Next(0, 591) };
             return tabPos;
         }
