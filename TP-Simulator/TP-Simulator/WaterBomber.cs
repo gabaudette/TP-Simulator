@@ -11,7 +11,5 @@
             return $"{Name},WaterBomber,{CurrentState},N/A";
         }
 
-
-
     }
 }
