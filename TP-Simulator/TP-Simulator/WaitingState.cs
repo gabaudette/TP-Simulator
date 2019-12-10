@@ -53,7 +53,11 @@
 
                     if ((posClient is Fire && rescueAircraft is WaterBomber) || (posClient is Observer && rescueAircraft is ObserverPlane) || (posClient is RescueTeam && rescueAircraft is RescueHelicopter))
                     {
+                        rescueAircraft.destinationX = posClient.PosX;
+                        rescueAircraft.destinationY = posClient.PosY;
+                        rescueAircraft.client = posClient;
                         ChangeState(rescueAircraft);
+                        i = rescueAircraft.airport.Clients.Count;
                     }
                 }
                 

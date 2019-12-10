@@ -1,4 +1,6 @@
-﻿namespace TP_Simulator
+﻿using System.Xml.Serialization;
+
+namespace TP_Simulator
 {
     public class RescueHelicopter : RescueAircraft
     {

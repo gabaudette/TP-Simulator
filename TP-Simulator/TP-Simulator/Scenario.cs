@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace TP_Simulator
@@ -32,6 +33,8 @@ namespace TP_Simulator
 
         [XmlIgnore]
         Airport closestAirport = new Airport();
+        [XmlIgnore]
+        Thread threadAction;
 
         private Scenario()
         {
@@ -71,7 +74,13 @@ namespace TP_Simulator
                     airport.Reviver(this);
 
                 AirportNotifier();
+
+                //if (threadAction == null)
+                    //threadAction = new Thread(new ThreadStart(Start));
+
             }
+
+
         }
 
         public void Start()
@@ -79,7 +88,7 @@ namespace TP_Simulator
             while (!Pause)
             {
                 Loop();
-                //Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
 
@@ -93,14 +102,9 @@ namespace TP_Simulator
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
             if (Timer.HourPassed()) {
-
                 generateClient();
-
-                Console.WriteLine(GeoPosition.getCoord(200, 200)); 
-
-
-               HourNotifier();
             }
+            
             doAircraft();
             TickNotifier();
         }
@@ -145,6 +149,7 @@ namespace TP_Simulator
             int destinationID;
 
             //Observator
+            /*
             LastClient = (PositionableClient)ClientFactory.CreateObserver();
             addClientToAirport(LastClient, 1);
             ActiveClient.Add(LastClient);
@@ -156,7 +161,7 @@ namespace TP_Simulator
                 LastClient = (PositionableClient)ClientFactory.CreateFire();
                 addClientToAirport(LastClient, 2);
                 ActiveClient.Add(LastClient);
-            }
+            }*/
 
             //ResuceTeam
             nbCall = Rnd.Next(1, 2);

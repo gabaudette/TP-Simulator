@@ -118,10 +118,22 @@ namespace TP_Simulator
                         }
                     }
 
-                    
-                    
                 }
             }
+        }
+
+        public bool fireIsExtinct(Aircraft aircraft)
+        {
+            return true;
+        }
+
+        public void landRescue(Aircraft aircraft)
+        {
+            scenario.FlyingAicrafts.Remove(aircraft);
+            RescueAircraft rescue = (RescueAircraft)aircraft;
+            aircraft.airport.Clients.Remove(rescue.client);
+            scenario.ActiveClient.Remove(rescue.client);
+            
         }
 
 

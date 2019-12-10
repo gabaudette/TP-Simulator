@@ -7,8 +7,7 @@ namespace TP_Simulator
         public int PosX { get; set; }
         public int PosY { get; set; }
 
-
-        public FlyingState(int posX,int posY, Aircraft aircraft)
+        public FlyingState(int posX, int posY, Aircraft aircraft)
         {
             PosX = posX;
             PosY = posY;
@@ -18,17 +17,28 @@ namespace TP_Simulator
 
         public override void Do(Aircraft aircraft)
         {
-            
+
             aircraft.moveAicraft(aircraft);
 
-
-            
         }
 
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new UnloadingState(aircraft);
-            
+            if (aircraft is PassengerAircraft)
+                aircraft.CurrentState = new UnloadingState(aircraft);
+            else if (aircraft is WaterBomber)
+            {
+
+                aircraft.CurrentState = new MaintenanceSate();
+
+            }
+            else
+            {
+                aircraft.airport.landRescue(aircraft);
+                aircraft.CurrentState = new MaintenanceSate();
+            }
+
+
         }
 
         public override string ToString()

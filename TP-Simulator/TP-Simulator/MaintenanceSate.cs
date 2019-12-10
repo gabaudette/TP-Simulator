@@ -7,13 +7,12 @@
             if (aircraft.Maintenance == 0)
                 ChangeState(aircraft);
             else
-               aircraft.Maintenance--;
-            
+                aircraft.Maintenance--;
+
         }
         public override void ChangeState(Aircraft aircraft)
         {
-            if(aircraft.isPassengerAicraft())
-                aircraft.CurrentState = new WaitingState();
+            aircraft.CurrentState = new WaitingState();
 
         }
 

@@ -147,7 +147,7 @@ namespace TP_Simulator
         {
             labTimer.Text = scenario.Timer.ToString();
             labTimer.Refresh();
-            
+
             updateLsvClient();
             updateLsvAircraft();
 
@@ -168,6 +168,7 @@ namespace TP_Simulator
             Bitmap map = new Bitmap(Properties.Resources.map);
             Graphics g = buffer.Graphics;
             g.DrawImage(map, 0, 0, 1026, 591);
+
 
 
             //Afficher les airports
@@ -222,12 +223,10 @@ namespace TP_Simulator
                     {
                         airportBit = new Bitmap(Properties.Resources.signal);
                     }
-                    g.DrawImage(airportBit, client.PosX, client.PosY, 20, 20);
+                    g.DrawImage(airportBit, client.PosX, client.PosY, 30, 30);
                 }
             }
             catch (Exception) { }
-
-
 
 
             //Afficher les lignes entre pour les avions en mouvement
@@ -239,11 +238,10 @@ namespace TP_Simulator
             {
                 FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
 
-
-                initial.X = scenario.FlyingAicrafts[i].airport.X + 30;
+                initial.X = scenario.FlyingAicrafts[i].airport.X + 15;
                 initial.Y = scenario.FlyingAicrafts[i].airport.Y + 15;
 
-                destination.X = scenario.FlyingAicrafts[i].destinationX;
+                destination.X = scenario.FlyingAicrafts[i].destinationX + 15;
                 destination.Y = scenario.FlyingAicrafts[i].destinationY + 15;
 
                 Pen color = new Pen(Brushes.Gray);
@@ -296,6 +294,11 @@ namespace TP_Simulator
         }
 
         private void UnpauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scenario.Start();
+        }
+
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Start();
         }
