@@ -110,11 +110,16 @@ namespace TP_Simulator
                         if (scenario.Airports[y].X == aircraft.destinationX && scenario.Airports[y].Y == aircraft.destinationY)
                         {
                             scenario.Airports[y].Aircrafts.Add(aircraft);
+                            aircraft.airport.Aircrafts.Remove(aircraft);
+                            scenario.FlyingAicrafts.Remove(aircraft);
+                            aircraft.airport = scenario.Airports[y];
+                            PassengerAircraft passengerAircraft = (PassengerAircraft)aircraft;
+                            passengerAircraft.CurrentCapacity = 0;
                         }
                     }
 
-                    aircraft.airport.Aircrafts.Remove(aircraft);
-                    scenario.FlyingAicrafts.Remove(aircraft);
+                    
+                    
                 }
             }
         }
