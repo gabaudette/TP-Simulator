@@ -151,9 +151,8 @@ namespace TP_Simulator
             updateLsvClient();
             updateLsvAircraft();
 
-
             updateGUI();
-
+            GC.Collect();
         }
 
         private void updateGUI()
@@ -169,13 +168,12 @@ namespace TP_Simulator
             Graphics g = buffer.Graphics;
             g.DrawImage(map, 0, 0, 1026, 591);
 
-
-
             //Afficher les airports
             Bitmap airportBit = new Bitmap(Properties.Resources.airport);
             for (int i = 0; i < scenario.Airports.Count; i++)
             {
                 g.DrawImage(airportBit, scenario.Airports[i].X, scenario.Airports[i].Y, 30, 30);
+                map.Dispose();
             }
 
             //Afficher les avions en vols
@@ -200,11 +198,10 @@ namespace TP_Simulator
                     airportBit = new Bitmap(Properties.Resources.airplane);
                 }
 
-
                 FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
 
                 g.DrawImage(airportBit, position.PosX, position.PosY, 20, 20);
-
+                airportBit.Dispose();
             }
 
             //Afficher les clients
@@ -224,6 +221,7 @@ namespace TP_Simulator
                         airportBit = new Bitmap(Properties.Resources.signal);
                     }
                     g.DrawImage(airportBit, client.PosX, client.PosY, 30, 30);
+                    airportBit.Dispose();
                 }
             }
             catch (Exception) { }
@@ -263,24 +261,21 @@ namespace TP_Simulator
                 }
 
                 g.DrawLine(color, initial, destination);
-
+                color.Dispose();
             }
 
 
             buffer.Render();
             buffer.Dispose();
             g.Dispose();
-
-
+            GC.Collect();
         }
 
         public void OnHour()
         {
             lsvAircraft.Refresh();
             lsvClient.Refresh();
-
-
-
+            GC.Collect();
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
