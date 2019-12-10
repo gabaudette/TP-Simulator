@@ -5,7 +5,7 @@
 
         public override string ToString()
         {
-            return $"{Name},Passager,{CurrentState.ToString()},{Destination.Name}";
+            return $"{Name},Passager,{CurrentState.ToString()},wtf je sais pas";
         }
 
         public override bool isPassengerAicraft()

@@ -39,6 +39,7 @@ namespace TP_Simulator
             Timer = new Timer();
             Pause = false;
             FlyingAicrafts = new List<Aircraft>();
+            ActiveClient = new List<PositionableClient>();
         }
 
         public void SetView(SimulatorGUI view)
@@ -69,7 +70,6 @@ namespace TP_Simulator
                 foreach(Airport airport in Airports)
                     airport.Reviver(this);
 
-                Loop();
                 AirportNotifier();
             }
         }
@@ -139,7 +139,7 @@ namespace TP_Simulator
         {
             Console.WriteLine("Client generer");
             LastClient = new PositionableClient();
-            ActiveClient = new List<PositionableClient>();
+
             Rnd = new Random(DateTime.Now.Millisecond);
             int nbCall;
             int destinationID;

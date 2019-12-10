@@ -1,4 +1,4 @@
-﻿ using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace TP_Simulator
@@ -18,15 +18,16 @@ namespace TP_Simulator
         [XmlIgnore]
         public List<Client> Clients { get; set; }
 
-        public Airport() {
+        public Airport()
+        {
             Clients = new List<Client>();
         }
-        
+
         public void Reviver(Scenario scenario)
         {
-            
+
             this.scenario = scenario;
-            foreach(Aircraft aircraft in Aircrafts)
+            foreach (Aircraft aircraft in Aircrafts)
                 aircraft.airport = this;
         }
 
@@ -93,6 +94,27 @@ namespace TP_Simulator
                 if (Aircrafts[i] == aircraft)
                 {
                     scenario.FlyingAicrafts.Add(aircraft);
+                }
+            }
+        }
+
+        public void landPlane(Aircraft aircraft)
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] == aircraft)
+                {
+
+                    for (int y = 0; y < scenario.Airports.Count; y++)
+                    {
+                        if (scenario.Airports[y].X == aircraft.destinationX && scenario.Airports[y].Y == aircraft.destinationY)
+                        {
+                            scenario.Airports[y].Aircrafts.Add(aircraft);
+                        }
+                    }
+
+                    aircraft.airport.Aircrafts.Remove(aircraft);
+                    scenario.FlyingAicrafts.Remove(aircraft);
                 }
             }
         }

@@ -14,9 +14,13 @@
                     AirportClient airClient = (AirportClient)passAircraft.airport.Clients[i];
 
                     if (passAircraft.CurrentCapacity == 0)
-                        passAircraft.Destination = airClient.Destination;
+                    {
+                        passAircraft.destinationX = airClient.Destination.X;
+                        passAircraft.destinationY = airClient.Destination.Y;
 
-                    if (airClient.Destination == passAircraft.Destination)
+                    }
+
+                    if (passAircraft.destinationX == airClient.Destination.X && passAircraft.destinationY == airClient.Destination.Y)
                     {
                         if (passAircraft.MaxCapacity - passAircraft.CurrentCapacity == 0)
                         {
@@ -33,7 +37,7 @@
                             {
                                 passAircraft.CurrentCapacity += airClient.Amount;
                                 passAircraft.airport.Clients.Remove(passAircraft.airport.Clients[i]);
-                                i = i - 1;
+                                i--;
                             }
                         }
                     }

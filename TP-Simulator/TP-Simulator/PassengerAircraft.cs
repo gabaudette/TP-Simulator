@@ -8,26 +8,37 @@ namespace TP_Simulator
         public int LoadingTime { get; set; }
         public int UnloadingTime { get; set; }
         public int MaxCapacity { get; set; }
-        [XmlIgnore]
-        public Airport Destination{ get; set; }
+
         [XmlIgnore]
         public int CurrentCapacity { get; set; }
 
         public override void moveAicraft(Aircraft aircraft)
         {
 
+            int destX = aircraft.destinationX;
+            int destY = aircraft.destinationY;
+
             PassengerAircraft passAircraft = (PassengerAircraft)aircraft;
-            Airport destAirport = passAircraft.Destination;
             FlyingState position = (FlyingState)passAircraft.CurrentState;
-            double distance = Math.Sqrt((Math.Pow(destAirport.Y - position.PosY, 2)) + (Math.Pow(destAirport.X - position.PosX, 2)));
+            double distance = Math.Sqrt((Math.Pow(destY - position.PosY, 2)) + (Math.Pow(destX - position.PosX, 2)));
 
             double tickRequired = distance / (passAircraft.Speed * 30);
-            double XbyTick = (destAirport.X - position.PosX) / tickRequired;
-            double YbyTick = (destAirport.Y - position.PosY) / tickRequired;
+
+            if (tickRequired > 1)
+            {
+                double XbyTick = (destX - position.PosX) / tickRequired;
+                double YbyTick = (destY - position.PosY) / tickRequired;
 
 
-            position.PosX += Convert.ToInt32(XbyTick);
-            position.PosY += Convert.ToInt32(YbyTick);
+                position.PosX += Convert.ToInt32(XbyTick);
+                position.PosY += Convert.ToInt32(YbyTick);
+            }
+            else
+            {
+                aircraft.CurrentState.ChangeState(aircraft);
+            }
+
+            
 
         }
 

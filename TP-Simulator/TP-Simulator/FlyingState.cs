@@ -18,12 +18,7 @@ namespace TP_Simulator
 
         public override void Do(Aircraft aircraft)
         {
-            PassengerAircraft passengerAircraft = (PassengerAircraft)aircraft;
-            /*
-            if (passengerAircraft.Destination.X == aircraft.CurrentState.)
-            {
-
-            }*/
+            
             aircraft.moveAicraft(aircraft);
 
 
@@ -32,7 +27,8 @@ namespace TP_Simulator
 
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new UnloadingState();
+            aircraft.CurrentState = new UnloadingState(aircraft);
+            
         }
 
         public override string ToString()

@@ -2,6 +2,14 @@
 {
     class UnloadingState : StateAircraft
     {
+
+        public UnloadingState(Aircraft aircraft)
+        {
+            aircraft.airport.landPlane(aircraft);
+
+        }
+
+
         //TODO ? Create a new Sup Class (Passenger/Cargo Plane State)
         public override void Do(Aircraft aircraft)
         {

@@ -17,6 +17,11 @@ namespace TP_Simulator
         [XmlIgnore]
         public StateAircraft CurrentState { get; set; }
 
+        [XmlIgnore]
+        public int destinationX { get; set; }
+        [XmlIgnore]
+        public int destinationY { get; set; }
+
         public Aircraft() {
             
             CurrentState = new MaintenanceSate();

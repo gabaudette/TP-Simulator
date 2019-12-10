@@ -7,7 +7,8 @@
         {
             try
             {
-                return $"{Name},Cargo,{CurrentState.ToString()},{Destination.Name}";
+
+                return $"{Name},Cargo,{CurrentState.ToString()},wtf je sais pas";
             }
             catch (System.Exception)
             {

@@ -23,8 +23,6 @@ namespace TP_Simulator
             picMap.Controls.Add(labTimer);
             labTimer.Location = new Point(950, 10);
             SetListView();
-            //picMap.Controls.Add(picAircraft);
-
 
         }
 
@@ -97,11 +95,22 @@ namespace TP_Simulator
 
         private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.Clear();
-            Console.WriteLine(scenario.Airports[lsvAirport.FocusedItem.Index].ToString());
+            updateLsvAircraft();
+            updateLsvClient();
+        }
 
-            lsvAircraft.Items.Clear();
+        public void updateLsvClient()
+        {
             lsvClient.Items.Clear();
+
+            for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Clients.Count; i++)
+                FillLsvClients(scenario.Airports[lsvAirport.FocusedItem.Index].Clients[i].ToString());
+        }
+
+        public void updateLsvAircraft()
+        {
+            lsvAircraft.Items.Clear();
+
             List<string> aircraftList = new List<string>();
             string aircraft;
 
@@ -111,9 +120,6 @@ namespace TP_Simulator
                 aircraftList = aircraft.Split(',').ToList();
                 FillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
             }
-
-            for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Clients.Count; i++)
-                FillLsvClients(scenario.Airports[lsvAirport.FocusedItem.Index].Clients[i].ToString());
         }
 
         private void PicAircraft_Click(object sender, EventArgs e)
@@ -131,29 +137,26 @@ namespace TP_Simulator
                 airport = scenario.Airports[i].ToString();
                 airportList = airport.Split(',').ToList();
                 FillLsvAirport(airportList[0], airportList[1], airportList[2]);
-                CreateAirportIcon(Convert.ToInt32(airportList[1]), Convert.ToInt32(airportList[2]));
             }
-        }
 
-        private void CreateAirportIcon(int posX, int posY)
-        {
-            Bitmap airportBit = new Bitmap(Properties.Resources.airport);
-
-            Graphics g = picMap.CreateGraphics();
-            g.DrawImage(airportBit, posX, posY, 30, 30);
-
+            lsvAirport.Items[0].Focused = true;
+            updateGUI();
         }
 
         public void OnTick()
         {
             labTimer.Text = scenario.Timer.ToString();
             labTimer.Refresh();
+            
+            updateLsvClient();
+            updateLsvAircraft();
 
-            updateAircraftPosition();
+
+            updateGUI();
 
         }
 
-        private void updateAircraftPosition()
+        private void updateGUI()
         {
             BufferedGraphicsContext currentContext;
             BufferedGraphics buffer;
@@ -161,14 +164,23 @@ namespace TP_Simulator
             currentContext = BufferedGraphicsManager.Current;
             buffer = currentContext.Allocate(picMap.CreateGraphics(), picMap.DisplayRectangle);
 
+            //Afficher la map
             Bitmap map = new Bitmap(Properties.Resources.map);
-
             Graphics g = buffer.Graphics;
             g.DrawImage(map, 0, 0, 1026, 591);
 
+
+            //Afficher les airports
+            Bitmap airportBit = new Bitmap(Properties.Resources.airport);
+            for (int i = 0; i < scenario.Airports.Count; i++)
+            {
+                g.DrawImage(airportBit, scenario.Airports[i].X, scenario.Airports[i].Y, 30, 30);
+            }
+
+            //Afficher les avions en vols
             for (int i = 0; i < scenario.FlyingAicrafts.Count; i++)
             {
-                Bitmap airportBit = new Bitmap(Properties.Resources.waterbomber);
+                airportBit = new Bitmap(Properties.Resources.waterbomber);
 
                 if (scenario.FlyingAicrafts[i] is ObserverPlane)
                 {
@@ -191,12 +203,76 @@ namespace TP_Simulator
                 FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
 
                 g.DrawImage(airportBit, position.PosX, position.PosY, 20, 20);
-                
+
             }
+
+            //Afficher les clients
+
+            try
+            {
+                foreach (PositionableClient client in scenario.ActiveClient)
+                {
+                    airportBit = new Bitmap(Properties.Resources.fire);
+
+                    if (client is Observer)
+                    {
+                        airportBit = new Bitmap(Properties.Resources.montain);
+                    }
+                    else if (client is RescueTeam)
+                    {
+                        airportBit = new Bitmap(Properties.Resources.signal);
+                    }
+                    g.DrawImage(airportBit, client.PosX, client.PosY, 20, 20);
+                }
+            }
+            catch (Exception) { }
+
+
+
+
+            //Afficher les lignes entre pour les avions en mouvement
+
+            Point initial = new Point();
+            Point destination = new Point();
+
+            for (int i = 0; i < scenario.FlyingAicrafts.Count; i++)
+            {
+                FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
+
+
+                initial.X = scenario.FlyingAicrafts[i].airport.X + 30;
+                initial.Y = scenario.FlyingAicrafts[i].airport.Y + 15;
+
+                destination.X = scenario.FlyingAicrafts[i].destinationX;
+                destination.Y = scenario.FlyingAicrafts[i].destinationY + 15;
+
+                Pen color = new Pen(Brushes.Gray);
+                if (scenario.FlyingAicrafts[i] is WaterBomber)
+                {
+                    color = new Pen(Brushes.Yellow);
+                }
+                else if (scenario.FlyingAicrafts[i] is CargoPlane)
+                {
+                    color = new Pen(Brushes.Blue);
+                }
+                else if (scenario.FlyingAicrafts[i] is PassengerPlane)
+                {
+                    color = new Pen(Brushes.Yellow);
+                }
+                else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
+                {
+                    color = new Pen(Brushes.Red);
+                }
+
+                g.DrawLine(color, initial, destination);
+
+            }
+
 
             buffer.Render();
             buffer.Dispose();
             g.Dispose();
+
 
         }
 
@@ -206,22 +282,7 @@ namespace TP_Simulator
             lsvClient.Refresh();
 
 
-            foreach (PositionableClient client in scenario.ActiveClient)
-            {
-                Bitmap airportBit = new Bitmap(Properties.Resources.fire);
 
-                if (client is Observer)
-                {
-                    airportBit = new Bitmap(Properties.Resources.montain);
-                }
-                else if (client is RescueTeam)
-                {
-                    airportBit = new Bitmap(Properties.Resources.signal);
-                }
-
-                Graphics g = picMap.CreateGraphics();
-                g.DrawImage(airportBit, client.PosX, client.PosY, 20, 20);
-            }
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
