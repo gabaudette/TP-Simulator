@@ -140,7 +140,7 @@ namespace TP_Simulator
             Bitmap airportBit = new Bitmap(Properties.Resources.airport);
 
             Graphics g = picMap.CreateGraphics();
-            g.DrawImage(airportBit,posX,posY,30,30);
+            g.DrawImage(airportBit, posX, posY, 30, 30);
 
         }
 
@@ -155,40 +155,58 @@ namespace TP_Simulator
 
         private void updateAircraftPosition()
         {
-            if (scenario.FlyingAicrafts.Count != 0)
-            {
-                for (int i = 0; i < scenario.FlyingAicrafts.Count; i++)
-                {
-                    Bitmap airportBit = new Bitmap(Properties.Resources.waterbomber);
+            BufferedGraphicsContext currentContext;
+            BufferedGraphics buffer;
 
-                    if (scenario.FlyingAicrafts[i] is ObserverPlane)
-                    {
-                        airportBit = new Bitmap(Properties.Resources.observer);
-                    }
-                    else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
-                    {
-                        airportBit = new Bitmap(Properties.Resources.helicopter);
-                    }
-                    else if (scenario.FlyingAicrafts[i] is PassengerPlane)
-                    {
-                        airportBit = new Bitmap(Properties.Resources.passengerAirplane);
-                    }
-                    else
-                    {
-                        airportBit = new Bitmap(Properties.Resources.airplane);
-                    }
+            currentContext = BufferedGraphicsManager.Current;
+            buffer = currentContext.Allocate(picMap.CreateGraphics(), picMap.DisplayRectangle);
+
+            Bitmap map = new Bitmap(Properties.Resources.map);
+
+            Graphics g = buffer.Graphics;
+            g.DrawImage(map, 0, 0, 1026, 591);
+
+            for (int i = 0; i < scenario.FlyingAicrafts.Count; i++)
+            {
+                Bitmap airportBit = new Bitmap(Properties.Resources.waterbomber);
+
+                if (scenario.FlyingAicrafts[i] is ObserverPlane)
+                {
+                    airportBit = new Bitmap(Properties.Resources.observer);
                 }
+                else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
+                {
+                    airportBit = new Bitmap(Properties.Resources.helicopter);
+                }
+                else if (scenario.FlyingAicrafts[i] is PassengerPlane)
+                {
+                    airportBit = new Bitmap(Properties.Resources.passengerAirplane);
+                }
+                else if (scenario.FlyingAicrafts[i] is CargoPlane)
+                {
+                    airportBit = new Bitmap(Properties.Resources.airplane);
+                }
+
+
+                FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
+
+                g.DrawImage(airportBit, position.PosX, position.PosY, 20, 20);
+                
             }
-            
+
+            buffer.Render();
+            buffer.Dispose();
+            g.Dispose();
+
         }
 
         public void OnHour()
         {
             lsvAircraft.Refresh();
             lsvClient.Refresh();
-            
 
-            foreach (PositionableClient client in scenario.ActiveClient) 
+
+            foreach (PositionableClient client in scenario.ActiveClient)
             {
                 Bitmap airportBit = new Bitmap(Properties.Resources.fire);
 

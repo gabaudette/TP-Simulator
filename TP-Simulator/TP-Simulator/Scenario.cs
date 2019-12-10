@@ -206,7 +206,7 @@ namespace TP_Simulator
             {
                 for (int y = 0; y < Airports[i].Aircrafts.Count; y++)
                 {
-                    Airports[i].Aircrafts[y].CurrentState.Do(Airports[i].Aircrafts[y]);  
+                    Airports[i].Aircrafts[y].CurrentState.Do(Airports[i].Aircrafts[y]);
                 }
             }
         }

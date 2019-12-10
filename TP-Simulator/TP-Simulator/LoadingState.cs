@@ -16,7 +16,9 @@
 
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new FlyingState();
+            aircraft.CurrentState = new FlyingState(aircraft.airport.X,aircraft.airport.Y, aircraft);
+
+            
         }
 
         public override string ToString()

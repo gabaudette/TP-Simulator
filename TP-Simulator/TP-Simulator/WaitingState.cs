@@ -18,22 +18,25 @@
 
                     if (airClient.Destination == passAircraft.Destination)
                     {
-                        if (airClient.Amount > passAircraft.MaxCapacity)
+                        if (passAircraft.MaxCapacity - passAircraft.CurrentCapacity == 0)
                         {
-                            passAircraft.CurrentCapacity += airClient.Amount;
-                            airClient.Amount = airClient.Amount - passAircraft.CurrentCapacity;
+                            ChangeState(passAircraft);
                         }
                         else
                         {
-                            passAircraft.CurrentCapacity += airClient.Amount;
-                            passAircraft.airport.Clients.Remove(passAircraft.airport.Clients[i]);
+                            if (airClient.Amount > (passAircraft.MaxCapacity - passAircraft.CurrentCapacity))
+                            {
+                                airClient.Amount -= (passAircraft.MaxCapacity - passAircraft.CurrentCapacity);
+                                passAircraft.CurrentCapacity += passAircraft.MaxCapacity - passAircraft.CurrentCapacity;
+                            }
+                            else
+                            {
+                                passAircraft.CurrentCapacity += airClient.Amount;
+                                passAircraft.airport.Clients.Remove(passAircraft.airport.Clients[i]);
+                                i = i - 1;
+                            }
                         }
                     }
-                }
-
-                if (passAircraft.MaxCapacity == 0)
-                {
-                    ChangeState(passAircraft);
                 }
             }
             else
@@ -59,7 +62,7 @@
             if (aircraft.isPassengerAicraft())
                 aircraft.CurrentState = new LoadingState();
             else
-                aircraft.CurrentState = new FlyingState();
+                aircraft.CurrentState = new FlyingState(aircraft.airport.X, aircraft.airport.Y, aircraft);
 
         }
 

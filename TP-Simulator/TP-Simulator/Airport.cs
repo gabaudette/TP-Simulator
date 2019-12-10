@@ -75,6 +75,7 @@ namespace TP_Simulator
             }
             return false;
         }
+
         public bool hasPassengerPlane()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -84,5 +85,18 @@ namespace TP_Simulator
             }
             return false;
         }
+
+        public void takeOffPlane(Aircraft aircraft)
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] == aircraft)
+                {
+                    scenario.FlyingAicrafts.Add(aircraft);
+                }
+            }
+        }
+
+
     }
 }

@@ -7,17 +7,26 @@ namespace TP_Simulator
         public int PosX { get; set; }
         public int PosY { get; set; }
 
+
+        public FlyingState(int posX,int posY, Aircraft aircraft)
+        {
+            PosX = posX;
+            PosY = posY;
+
+            aircraft.airport.takeOffPlane(aircraft);
+        }
+
         public override void Do(Aircraft aircraft)
         {
+            PassengerAircraft passengerAircraft = (PassengerAircraft)aircraft;
+            /*
+            if (passengerAircraft.Destination.X == aircraft.CurrentState.)
+            {
+
+            }*/
             aircraft.moveAicraft(aircraft);
 
-            PassengerAircraft passengerAircraft = (PassengerAircraft)aircraft;
 
-
-            if (false) // airplane x,y = airport x,y
-            {
-                ChangeState(aircraft);
-            }
             
         }
 

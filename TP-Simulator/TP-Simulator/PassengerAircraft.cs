@@ -21,13 +21,13 @@ namespace TP_Simulator
             FlyingState position = (FlyingState)passAircraft.CurrentState;
             double distance = Math.Sqrt((Math.Pow(destAirport.Y - position.PosY, 2)) + (Math.Pow(destAirport.X - position.PosX, 2)));
 
-            double tickRequired = distance / (passAircraft.Speed * 15);
+            double tickRequired = distance / (passAircraft.Speed * 30);
             double XbyTick = (destAirport.X - position.PosX) / tickRequired;
             double YbyTick = (destAirport.Y - position.PosY) / tickRequired;
 
 
-            position.PosX = position.PosX + Convert.ToInt32(XbyTick);
-            position.PosY = position.PosY + Convert.ToInt32(YbyTick);
+            position.PosX += Convert.ToInt32(XbyTick);
+            position.PosY += Convert.ToInt32(YbyTick);
 
         }
 
