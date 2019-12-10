@@ -1,7 +1,7 @@
 ﻿
 namespace TP_Simulator
 {
-    public class PositionableClient : Client
+    public  class PositionableClient : Client
     {
         public int PosX { get; set; }
         public int PosY { get; set; }
@@ -13,7 +13,5 @@ namespace TP_Simulator
             PosX = posX;
             PosY = posY;
         }
-
-
     }
 }

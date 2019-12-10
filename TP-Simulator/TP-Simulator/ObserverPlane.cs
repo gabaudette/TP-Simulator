@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    public class ObserverPlane : Aircraft
+    public class ObserverPlane : RescueAircraft
     {
 
         public override string ToString()
@@ -11,6 +11,11 @@
         public override void moveAicraft(Aircraft aircraft)
         {
 
+        }
+
+        public override bool isPassengerAicraft()
+        {
+            return false;
         }
     }
 }

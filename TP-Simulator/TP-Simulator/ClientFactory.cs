@@ -5,6 +5,9 @@ namespace TP_Simulator
     public sealed class ClientFactory
     {
         private static ClientFactory clientFactory;
+        Random rnd = new Random(DateTime.Now.Millisecond);
+
+
         private ClientFactory() { }
 
         public static ClientFactory GetClientFactory()
@@ -78,13 +81,11 @@ namespace TP_Simulator
 
         private int getRandomNumber(int min, int max)
         {
-            Random rnd = new Random(DateTime.Now.Millisecond);
             return rnd.Next(min, max);
         }
 
         private int[] getRandomPos()
         {
-            Random rnd = new Random(DateTime.Now.Millisecond);
             int[] tabPos = {rnd.Next(0, 1026), rnd.Next(0, 591) };
             return tabPos;
         }

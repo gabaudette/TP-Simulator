@@ -5,7 +5,20 @@
 
         public override string ToString()
         {
-            return $"{Name},Cargo,{CurrentState.ToString()},Cuba";
+            try
+            {
+                return $"{Name},Cargo,{CurrentState.ToString()},{Destination.Name}";
+            }
+            catch (System.Exception)
+            {
+
+                return $"{Name},Cargo,{CurrentState.ToString()}, Undefined "; ;
+            }  
+        }
+
+        public override bool isPassengerAicraft()
+        {
+            return true;
         }
 
     }

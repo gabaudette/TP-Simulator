@@ -11,5 +11,10 @@
             return $"{Name},WaterBomber,{CurrentState},N/A";
         }
 
+        public override bool isPassengerAicraft()
+        {
+            return false;
+        }
+
     }
 }

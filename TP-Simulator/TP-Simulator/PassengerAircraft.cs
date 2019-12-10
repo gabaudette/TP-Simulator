@@ -31,5 +31,10 @@ namespace TP_Simulator
 
         }
 
+        public override bool isPassengerAicraft()
+        {
+            return true;
+        }
+
     }
 }

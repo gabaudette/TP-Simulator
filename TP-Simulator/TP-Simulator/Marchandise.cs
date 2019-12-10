@@ -7,7 +7,7 @@
 
         public override string ToString()
         {
-            return $"{Amount} tonnes de marchandises à destination de {Destination}";
+            return $"{Amount} tonnes de marchandises à destination de {Destination.Name}";
         }
     }
 }

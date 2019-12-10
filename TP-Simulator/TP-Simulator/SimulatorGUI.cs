@@ -137,91 +137,73 @@ namespace TP_Simulator
 
         private void CreateAirportIcon(int posX, int posY)
         {
-            PictureBox pb = new PictureBox
-            {
-                Size = new Size(20, 20),
-                Location = new Point(posX, posY),
-                Image = Properties.Resources.airplane,
-                BackColor = Color.Black,
-            };
+            Bitmap airportBit = new Bitmap(Properties.Resources.airport);
 
-            picMap.Controls.Add(pb);
-            pb.Refresh();
-            pb.BringToFront();
+            Graphics g = picMap.CreateGraphics();
+            g.DrawImage(airportBit,posX,posY,30,30);
+
         }
 
         public void OnTick()
         {
             labTimer.Text = scenario.Timer.ToString();
             labTimer.Refresh();
+
+            updateAircraftPosition();
+
+        }
+
+        private void updateAircraftPosition()
+        {
+            if (scenario.FlyingAicrafts.Count != 0)
+            {
+                for (int i = 0; i < scenario.FlyingAicrafts.Count; i++)
+                {
+                    Bitmap airportBit = new Bitmap(Properties.Resources.waterbomber);
+
+                    if (scenario.FlyingAicrafts[i] is ObserverPlane)
+                    {
+                        airportBit = new Bitmap(Properties.Resources.observer);
+                    }
+                    else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
+                    {
+                        airportBit = new Bitmap(Properties.Resources.helicopter);
+                    }
+                    else if (scenario.FlyingAicrafts[i] is PassengerPlane)
+                    {
+                        airportBit = new Bitmap(Properties.Resources.passengerAirplane);
+                    }
+                    else
+                    {
+                        airportBit = new Bitmap(Properties.Resources.airplane);
+                    }
+                }
+            }
+            
         }
 
         public void OnHour()
         {
-
+            lsvAircraft.Refresh();
+            lsvClient.Refresh();
+            
 
             foreach (PositionableClient client in scenario.ActiveClient) 
-            { 
-                if (client is Fire)
+            {
+                Bitmap airportBit = new Bitmap(Properties.Resources.fire);
+
+                if (client is Observer)
                 {
-                    PictureBox pbClient = new PictureBox
-                    {
-                        Size = new Size(15, 15),
-                        Location = new Point(client.PosX, client.PosY),
-                        Image = Properties.Resources.fire,
-                        BackColor = Color.Black,
-                    };
-                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
-                    using (Graphics graphics = Graphics.FromImage(bitmap))
-                    {
-                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
-                    }
-                    pbClient.Image = bitmap;
-                    pbClient.Refresh();
-                    picMap.Controls.Add(pbClient);
-                }
-                else if (client is Observer)
-                {
-                    PictureBox pbClient = new PictureBox
-                    {
-                        Size = new Size(15, 15),
-                        Location = new Point(client.PosX, client.PosY),
-                        Image = Properties.Resources.observer,
-                        BackColor = Color.Black,
-                    };
-                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
-                    using (Graphics graphics = Graphics.FromImage(bitmap))
-                    {
-                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
-                    }
-                    pbClient.Image = bitmap;
-                    pbClient.Refresh();
-                    picMap.Controls.Add(pbClient);
+                    airportBit = new Bitmap(Properties.Resources.montain);
                 }
                 else if (client is RescueTeam)
                 {
-                    PictureBox pbClient = new PictureBox
-                    {
-                        Size = new Size(15, 15),
-                        Location = new Point(client.PosX, client.PosY),
-                        Image = Properties.Resources.signal,
-                        BackColor = Color.Black,
-                    };
-                    Bitmap bitmap = new Bitmap(pbClient.Location.X, pbClient.Location.Y);
-                    using (Graphics graphics = Graphics.FromImage(bitmap))
-                    {
-                        DrawClients(graphics, pbClient.Location.X, pbClient.Location.Y);
-                    }
-                    pbClient.Image = bitmap;
-                    pbClient.Refresh();
-                    picMap.Controls.Add(pbClient);
+                    airportBit = new Bitmap(Properties.Resources.signal);
                 }
+
+                Graphics g = picMap.CreateGraphics();
+                g.DrawImage(airportBit, client.PosX, client.PosY, 20, 20);
             }
-        }
-
-        private void DrawClients(Graphics graphics, int posX, int posY)
-        {
-
         }
 
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)

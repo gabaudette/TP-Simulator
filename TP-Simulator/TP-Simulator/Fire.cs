@@ -12,5 +12,6 @@
         {
             return $"Incendie d'envergure {FireSpan} détecté en {PosX} {PosY}";
         }
+
     }
 }

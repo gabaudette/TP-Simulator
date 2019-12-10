@@ -8,5 +8,6 @@
         {
             return $"Secours en {PosX},{PosY}";
         }
+
     }
 }

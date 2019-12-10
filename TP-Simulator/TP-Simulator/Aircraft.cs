@@ -19,7 +19,7 @@ namespace TP_Simulator
 
         public Aircraft() {
             
-            CurrentState = new LoadingState();
+            CurrentState = new MaintenanceSate();
         }
 
         public void Request()
@@ -34,5 +34,6 @@ namespace TP_Simulator
 
         public abstract void moveAicraft(Aircraft aircraft);
 
+        public abstract bool isPassengerAicraft();
     }
 }

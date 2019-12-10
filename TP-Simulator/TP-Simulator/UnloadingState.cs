@@ -5,7 +5,12 @@
         //TODO ? Create a new Sup Class (Passenger/Cargo Plane State)
         public override void Do(Aircraft aircraft)
         {
-            ChangeState(aircraft);
+            PassengerAircraft passAircraft = (PassengerAircraft)aircraft;
+
+            if (passAircraft.UnloadingTime == 0)
+                ChangeState(passAircraft);
+            else
+                passAircraft.UnloadingTime--;
         }
 
         public override void ChangeState(Aircraft aircraft)

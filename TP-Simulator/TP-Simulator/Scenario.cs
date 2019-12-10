@@ -38,6 +38,7 @@ namespace TP_Simulator
             Airports = new List<Airport>();
             Timer = new Timer();
             Pause = false;
+            FlyingAicrafts = new List<Aircraft>();
         }
 
         public void SetView(SimulatorGUI view)
@@ -95,9 +96,10 @@ namespace TP_Simulator
 
                 generateClient();
 
-                
+                Console.WriteLine(GeoPosition.getCoord(200, 200)); 
 
-                //HourNotifier();
+
+               HourNotifier();
             }
             doAircraft();
             TickNotifier();
@@ -168,17 +170,33 @@ namespace TP_Simulator
             //Passenger
             for (int i = 0; i < Airports.Count; i++)
             {
-                destinationID = Rnd.Next(0, Airports.Count);
-                ClientFactory.CreatePassenger(Airports[i], Airports[destinationID]);
-                ActiveClient.Add(LastClient);
+                if (Airports[i].hasPassengerPlane())
+                {
+                    do
+                    {
+                        destinationID = Rnd.Next(0, Airports.Count);
+                    } while (i == destinationID); 
+                    Airports[i].Clients.Add(ClientFactory.CreatePassenger(Airports[i], Airports[destinationID]));
+                }
+
             }
 
             //Marchandise
             for (int i = 0; i < Airports.Count; i++)
             {
-                destinationID = Rnd.Next(0, Airports.Count);
-                ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]);
-                ActiveClient.Add(LastClient);
+                for (int y = 0; y < 3; y++)
+                {
+                    if (Airports[i].hasCargoPlane())
+                    {
+                        do
+                        {
+                            destinationID = Rnd.Next(0, Airports.Count);
+                        } while (i == destinationID);
+
+                        Airports[i].Clients.Add(ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]));
+                    }
+                }
+
             }
         }
 
@@ -188,11 +206,9 @@ namespace TP_Simulator
             {
                 for (int y = 0; y < Airports[i].Aircrafts.Count; y++)
                 {
-                    Airports[i].Aircrafts[y].CurrentState.Do(Airports[i].Aircrafts[y]);
-                     
+                    Airports[i].Aircrafts[y].CurrentState.Do(Airports[i].Aircrafts[y]);  
                 }
             }
         }
-
     }
 }

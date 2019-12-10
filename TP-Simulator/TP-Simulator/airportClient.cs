@@ -1,6 +1,6 @@
 ﻿namespace TP_Simulator
 {
-    public abstract class AirportClient : Client
+    public class AirportClient : Client
     {
         public Airport Airport { get; set; }
         public int Amount { get; set; }

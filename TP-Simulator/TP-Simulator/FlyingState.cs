@@ -11,7 +11,14 @@ namespace TP_Simulator
         {
             aircraft.moveAicraft(aircraft);
 
-            ChangeState(aircraft);
+            PassengerAircraft passengerAircraft = (PassengerAircraft)aircraft;
+
+
+            if (false) // airplane x,y = airport x,y
+            {
+                ChangeState(aircraft);
+            }
+            
         }
 
         public override void ChangeState(Aircraft aircraft)

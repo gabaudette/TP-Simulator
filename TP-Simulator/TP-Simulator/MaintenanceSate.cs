@@ -12,7 +12,14 @@
         }
         public override void ChangeState(Aircraft aircraft)
         {
-            aircraft.CurrentState = new WaitingState();
+            if(aircraft.isPassengerAicraft())
+                aircraft.CurrentState = new WaitingState();
+
+        }
+
+        public override string ToString()
+        {
+            return "Maintenance";
         }
     }
 }

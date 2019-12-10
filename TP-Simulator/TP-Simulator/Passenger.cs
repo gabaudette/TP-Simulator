@@ -6,7 +6,7 @@
 
         public override string ToString()
         {
-            return $"{Amount} passangers en destination de {Destination}";
+            return $"{Amount} passangers en destination de {Destination.Name}";
         }
     }
 }

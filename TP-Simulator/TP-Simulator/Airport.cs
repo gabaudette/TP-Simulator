@@ -41,7 +41,6 @@ namespace TP_Simulator
             {
                 if (Aircrafts[i] is WaterBomber)
                     return true;
-
             }
             return false;
         }
@@ -62,6 +61,25 @@ namespace TP_Simulator
             for (int i = 0; i < Aircrafts.Count; i++)
             {
                 if (Aircrafts[i] is RescueHelicopter)
+                    return true;
+            }
+            return false;
+        }
+
+        public bool hasCargoPlane()
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] is CargoPlane)
+                    return true;
+            }
+            return false;
+        }
+        public bool hasPassengerPlane()
+        {
+            for (int i = 0; i < Aircrafts.Count; i++)
+            {
+                if (Aircrafts[i] is PassengerPlane)
                     return true;
             }
             return false;

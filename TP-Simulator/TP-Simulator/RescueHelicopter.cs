@@ -8,5 +8,10 @@
             return $"{Name},RescueHelicopter,{CurrentState},N/A";
         }
 
+        public override bool isPassengerAicraft()
+        {
+            return false;
+        }
+
     }
 }
