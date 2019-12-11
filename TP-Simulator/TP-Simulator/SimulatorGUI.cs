@@ -181,7 +181,7 @@ namespace TP_Simulator
             {
                 airportBit = new Bitmap(Properties.Resources.waterbomber);
 
-                if (scenario.FlyingAicrafts[i] is ObserverPlane)
+                if (scenario.FlyingAicrafts[i] is ObserverPlane) //obpla
                 {
                     airportBit = new Bitmap(Properties.Resources.observer);
                 }
@@ -212,11 +212,11 @@ namespace TP_Simulator
                 {
                     airportBit = new Bitmap(Properties.Resources.fire);
 
-                    if (client is Observer)
+                    if (client.GetTypeClient() == "Observer")
                     {
                         airportBit = new Bitmap(Properties.Resources.montain);
                     }
-                    else if (client is RescueTeam)
+                    else if (client.GetTypeClient() == "RescueTeam")
                     {
                         airportBit = new Bitmap(Properties.Resources.signal);
                     }

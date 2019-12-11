@@ -9,5 +9,11 @@
         {
             return $"{Amount} tonnes de marchandises à destination de {Destination.Name}";
         }
+
+        public override string GetTypeClient()
+        {
+            return "Marchandise";
+        }
+
     }
 }

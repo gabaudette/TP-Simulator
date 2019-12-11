@@ -12,7 +12,7 @@ namespace TP_Simulator
         [XmlIgnore]
         public int CurrentCapacity { get; set; }
 
-        public override void moveAicraft(Aircraft aircraft)
+        public override void MoveAircraft(Aircraft aircraft)
         {
 
             int destX = aircraft.destinationX;
@@ -37,9 +37,6 @@ namespace TP_Simulator
             {
                 aircraft.CurrentState.ChangeState(aircraft);
             }
-
-            
-
         }
 
         public override bool isPassengerAicraft()
@@ -47,5 +44,9 @@ namespace TP_Simulator
             return true;
         }
 
+        public override string GetTypeAircraft()
+        {
+            return "PassengerAircraft";
+        }
     }
 }

@@ -6,6 +6,11 @@
         public int Amount { get; set; }
         public Airport Destination { get; set; }
 
+        public override string GetTypeClient()
+        {
+            return "AirportClient";
+        }
+
         public AirportClient(int amount, Airport airport, Airport destination) 
         {
             Airport = airport;

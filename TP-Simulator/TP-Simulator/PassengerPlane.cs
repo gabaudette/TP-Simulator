@@ -5,12 +5,17 @@
 
         public override string ToString()
         {
-            return $"{Name},Passager,{CurrentState.ToString()},wtf je sais pas";
+            return $"{Name},Passager,{CurrentState.ToString()}, ?";
         }
 
         public override bool isPassengerAicraft()
         {
             return true;
+        }
+
+        public override string GetTypeAircraft()
+        {
+            return "PassengerPlane";
         }
     }
 

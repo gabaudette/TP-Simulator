@@ -12,7 +12,7 @@ namespace TP_Simulator
         [XmlIgnore]
         public PositionableClient client { get; set; }
 
-        public override void moveAicraft(Aircraft aircraft)
+        public override void MoveAircraft(Aircraft aircraft)
         {
             int destX = aircraft.destinationX;
             int destY = aircraft.destinationY;
@@ -68,5 +68,9 @@ namespace TP_Simulator
             return false;
         }
 
+        public override string GetTypeAircraft()
+        {
+            return "RescueAircraft";
+        }
     }
 }

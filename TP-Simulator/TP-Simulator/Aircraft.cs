@@ -14,9 +14,9 @@ namespace TP_Simulator
         public int Speed { get; set; }
         public int Maintenance { get; set; }
         enum TrackColor { Red, Yellow, Blue, Green, Grey };
+
         [XmlIgnore]
         public StateAircraft CurrentState { get; set; }
-
         [XmlIgnore]
         public int destinationX { get; set; }
         [XmlIgnore]
@@ -37,7 +37,9 @@ namespace TP_Simulator
             return $"{Name}";
         }
 
-        public abstract void moveAicraft(Aircraft aircraft);
+        public abstract string GetTypeAircraft();
+
+        public abstract void MoveAircraft(Aircraft aircraft);
 
         public abstract bool isPassengerAicraft();
     }

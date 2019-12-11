@@ -9,5 +9,9 @@
             return $"Secours en {PosX},{PosY}";
         }
 
+        public override string GetTypeClient()
+        {
+            return "RescueTeam";
+        }
     }
 }

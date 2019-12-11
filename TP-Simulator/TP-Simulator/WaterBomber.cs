@@ -16,5 +16,10 @@
             return false;
         }
 
+        public override string GetTypeAircraft()
+        {
+            return "WaterBomber";
+        }
+
     }
 }

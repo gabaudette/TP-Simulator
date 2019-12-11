@@ -128,7 +128,7 @@ namespace TP_Simulator
 
             for (int i = 0; i < rescue.airport.Clients.Count; i++)
             {
-                if (rescue.airport.Clients[i] is PositionableClient)
+                if (rescue.airport.Clients[i].GetTypeClient() == "PositionableClient")
                 {
 
                     PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
@@ -154,7 +154,7 @@ namespace TP_Simulator
 
             for (int i = 0; i < rescue.airport.Clients.Count; i++)
             {
-                if (rescue.airport.Clients[i] is PositionableClient)
+                if (rescue.airport.Clients[i].GetTypeClient() == "PositionableClient")
                 {
                     PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
 

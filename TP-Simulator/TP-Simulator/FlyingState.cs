@@ -18,7 +18,7 @@ namespace TP_Simulator
         public override void Do(Aircraft aircraft)
         {
 
-            aircraft.moveAicraft(aircraft);
+            aircraft.MoveAircraft(aircraft);
 
         }
 

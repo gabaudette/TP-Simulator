@@ -15,5 +15,9 @@ namespace TP_Simulator
             return false;
         }
 
+        public override string GetTypeAircraft()
+        {
+            return "RescueHelicopter";
+        }
     }
 }

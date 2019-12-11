@@ -13,5 +13,9 @@
             return $"Incendie d'envergure {FireSpan} détecté en {PosX} {PosY}";
         }
 
+        public override string GetTypeClient()
+        {
+            return "Fire";
+        }
     }
 }

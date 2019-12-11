@@ -22,5 +22,10 @@
             return true;
         }
 
+        public override string GetTypeAircraft()
+        {
+            return "CargoPlane";
+        }
+
     }
 }

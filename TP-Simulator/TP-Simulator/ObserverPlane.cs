@@ -12,5 +12,10 @@
         {
             return false;
         }
+
+        public override string GetTypeAircraft()
+        {
+            return "ObserverPlane";
+        }
     }
 }

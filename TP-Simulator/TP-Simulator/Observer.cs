@@ -8,5 +8,10 @@
         {
             return $"Obersation en {PosX},{PosY}";
         }
+
+        public override string GetTypeClient()
+        {
+            return "Observer";
+        }
     }
 }

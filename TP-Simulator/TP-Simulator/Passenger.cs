@@ -8,5 +8,10 @@
         {
             return $"{Amount} passangers en destination de {Destination.Name}";
         }
+
+        public override string  GetTypeClient()
+        {
+            return "Passenger";
+        }
     }
 }
