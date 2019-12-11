@@ -5,7 +5,6 @@ namespace TP_Simulator
 {
     public class RescueAircraft : Aircraft
     {
-
         [XmlIgnore]
         public bool HasArrived { get; set; }
 
@@ -18,7 +17,6 @@ namespace TP_Simulator
         /// <param name="aircraft"></param>
         public override void MoveAircraft(Aircraft aircraft)
         {
-
             //Calcul le deplacement en x et y de 1 tick de l'avion
             int destX = aircraft.destinationX;
             int destY = aircraft.destinationY;
@@ -58,9 +56,7 @@ namespace TP_Simulator
                         rescueAircraft.HasArrived = false;
                     }
                     else // si le feu n'est pas éteint, reduire son envergure
-                    {
                         aircraft.airport.reduceFireSpan(aircraft);
-                    }
                 }
                 else
                 { // sinon, changer son etat
