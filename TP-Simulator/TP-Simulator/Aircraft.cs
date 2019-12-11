@@ -9,10 +9,35 @@ namespace TP_Simulator
     [XmlInclude(typeof(RescueHelicopter))]
     public abstract class Aircraft
     {
-        public Airport airport { get; set; }
-        public string Name { get; set; }
-        public int Speed { get; set; }
-        public int Maintenance { get; set; }
+        protected Airport currentAirport;
+        protected string name;
+        protected int speed;
+        protected int maintenance;
+
+        public Airport airport
+        {
+            get { return this.currentAirport; }
+            set { this.currentAirport = value; }
+        }
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+
+        public int Speed
+        {
+            get { return this.speed; }
+            set { this.speed = value; }
+        }
+
+        public int Maintenance
+        {
+            get { return this.maintenance; }
+            set { this.maintenance = value; }
+        }
+
         enum TrackColor { Red, Yellow, Blue, Green, Grey };
 
         [XmlIgnore]
