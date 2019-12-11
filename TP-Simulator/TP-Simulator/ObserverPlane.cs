@@ -8,11 +8,6 @@
             return $"{Name},Observer,{CurrentState},N/A";
         }
 
-        public override void moveAicraft(Aircraft aircraft)
-        {
-
-        }
-
         public override bool isPassengerAicraft()
         {
             return false;

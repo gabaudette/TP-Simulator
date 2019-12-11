@@ -40,33 +40,26 @@ namespace TP_Simulator
 
                 aircraft.destinationX = aircraft.airport.X;
                 aircraft.destinationY = aircraft.airport.Y;
-
             }
             else
             {
                 if (aircraft is WaterBomber)
                 {
-                    if (!airport.fireIsExtinct(aircraft)) // to change
+                    if (airport.fireIsExtinct(aircraft)) // to change
                     {
                         aircraft.CurrentState.ChangeState(aircraft);
                         rescueAircraft.hasArrived = false;
                     }
                     else
                     {
-                        aircraft.airport.X = aircraft.destinationX;
-                        aircraft.airport.Y = aircraft.destinationY;
-
+                        aircraft.airport.reduceFireSpan(aircraft);
                     }
                 }
                 else
                 {
                     aircraft.CurrentState.ChangeState(aircraft);
                     rescueAircraft.hasArrived = false;
-                }
-    
-                
-
-                
+                }             
             }
         }
 

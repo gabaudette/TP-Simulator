@@ -28,9 +28,8 @@ namespace TP_Simulator
                 aircraft.CurrentState = new UnloadingState(aircraft);
             else if (aircraft is WaterBomber)
             {
-
-                aircraft.CurrentState = new MaintenanceSate();
-
+                aircraft.airport.landRescue(aircraft);
+                aircraft.CurrentState = new MaintenanceSate(); 
             }
             else
             {

@@ -122,9 +122,55 @@ namespace TP_Simulator
             }
         }
 
+        public void reduceFireSpan(Aircraft aircraft)
+        {
+            RescueAircraft rescue = (RescueAircraft)aircraft;
+
+            for (int i = 0; i < rescue.airport.Clients.Count; i++)
+            {
+                if (rescue.airport.Clients[i] is PositionableClient)
+                {
+
+                    PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
+
+                    if (posClient == rescue.client)
+                    {
+                        Fire fireClient = (Fire)rescue.client;
+
+                        fireClient.FireSpan--;
+
+                        rescue.destinationX = fireClient.PosX;
+                        rescue.destinationY = fireClient.PosY;
+                        rescue.hasArrived = false;
+
+                    }
+                }
+            }
+        }
+
         public bool fireIsExtinct(Aircraft aircraft)
         {
-            return true;
+            RescueAircraft rescue = (RescueAircraft)aircraft;
+
+            for (int i = 0; i < rescue.airport.Clients.Count; i++)
+            {
+                if (rescue.airport.Clients[i] is PositionableClient)
+                {
+                    PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
+
+                    if (posClient == rescue.client)
+                    {
+                        Fire fireClient = (Fire)rescue.client;
+
+                        if (fireClient.FireSpan == 0)
+                            return true;
+
+                    }
+                }
+
+            }
+
+            return false;
         }
 
         public void landRescue(Aircraft aircraft)
@@ -133,7 +179,7 @@ namespace TP_Simulator
             RescueAircraft rescue = (RescueAircraft)aircraft;
             aircraft.airport.Clients.Remove(rescue.client);
             scenario.ActiveClient.Remove(rescue.client);
-            
+
         }
 
 

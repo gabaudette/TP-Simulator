@@ -29,7 +29,7 @@ namespace TP_Simulator
         [XmlIgnore]
         public PositionableClient LastClient { get; set; }
         [XmlIgnore]
-        public List <PositionableClient> ActiveClient { get; set; }
+        public List<PositionableClient> ActiveClient { get; set; }
 
         [XmlIgnore]
         Airport closestAirport = new Airport();
@@ -70,13 +70,13 @@ namespace TP_Simulator
                 Scenario scenario = xd.Deserialize(rd) as Scenario;
 
                 Airports = sce­nario.Airports;
-                foreach(Airport airport in Airports)
+                foreach (Airport airport in Airports)
                     airport.Reviver(this);
 
                 AirportNotifier();
 
                 //if (threadAction == null)
-                    //threadAction = new Thread(new ThreadStart(Start));
+                //threadAction = new Thread(new ThreadStart(Start));
 
             }
 
@@ -88,7 +88,7 @@ namespace TP_Simulator
             while (!Pause)
             {
                 Loop();
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
         }
 
@@ -101,17 +101,22 @@ namespace TP_Simulator
         {
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
-            if (Timer.HourPassed()) {
+            if (Timer.HourPassed())
+            {
+                if (Timer.TowHourPassed())
+                {
+                    generatePossitionableClient();
+                }
                 generateClient();
             }
-            
+
             doAircraft();
             TickNotifier();
         }
 
         private void addClientToAirport(PositionableClient paramClient, int type)
         {
-            
+
             closestAirport = getClosestAirport(paramClient, type);
             closestAirport.Clients.Add(paramClient);
         }
@@ -134,34 +139,29 @@ namespace TP_Simulator
                         distance = newDistance;
                         closestAirport = Airports[i];
                     }
-                }  
+                }
             }
             return closestAirport;
         }
 
-        public void generateClient()
+        public void generatePossitionableClient()
         {
-            Console.WriteLine("Client generer");
             LastClient = new PositionableClient();
 
             Rnd = new Random(DateTime.Now.Millisecond);
             int nbCall;
-            int destinationID;
 
             //Observator
-            /*
+
             LastClient = (PositionableClient)ClientFactory.CreateObserver();
             addClientToAirport(LastClient, 1);
             ActiveClient.Add(LastClient);
-
             //Fire
-            nbCall = Rnd.Next(1, 3);
-            for (int i = 0; i < nbCall; i++)
-            {
-                LastClient = (PositionableClient)ClientFactory.CreateFire();
-                addClientToAirport(LastClient, 2);
-                ActiveClient.Add(LastClient);
-            }*/
+
+            LastClient = (PositionableClient)ClientFactory.CreateFire();
+            addClientToAirport(LastClient, 2);
+            ActiveClient.Add(LastClient);
+
 
             //ResuceTeam
             nbCall = Rnd.Next(1, 2);
@@ -172,6 +172,13 @@ namespace TP_Simulator
                 ActiveClient.Add(LastClient);
             }
 
+        }
+
+        public void generateClient()
+        {
+
+            int destinationID;
+            Rnd = new Random(DateTime.Now.Millisecond);
             //Passenger
             for (int i = 0; i < Airports.Count; i++)
             {
@@ -180,10 +187,9 @@ namespace TP_Simulator
                     do
                     {
                         destinationID = Rnd.Next(0, Airports.Count);
-                    } while (i == destinationID); 
+                    } while (i == destinationID);
                     Airports[i].Clients.Add(ClientFactory.CreatePassenger(Airports[i], Airports[destinationID]));
                 }
-
             }
 
             //Marchandise

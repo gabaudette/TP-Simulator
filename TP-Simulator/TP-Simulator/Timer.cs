@@ -13,19 +13,23 @@
 
         public void AddTick()
         {
-            if (CurrentMinute == 45)
+            if (CurrentMinute == 55)
             {
                 CurrentHour++;
                 CurrentMinute = 00;
             }
             else
-                CurrentMinute += 15;
+                CurrentMinute += 5;
         }
 
         public override string ToString()
         {
             if (CurrentMinute == 0)
                 return $"{CurrentHour} : {CurrentMinute}0";
+            else if (CurrentMinute == 5)
+            {
+                return $"{CurrentHour} : 0{CurrentMinute}";
+            }
             else
                 return $"{CurrentHour} : {CurrentMinute}";
         }
@@ -33,6 +37,10 @@
         public bool HourPassed()
         {
             return CurrentHour % 1 == 0 && CurrentMinute == 0;
+        }
+        public bool TowHourPassed()
+        {
+            return CurrentHour % 2 == 0 && CurrentMinute == 0;
         }
 
         public bool ThirtyPassed()

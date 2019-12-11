@@ -200,7 +200,7 @@ namespace TP_Simulator
 
                 FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
 
-                g.DrawImage(airportBit, position.PosX, position.PosY, 20, 20);
+                g.DrawImage(airportBit, position.PosX, position.PosY, 25, 25);
                 airportBit.Dispose();
             }
 

@@ -2,7 +2,6 @@
 {
     class WaitingState : StateAircraft
     {
-        //TODO ? Create a new Sup Class (Passenger/Cargo Plane State)
         public override void Do(Aircraft aircraft)
         {
             if (aircraft.isPassengerAicraft())
@@ -11,36 +10,40 @@
 
                 for (int i = 0; i < passAircraft.airport.Clients.Count; i++)
                 {
-                    AirportClient airClient = (AirportClient)passAircraft.airport.Clients[i];
-
-                    if (passAircraft.CurrentCapacity == 0)
+                    if (passAircraft.airport.Clients[i] is AirportClient)
                     {
-                        passAircraft.destinationX = airClient.Destination.X;
-                        passAircraft.destinationY = airClient.Destination.Y;
+                        AirportClient airClient = (AirportClient)passAircraft.airport.Clients[i];
 
-                    }
-
-                    if (passAircraft.destinationX == airClient.Destination.X && passAircraft.destinationY == airClient.Destination.Y)
-                    {
-                        if (passAircraft.MaxCapacity - passAircraft.CurrentCapacity == 0)
+                        if (passAircraft.CurrentCapacity == 0)
                         {
-                            ChangeState(passAircraft);
+                            passAircraft.destinationX = airClient.Destination.X;
+                            passAircraft.destinationY = airClient.Destination.Y;
+
                         }
-                        else
+
+                        if (passAircraft.destinationX == airClient.Destination.X && passAircraft.destinationY == airClient.Destination.Y)
                         {
-                            if (airClient.Amount > (passAircraft.MaxCapacity - passAircraft.CurrentCapacity))
+                            if (passAircraft.MaxCapacity - passAircraft.CurrentCapacity == 0)
                             {
-                                airClient.Amount -= (passAircraft.MaxCapacity - passAircraft.CurrentCapacity);
-                                passAircraft.CurrentCapacity += passAircraft.MaxCapacity - passAircraft.CurrentCapacity;
+                                ChangeState(passAircraft);
                             }
                             else
                             {
-                                passAircraft.CurrentCapacity += airClient.Amount;
-                                passAircraft.airport.Clients.Remove(passAircraft.airport.Clients[i]);
-                                i--;
+                                if (airClient.Amount > (passAircraft.MaxCapacity - passAircraft.CurrentCapacity))
+                                {
+                                    airClient.Amount -= (passAircraft.MaxCapacity - passAircraft.CurrentCapacity);
+                                    passAircraft.CurrentCapacity += passAircraft.MaxCapacity - passAircraft.CurrentCapacity;
+                                }
+                                else
+                                {
+                                    passAircraft.CurrentCapacity += airClient.Amount;
+                                    passAircraft.airport.Clients.Remove(passAircraft.airport.Clients[i]);
+                                    i--;
+                                }
                             }
                         }
                     }
+                    
                 }
             }
             else
@@ -49,18 +52,20 @@
 
                 for (int i = 0; i < rescueAircraft.airport.Clients.Count; i++)
                 {
-                    PositionableClient posClient = (PositionableClient)rescueAircraft.airport.Clients[i];
-
-                    if ((posClient is Fire && rescueAircraft is WaterBomber) || (posClient is Observer && rescueAircraft is ObserverPlane) || (posClient is RescueTeam && rescueAircraft is RescueHelicopter))
+                    if (rescueAircraft.airport.Clients[i] is PositionableClient)
                     {
-                        rescueAircraft.destinationX = posClient.PosX;
-                        rescueAircraft.destinationY = posClient.PosY;
-                        rescueAircraft.client = posClient;
-                        ChangeState(rescueAircraft);
-                        i = rescueAircraft.airport.Clients.Count;
-                    }
-                }
-                
+                        PositionableClient posClient = (PositionableClient)rescueAircraft.airport.Clients[i];
+
+                        if ((posClient is Fire && rescueAircraft is WaterBomber) || (posClient is Observer && rescueAircraft is ObserverPlane) || (posClient is RescueTeam && rescueAircraft is RescueHelicopter))
+                        {
+                            rescueAircraft.destinationX = posClient.PosX;
+                            rescueAircraft.destinationY = posClient.PosY;
+                            rescueAircraft.client = posClient;
+                            ChangeState(rescueAircraft);
+                            i = rescueAircraft.airport.Clients.Count;
+                        }
+                    }  
+                } 
             }     
         }
 
