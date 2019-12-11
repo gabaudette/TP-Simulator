@@ -5,13 +5,56 @@ namespace TP_Simulator
 {
     public class Airport
     {
-        public string Name { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int MinPassenger { get; set; }
-        public int MaxPassenger { get; set; }
-        public int MinMarchandise { get; set; }
-        public int MaxMarchandise { get; set; }
+
+        private string name; //Airport's name
+        private int x; //Airport's X position
+        private int y; //Airport's Y position
+        private int minPassenger; //Airport's minimum passenger capacity
+        private int maxPassenger; //Airport's maximum passenger capacity
+        private int minMarchandise; //Airport's minimum marchandise capacity
+        private int maxMarchandise; //Airport's maximum marchandise capacity
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+
+        public int X
+        {
+            get { return this.x; }
+            set { this.x = value; }
+        }
+
+        public int Y
+        {
+            get { return this.y; }
+            set { this.y = value; }
+        }
+
+        public int MinPassenger
+        {
+            get { return this.minPassenger; }
+            set { this.minPassenger = value; }
+        }
+
+        public int MaxPassenger
+        {
+            get { return this.maxPassenger; }
+            set { this.maxPassenger = value; }
+        }
+
+        public int MinMarchandise
+        {
+            get { return this.minMarchandise; }
+            set { this.minMarchandise = value; }
+        }
+        public int MaxMarchandise
+        {
+            get { return this.maxMarchandise; }
+            set { this.maxMarchandise = value; }
+        }
+
         public List<Aircraft> Aircrafts { get; set; }
         Scenario scenario { get; set; }
 
