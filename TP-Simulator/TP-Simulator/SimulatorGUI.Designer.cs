@@ -38,6 +38,7 @@
             this.unpauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fastForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aéroports = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
@@ -52,7 +53,6 @@
             this.listView6 = new System.Windows.Forms.ListView();
             this.picMap = new System.Windows.Forms.PictureBox();
             this.labTimer = new System.Windows.Forms.Label();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.Aéroports.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,7 +72,6 @@
             this.actionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1570, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -108,35 +107,42 @@
             // nextStepToolStripMenuItem
             // 
             this.nextStepToolStripMenuItem.Name = "nextStepToolStripMenuItem";
-            this.nextStepToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.nextStepToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.nextStepToolStripMenuItem.Text = "Next step";
             this.nextStepToolStripMenuItem.Click += new System.EventHandler(this.NextStepToolStripMenuItem_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
             // unpauseToolStripMenuItem
             // 
             this.unpauseToolStripMenuItem.Name = "unpauseToolStripMenuItem";
-            this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.unpauseToolStripMenuItem.Text = "Unpause";
             this.unpauseToolStripMenuItem.Click += new System.EventHandler(this.UnpauseToolStripMenuItem_Click);
             // 
             // fastForwardToolStripMenuItem
             // 
             this.fastForwardToolStripMenuItem.Name = "fastForwardToolStripMenuItem";
-            this.fastForwardToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.fastForwardToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.fastForwardToolStripMenuItem.Text = "Fast Forward";
             // 
             // forwardToolStripMenuItem
             // 
             this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
-            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.forwardToolStripMenuItem.Text = "Forward";
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // Aéroports
             // 
@@ -145,7 +151,7 @@
             this.Aéroports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aéroports.Location = new System.Drawing.Point(14, 35);
             this.Aéroports.Name = "Aéroports";
-            this.Aéroports.Size = new System.Drawing.Size(435, 265);
+            this.Aéroports.Size = new System.Drawing.Size(347, 264);
             this.Aéroports.TabIndex = 1;
             this.Aéroports.TabStop = false;
             this.Aéroports.Text = "Aéroports";
@@ -176,7 +182,7 @@
             this.lsvAirport.HideSelection = false;
             this.lsvAirport.Location = new System.Drawing.Point(6, 29);
             this.lsvAirport.Name = "lsvAirport";
-            this.lsvAirport.Size = new System.Drawing.Size(422, 229);
+            this.lsvAirport.Size = new System.Drawing.Size(334, 228);
             this.lsvAirport.TabIndex = 0;
             this.lsvAirport.UseCompatibleStateImageBehavior = false;
             this.lsvAirport.SelectedIndexChanged += new System.EventHandler(this.LsvAirport_SelectedIndexChanged);
@@ -185,9 +191,9 @@
             // 
             this.lsvClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvClient.HideSelection = false;
-            this.lsvClient.Location = new System.Drawing.Point(6, 29);
+            this.lsvClient.Location = new System.Drawing.Point(4, 29);
             this.lsvClient.Name = "lsvClient";
-            this.lsvClient.Size = new System.Drawing.Size(490, 229);
+            this.lsvClient.Size = new System.Drawing.Size(547, 229);
             this.lsvClient.TabIndex = 0;
             this.lsvClient.UseCompatibleStateImageBehavior = false;
             // 
@@ -196,9 +202,9 @@
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.lsvClient);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(454, 35);
+            this.groupBox2.Location = new System.Drawing.Point(365, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(504, 265);
+            this.groupBox2.Size = new System.Drawing.Size(561, 265);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clients";
@@ -227,9 +233,9 @@
             // 
             this.lsvAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvAircraft.HideSelection = false;
-            this.lsvAircraft.Location = new System.Drawing.Point(4, 28);
+            this.lsvAircraft.Location = new System.Drawing.Point(10, 28);
             this.lsvAircraft.Name = "lsvAircraft";
-            this.lsvAircraft.Size = new System.Drawing.Size(576, 229);
+            this.lsvAircraft.Size = new System.Drawing.Size(614, 229);
             this.lsvAircraft.TabIndex = 0;
             this.lsvAircraft.UseCompatibleStateImageBehavior = false;
             // 
@@ -238,9 +244,9 @@
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.lsvAircraft);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(964, 35);
+            this.groupBox4.Location = new System.Drawing.Point(932, 36);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(588, 265);
+            this.groupBox4.Size = new System.Drawing.Size(626, 265);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Avions";
@@ -287,13 +293,6 @@
             this.labTimer.Size = new System.Drawing.Size(62, 29);
             this.labTimer.TabIndex = 7;
             this.labTimer.Text = "0:00";
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // SimulatorGUI
             // 

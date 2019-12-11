@@ -12,8 +12,14 @@ namespace TP_Simulator
         [XmlIgnore]
         public PositionableClient client { get; set; }
 
+        /// <summary>
+        /// Move the aircraft
+        /// </summary>
+        /// <param name="aircraft"></param>
         public override void MoveAircraft(Aircraft aircraft)
         {
+
+            //Calcul le deplacement en x et y de 1 tick de l'avion
             int destX = aircraft.destinationX;
             int destY = aircraft.destinationY;
 
@@ -23,6 +29,7 @@ namespace TP_Simulator
 
             double tickRequired = distance / (rescueAircraft.Speed * 50);
 
+            //Si le tick est plus grand que 1, deplacer l'avion
             if (tickRequired > 1)
             {
                 double XbyTick = (destX - position.PosX) / tickRequired;
@@ -30,7 +37,7 @@ namespace TP_Simulator
 
                 position.PosX += Convert.ToInt32(XbyTick);
                 position.PosY += Convert.ToInt32(YbyTick);
-            }
+            }//Sinon, l'avion est arrivé
             else if (tickRequired < 1 && rescueAircraft.hasArrived == false)
             {
                 hasArrived = true;
@@ -42,32 +49,40 @@ namespace TP_Simulator
                 aircraft.destinationY = aircraft.airport.Y;
             }
             else
-            {
-                if (aircraft is WaterBomber)
+            { 
+                if (aircraft is WaterBomber) // Si l'avion est un water bomber
                 {
-                    if (airport.fireIsExtinct(aircraft)) // to change
+                    if (airport.fireIsExtinct(aircraft)) // verifie su le feu est éteint
                     {
                         aircraft.CurrentState.ChangeState(aircraft);
                         rescueAircraft.hasArrived = false;
                     }
-                    else
+                    else // si le feu n'est pas éteint, reduire son envergure
                     {
                         aircraft.airport.reduceFireSpan(aircraft);
                     }
                 }
                 else
-                {
+                { // sinon, changer son etat
                     aircraft.CurrentState.ChangeState(aircraft);
                     rescueAircraft.hasArrived = false;
                 }             
             }
         }
 
+        /// <summary>
+        /// Return true if the plane is a passenger plane
+        /// </summary>
+        /// <returns></returns>
         public override bool isPassengerAicraft()
         {
             return false;
         }
 
+        /// <summary>
+        /// Return the type of the plane
+        /// </summary>
+        /// <returns></returns>
         public override string GetTypeAircraft()
         {
             return "RescueAircraft";

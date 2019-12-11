@@ -40,7 +40,6 @@ namespace TP_Simulator
             int fireSpan = clientFactory.getRandomNumber(1,4);
             return new Fire(fireSpan, pos[0],pos[1]);
         }
-        //TODO: Check assign airport (for destination) in scenario (Simulator UML Schema)
         /// <summary>
         /// Create a passenger client
         /// </summary>
@@ -61,7 +60,6 @@ namespace TP_Simulator
         /// <param name="airport"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        //TODO: Check assign airport (for destination) in scenario (Simulator UML Schema)
         public static Client CreateMarchandise(Airport airport, Airport destination)
         {
             int amount = clientFactory.getRandomNumber(10, 100);
@@ -79,14 +77,24 @@ namespace TP_Simulator
             return new Observer(pos[0], pos[1]);
         }
 
+        /// <summary>
+        /// Return a random value
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         private int getRandomNumber(int min, int max)
         {
             return rnd.Next(min, max);
         }
 
+        /// <summary>
+        /// Return a random position
+        /// </summary>
+        /// <returns></returns>
         private int[] getRandomPos()
         {
-            int[] tabPos = {rnd.Next(0, 1026), rnd.Next(0, 591) };
+            int[] tabPos = {rnd.Next(0, 926), rnd.Next(0, 500) };
             return tabPos;
         }
     }

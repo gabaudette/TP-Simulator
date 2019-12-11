@@ -14,6 +14,11 @@ namespace TP_Simulator
             PosY = posY;
         }
 
+
+        /// <summary>
+        /// Return the type of the client
+        /// </summary>
+        /// <returns></returns>
         public override string GetTypeClient()
         {
             return "PositionableClient";

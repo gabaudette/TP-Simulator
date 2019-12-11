@@ -33,8 +33,6 @@ namespace TP_Simulator
 
         [XmlIgnore]
         Airport closestAirport = new Airport();
-        [XmlIgnore]
-        Thread threadAction;
 
         private Scenario()
         {
@@ -45,6 +43,10 @@ namespace TP_Simulator
             ActiveClient = new List<PositionableClient>();
         }
 
+        /// <summary>
+        /// Set the delegate
+        /// </summary>
+        /// <param name="view"></param>
         public void SetView(SimulatorGUI view)
         {
             AirportNotifier = new AirportNotifier(view.OnDeserialize);
@@ -52,6 +54,9 @@ namespace TP_Simulator
             HourNotifier = new HourNotifier(view.OnHour);
         }
 
+        /// <summary>
+        /// return the instante of the scenario
+        /// </summary>
         public static Scenario Instance
         {
             get
@@ -62,6 +67,10 @@ namespace TP_Simulator
             }
         }
 
+        /// <summary>
+        /// deserialize a file to be used in the scenario
+        /// </summary>
+        /// <param name="filename"></param>
         public void Deserialize(string filename)
         {
             XmlSerializer xd = new XmlSerializer(typeof(Scenario));
@@ -75,14 +84,14 @@ namespace TP_Simulator
 
                 AirportNotifier();
 
-                //if (threadAction == null)
-                //threadAction = new Thread(new ThreadStart(Start));
-
             }
 
 
         }
 
+        /// <summary>
+        /// Start the loop
+        /// </summary>
         public void Start()
         {
             while (!Pause)
@@ -92,15 +101,23 @@ namespace TP_Simulator
             }
         }
 
+        /// <summary>
+        /// Stop the loop
+        /// </summary>
         public void Stop()
         {
             Pause = true;
         }
 
+        /// <summary>
+        /// Main loop
+        /// </summary>
         public void Loop()
         {
             Timer.AddTick();
             this.clientFactory = ClientFactory.GetClientFactory();
+
+            //If an hour passed, generate client, if 2 have passed, generate positionnable client
             if (Timer.HourPassed())
             {
                 if (Timer.TowHourPassed())
@@ -110,10 +127,17 @@ namespace TP_Simulator
                 generateClient();
             }
 
+            //Move aircraft an update GUI
             doAircraft();
             TickNotifier();
+
         }
 
+        /// <summary>
+        /// Add the client to the airport client's list
+        /// </summary>
+        /// <param name="paramClient"></param>
+        /// <param name="type"></param>
         private void addClientToAirport(PositionableClient paramClient, int type)
         {
 
@@ -121,6 +145,12 @@ namespace TP_Simulator
             closestAirport.Clients.Add(paramClient);
         }
 
+        /// <summary>
+        /// Return the closest airport
+        /// </summary>
+        /// <param name="paramClient"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Airport getClosestAirport(PositionableClient paramClient, int type)
         {
             Airport closestAirport = new Airport();
@@ -144,6 +174,9 @@ namespace TP_Simulator
             return closestAirport;
         }
 
+        /// <summary>
+        /// Generate non airport client (fire,observer,alert)
+        /// </summary>
         public void generatePossitionableClient()
         {
             LastClient = new PositionableClient();
@@ -174,6 +207,9 @@ namespace TP_Simulator
 
         }
 
+        /// <summary>
+        /// Generate airport client (passenger,cargo)
+        /// </summary>
         public void generateClient()
         {
 
@@ -211,6 +247,10 @@ namespace TP_Simulator
             }
         }
 
+
+        /// <summary>
+        /// Make evvery plane do his move
+        /// </summary>
         public void doAircraft()
         {
             for (int i = 0; i < Airports.Count; i++)

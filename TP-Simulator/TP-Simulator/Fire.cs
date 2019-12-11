@@ -8,11 +8,19 @@
             FireSpan = fireSpan;
         }
 
+        /// <summary>
+        /// Return the value of the client
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Incendie d'envergure {FireSpan} détecté en {PosX} {PosY}";
         }
 
+        /// <summary>
+        /// Return the type of the client
+        /// </summary>
+        /// <returns></returns>
         public override string GetTypeClient()
         {
             return "Fire";

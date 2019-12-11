@@ -26,21 +26,39 @@ namespace TP_Simulator
             
             CurrentState = new MaintenanceSate();
         }
-
+        /// <summary>
+        /// Do the move of the state
+        /// </summary>
         public void Request()
         {
             CurrentState.Do(this);
         }
 
+        /// <summary>
+        /// Return the value of the plane
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Name}";
         }
 
+        /// <summary>
+        /// Return the type of the plane
+        /// </summary>
+        /// <returns></returns>
         public abstract string GetTypeAircraft();
 
+        /// <summary>
+        /// Generic function to move differant type of aircraft
+        /// </summary>
+        /// <param name="aircraft"></param>
         public abstract void MoveAircraft(Aircraft aircraft);
 
+        /// <summary>
+        /// Return true if the plane can carry passenger
+        /// </summary>
+        /// <returns></returns>
         public abstract bool isPassengerAicraft();
     }
 }

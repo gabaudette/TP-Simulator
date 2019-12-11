@@ -26,35 +26,32 @@ namespace TP_Simulator
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetListView()
         {
             lsvAirport.View = View.Details;
 
             //Ajoute les colonnes
             lsvAirport.Columns.Add("Nom");
-            lsvAirport.Columns.Add("Longitude");
-            lsvAirport.Columns.Add("Lattitude");
-
 
             //Remplis les colonnes
             lsvAirport.Columns[0].Width = 115;
-            lsvAirport.Columns[1].Width = 80;
-            lsvAirport.Columns[2].Width = 80;
 
             lsvAircraft.View = View.Details;
 
             //Ajoute les colonnes
             lsvAircraft.Columns.Add("Nom");
             lsvAircraft.Columns.Add("Type");
-            lsvAircraft.Columns.Add("Destination");
             lsvAircraft.Columns.Add("États");
 
 
             //Remplis les colonnes
             lsvAircraft.Columns[0].Width = 110;
             lsvAircraft.Columns[1].Width = 60;
-            lsvAircraft.Columns[2].Width = 120;
-            lsvAircraft.Columns[3].Width = 70;
+            lsvAircraft.Columns[2].Width = 70;
 
             lsvClient.Clear();
             lsvClient.View = View.Details;
@@ -76,29 +73,50 @@ namespace TP_Simulator
             }
         }
 
-        private void FillLsvAirport(string name, string longitude, string latitude)
+        /// <summary>
+        /// Fill the list view with the airports
+        /// </summary>
+        /// <param name="name"></param>
+        private void FillLsvAirport(string name)
         {
 
-            lsvAirport.Items.Add(new ListViewItem(new string[] { name, longitude, latitude }));
+            lsvAirport.Items.Add(new ListViewItem(new string[] { name }));
 
         }
 
-        private void FillLsvAircraft(string name, string type, string state, string destination)
+        /// <summary>
+        /// Fill the list view with the aircraft
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="state"></param>
+        private void FillLsvAircraft(string name, string type, string state)
         {
-            lsvAircraft.Items.Add(new ListViewItem(new string[] { name, type, destination, state }));
+            lsvAircraft.Items.Add(new ListViewItem(new string[] { name, type, state }));
         }
-
+        /// <summary>
+        /// Fill the listview with the client
+        /// </summary>
+        /// <param name="data"></param>
         private void FillLsvClients(string data)
         {
             lsvClient.Items.Add(new ListViewItem(new string[] { data }));
         }
 
+        /// <summary>
+        /// Update the data form the listview client and list view aircraft 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateLsvAircraft();
             updateLsvClient();
         }
 
+        /// <summary>
+        /// Update the listview client
+        /// </summary>
         public void updateLsvClient()
         {
             lsvClient.Items.Clear();
@@ -106,7 +124,9 @@ namespace TP_Simulator
             for (int i = 0; i < scenario.Airports[lsvAirport.FocusedItem.Index].Clients.Count; i++)
                 FillLsvClients(scenario.Airports[lsvAirport.FocusedItem.Index].Clients[i].ToString());
         }
-
+        /// <summary>
+        /// Update the list view aircraft
+        /// </summary>
         public void updateLsvAircraft()
         {
             lsvAircraft.Items.Clear();
@@ -118,15 +138,13 @@ namespace TP_Simulator
             {
                 aircraft = scenario.Airports[lsvAirport.FocusedItem.Index].Aircrafts[i].ToString();
                 aircraftList = aircraft.Split(',').ToList();
-                FillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2], aircraftList[3]);
+                FillLsvAircraft(aircraftList[0], aircraftList[1], aircraftList[2]);
             }
         }
 
-        private void PicAircraft_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Fill the lsvAirport from the airport list  from the scenario
+        /// </summary>
         public void OnDeserialize()
         {
             string airport;
@@ -136,25 +154,36 @@ namespace TP_Simulator
             {
                 airport = scenario.Airports[i].ToString();
                 airportList = airport.Split(',').ToList();
-                FillLsvAirport(airportList[0], airportList[1], airportList[2]);
+                FillLsvAirport(airportList[0]);
             }
 
             lsvAirport.Items[0].Focused = true;
             updateGUI();
         }
 
+        /// <summary>
+        /// Update the GUI every time a tick happend
+        /// </summary>
         public void OnTick()
         {
+
             labTimer.Text = scenario.Timer.ToString();
             labTimer.Refresh();
 
             updateLsvClient();
             updateLsvAircraft();
 
+            lsvAircraft.Refresh();
+            lsvClient.Refresh();
+
             updateGUI();
             GC.Collect();
+
         }
 
+        /// <summary>
+        /// Update the GUI to show the aircraft, airplane and the positionnable client
+        /// </summary>
         private void updateGUI()
         {
             BufferedGraphicsContext currentContext;
@@ -181,7 +210,7 @@ namespace TP_Simulator
             {
                 airportBit = new Bitmap(Properties.Resources.waterbomber);
 
-                if (scenario.FlyingAicrafts[i] is ObserverPlane) //obpla
+                if (scenario.FlyingAicrafts[i] is ObserverPlane)
                 {
                     airportBit = new Bitmap(Properties.Resources.observer);
                 }
@@ -270,32 +299,58 @@ namespace TP_Simulator
             g.Dispose();
             GC.Collect();
         }
-
+        
+        /// <summary>
+        /// Occure every hour to refresh the listview
+        /// </summary>
         public void OnHour()
         {
+
             lsvAircraft.Refresh();
             lsvClient.Refresh();
             GC.Collect();
+
         }
 
+        /// <summary>
+        /// Make one loop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextStepToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Loop();
         }
 
+        /// <summary>
+        /// Pause the scenario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Stop();
         }
 
+        /// <summary>
+        /// Unpause the scenario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UnpauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Start();
         }
 
+        /// <summary>
+        /// Start the loop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scenario.Start();
         }
+
     }
 }

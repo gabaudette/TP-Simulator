@@ -15,6 +15,11 @@ namespace TP_Simulator
             aircraft.airport.takeOffPlane(aircraft);
         }
 
+
+        /// <summary>
+        /// Move the airplane
+        /// </summary>
+        /// <param name="aircraft"></param>
         public override void Do(Aircraft aircraft)
         {
 
@@ -22,6 +27,10 @@ namespace TP_Simulator
 
         }
 
+        /// <summary>
+        /// Change the state of the plane in function of the type of the plane
+        /// </summary>
+        /// <param name="aircraft"></param>
         public override void ChangeState(Aircraft aircraft)
         {
             if (aircraft is PassengerAircraft)
@@ -40,6 +49,10 @@ namespace TP_Simulator
 
         }
 
+        /// <summary>
+        /// Return the state of the plane
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"En Vol";

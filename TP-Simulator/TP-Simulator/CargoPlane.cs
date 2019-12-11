@@ -2,26 +2,28 @@
 {
     public class CargoPlane : PassengerAircraft
     {
-
+        /// <summary>
+        /// Return the value of the state
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            try
-            {
-
-                return $"{Name},Cargo,{CurrentState.ToString()},wtf je sais pas";
-            }
-            catch (System.Exception)
-            {
-
-                return $"{Name},Cargo,{CurrentState.ToString()}, Undefined "; ;
-            }  
+            return $"{Name},Cargo,{CurrentState.ToString()}"; 
         }
 
+        /// <summary>
+        /// Return true if the plane can carry passenger
+        /// </summary>
+        /// <returns></returns>
         public override bool isPassengerAicraft()
         {
             return true;
         }
 
+        /// <summary>
+        /// Return the type of the aicraft
+        /// </summary>
+        /// <returns></returns>
         public override string GetTypeAircraft()
         {
             return "CargoPlane";

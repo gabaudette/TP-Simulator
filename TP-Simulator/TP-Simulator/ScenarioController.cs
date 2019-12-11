@@ -7,6 +7,8 @@ namespace TP_Simulator
     {
         static SimulatorGUI GUI;
         [STAThread]
+
+        
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -17,6 +19,10 @@ namespace TP_Simulator
             Application.Run(GUI);
         }
 
+        /// <summary>
+        /// Deserialize the xml file
+        /// </summary>
+        /// <param name="filename"></param>
         static public void Deserialize(string filename)
         {
             Scenario scenario = Scenario.Instance;

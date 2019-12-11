@@ -23,6 +23,10 @@ namespace TP_Simulator
             Clients = new List<Client>();
         }
 
+        /// <summary>
+        /// revive the element of the scenario
+        /// </summary>
+        /// <param name="scenario"></param>
         public void Reviver(Scenario scenario)
         {
 
@@ -31,11 +35,19 @@ namespace TP_Simulator
                 aircraft.airport = this;
         }
 
+        /// <summary>
+        /// Return the value of the scenario
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Name},{X},{Y},{MinPassenger},{MaxPassenger},{MinMarchandise},{MaxPassenger}";
         }
 
+        /// <summary>
+        /// Return true if the airport has a water bomber
+        /// </summary>
+        /// <returns></returns>
         public bool hasWaterBomber()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -46,6 +58,10 @@ namespace TP_Simulator
             return false;
         }
 
+        /// <summary>
+        /// return true if the airport has a observer plane
+        /// </summary>
+        /// <returns></returns>
         public bool hasObserverPlane()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -56,7 +72,10 @@ namespace TP_Simulator
             }
             return false;
         }
-
+        /// <summary>
+        /// return true if the airport has a rescue helicopter
+        /// </summary>
+        /// <returns></returns>
         public bool hasRescueHelicopter()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -66,7 +85,10 @@ namespace TP_Simulator
             }
             return false;
         }
-
+        /// <summary>
+        /// return true if the airport has a cargo plane
+        /// </summary>
+        /// <returns></returns>
         public bool hasCargoPlane()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -76,7 +98,10 @@ namespace TP_Simulator
             }
             return false;
         }
-
+        /// <summary>
+        /// return true if the airport has a passenger plane
+        /// </summary>
+        /// <returns></returns>
         public bool hasPassengerPlane()
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -87,6 +112,10 @@ namespace TP_Simulator
             return false;
         }
 
+        /// <summary>
+        /// Add the plane to the flying list of the scenario
+        /// </summary>
+        /// <param name="aircraft"></param>
         public void takeOffPlane(Aircraft aircraft)
         {
             for (int i = 0; i < Aircrafts.Count; i++)
@@ -98,15 +127,21 @@ namespace TP_Simulator
             }
         }
 
+        /// <summary>
+        /// Land the plane, remove from the airport and add to the new one, remove from the flying list and drop the passenger
+        /// </summary>
+        /// <param name="aircraft"></param>
         public void landPlane(Aircraft aircraft)
         {
+            //Parcours les avion
             for (int i = 0; i < Aircrafts.Count; i++)
             {
                 if (Aircrafts[i] == aircraft)
                 {
-
+                    //Parcours les aeroports
                     for (int y = 0; y < scenario.Airports.Count; y++)
                     {
+                        //Si l'avion correspond a la destionation, atterir
                         if (scenario.Airports[y].X == aircraft.destinationX && scenario.Airports[y].Y == aircraft.destinationY)
                         {
                             scenario.Airports[y].Aircrafts.Add(aircraft);
@@ -122,17 +157,21 @@ namespace TP_Simulator
             }
         }
 
+        /// <summary>
+        /// Reduce the fire span of the client of the plane
+        /// </summary>
+        /// <param name="aircraft"></param>
         public void reduceFireSpan(Aircraft aircraft)
         {
             RescueAircraft rescue = (RescueAircraft)aircraft;
-
+            //Parcours les aeroports
             for (int i = 0; i < rescue.airport.Clients.Count; i++)
             {
-                if (rescue.airport.Clients[i].GetTypeClient() == "PositionableClient")
+                if (rescue.airport.Clients[i] is PositionableClient)
                 {
 
                     PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
-
+                    //Si le client correspond au client de la list, reduire le fire span
                     if (posClient == rescue.client)
                     {
                         Fire fireClient = (Fire)rescue.client;
@@ -148,20 +187,25 @@ namespace TP_Simulator
             }
         }
 
+        /// <summary>
+        /// Check if the fire is done
+        /// </summary>
+        /// <param name="aircraft"></param>
+        /// <returns></returns>
         public bool fireIsExtinct(Aircraft aircraft)
         {
             RescueAircraft rescue = (RescueAircraft)aircraft;
-
+            //Parcours les clients de l'aeroport
             for (int i = 0; i < rescue.airport.Clients.Count; i++)
             {
-                if (rescue.airport.Clients[i].GetTypeClient() == "PositionableClient")
+                if (rescue.airport.Clients[i] is PositionableClient)
                 {
                     PositionableClient posClient = (PositionableClient)rescue.airport.Clients[i];
-
+                    //si le client correspond au client de l'avion, 
                     if (posClient == rescue.client)
                     {
                         Fire fireClient = (Fire)rescue.client;
-
+                        //Si le client a son fire span a 0, return true
                         if (fireClient.FireSpan == 0)
                             return true;
 
@@ -173,6 +217,10 @@ namespace TP_Simulator
             return false;
         }
 
+        /// <summary>
+        /// Land a rescue plane
+        /// </summary>
+        /// <param name="aircraft"></param>
         public void landRescue(Aircraft aircraft)
         {
             scenario.FlyingAicrafts.Remove(aircraft);
