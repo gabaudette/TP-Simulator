@@ -16,13 +16,13 @@
         /// </summary>
         public void AddTick()
         {
-            if (CurrentMinute == 55)
+            if (CurrentMinute == 59)
             {
                 CurrentHour++;
                 CurrentMinute = 00;
             }
             else
-                CurrentMinute += 5;
+                CurrentMinute += 1;
         }
 
         /// <summary>

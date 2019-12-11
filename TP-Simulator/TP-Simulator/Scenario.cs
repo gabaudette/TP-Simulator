@@ -86,7 +86,7 @@ namespace TP_Simulator
                     airport.Reviver(this);
 
                 AirportNotifier();
-                //threadAction.Start();
+                threadAction.Start();
 
             }
 
@@ -101,7 +101,7 @@ namespace TP_Simulator
             while (!Pause)
             {
                 Loop();
-                Thread.Sleep(100);
+                Thread.Sleep(1000/60);
             }
         }
 
@@ -133,6 +133,7 @@ namespace TP_Simulator
 
             //Move aircraft an update GUI
             doAircraft();
+
             TickNotifier();
 
         }

@@ -27,7 +27,7 @@ namespace TP_Simulator
             FlyingState position = (FlyingState)passAircraft.CurrentState;
             double distance = Math.Sqrt((Math.Pow(destY - position.PosY, 2)) + (Math.Pow(destX - position.PosX, 2)));
 
-            double tickRequired = distance / (passAircraft.Speed * 30);
+            double tickRequired = distance / (passAircraft.Speed * 15);
 
             // Si le nombre de tick est plus grand que 1, deplacer l'avion
             if (tickRequired > 1)

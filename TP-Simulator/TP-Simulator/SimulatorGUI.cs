@@ -167,6 +167,8 @@ namespace TP_Simulator
         public void OnTick()
         {
 
+            MethodInvoker invoker = delegate
+            {
                 labTimer.Text = scenario.Timer.ToString();
                 labTimer.Refresh();
 
@@ -178,7 +180,9 @@ namespace TP_Simulator
 
                 updateGUI();
                 GC.Collect();
+            };
 
+            this.Invoke(invoker);
         }
 
         /// <summary>
@@ -282,7 +286,7 @@ namespace TP_Simulator
                 }
                 else if (scenario.FlyingAicrafts[i] is PassengerPlane)
                 {
-                    color = new Pen(Brushes.Yellow);
+                    color = new Pen(Brushes.Green);
                 }
                 else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
                 {
@@ -299,7 +303,7 @@ namespace TP_Simulator
             g.Dispose();
             GC.Collect();
         }
-        
+
         /// <summary>
         /// Occure every hour to refresh the listview
         /// </summary>

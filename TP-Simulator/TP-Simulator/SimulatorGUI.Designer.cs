@@ -32,13 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nextStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unpauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fastForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aéroports = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
@@ -68,8 +61,7 @@
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fichierToolStripMenuItem,
-            this.actionToolStripMenuItem});
+            this.fichierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1570, 33);
@@ -87,62 +79,9 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(158, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
-            // 
-            // actionToolStripMenuItem
-            // 
-            this.actionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nextStepToolStripMenuItem,
-            this.pauseToolStripMenuItem,
-            this.unpauseToolStripMenuItem,
-            this.fastForwardToolStripMenuItem,
-            this.forwardToolStripMenuItem,
-            this.startToolStripMenuItem});
-            this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
-            this.actionToolStripMenuItem.Size = new System.Drawing.Size(79, 29);
-            this.actionToolStripMenuItem.Text = "Action";
-            // 
-            // nextStepToolStripMenuItem
-            // 
-            this.nextStepToolStripMenuItem.Name = "nextStepToolStripMenuItem";
-            this.nextStepToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.nextStepToolStripMenuItem.Text = "Next step";
-            this.nextStepToolStripMenuItem.Click += new System.EventHandler(this.NextStepToolStripMenuItem_Click);
-            // 
-            // pauseToolStripMenuItem
-            // 
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.pauseToolStripMenuItem.Text = "Pause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
-            // 
-            // unpauseToolStripMenuItem
-            // 
-            this.unpauseToolStripMenuItem.Name = "unpauseToolStripMenuItem";
-            this.unpauseToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.unpauseToolStripMenuItem.Text = "Unpause";
-            this.unpauseToolStripMenuItem.Click += new System.EventHandler(this.UnpauseToolStripMenuItem_Click);
-            // 
-            // fastForwardToolStripMenuItem
-            // 
-            this.fastForwardToolStripMenuItem.Name = "fastForwardToolStripMenuItem";
-            this.fastForwardToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.fastForwardToolStripMenuItem.Text = "Fast Forward";
-            // 
-            // forwardToolStripMenuItem
-            // 
-            this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
-            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.forwardToolStripMenuItem.Text = "Forward";
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // Aéroports
             // 
@@ -343,13 +282,6 @@
         private System.Windows.Forms.ListView listView6;
         private System.Windows.Forms.PictureBox picMap;
         private System.Windows.Forms.Label labTimer;
-        private System.Windows.Forms.ToolStripMenuItem actionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nextStepToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unpauseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fastForwardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forwardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
     }
 }
 
