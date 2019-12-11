@@ -6,7 +6,6 @@ namespace TP_Simulator
         protected int posX;
         protected int posY;
        
-
         public int PosX
         {
             get { return this.posX; }
@@ -19,7 +18,6 @@ namespace TP_Simulator
             set { this.posY = value; }
         }
 
-
         public PositionableClient() { }
 
         public PositionableClient(int posX, int posY)
@@ -27,7 +25,6 @@ namespace TP_Simulator
             PosX = posX;
             PosY = posY;
         }
-
 
         /// <summary>
         /// Return the type of the client
