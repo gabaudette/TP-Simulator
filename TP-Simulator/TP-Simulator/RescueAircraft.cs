@@ -5,8 +5,13 @@ namespace TP_Simulator
 {
     public class RescueAircraft : Aircraft
     {
+        protected bool hasArrived;
         [XmlIgnore]
-        public bool HasArrived { get; set; }
+        public bool HasArrived
+        {
+            get { return this.hasArrived; }
+            set { this.hasArrived = value; }
+        }
 
         [XmlIgnore]
         public PositionableClient client { get; set; }
