@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace TP_Simulator
+﻿namespace TP_Simulator
 {
     public class RescueHelicopter : RescueAircraft
     {
@@ -18,7 +16,7 @@ namespace TP_Simulator
         /// return true if the aircraft can carry passenger
         /// </summary>
         /// <returns></returns>
-        public override bool isPassengerAicraft()
+        public override bool IsPassengerAicraft()
         {
             return false;
         }

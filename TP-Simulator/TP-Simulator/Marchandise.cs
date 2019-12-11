@@ -2,7 +2,14 @@
 {
     class Marchandise : AirportClient
     {
-        public int Weight { get; private set; }
+        private int weight;
+
+        public int Weigth
+        {
+            get { return weight; }
+            set { weight = value; }
+        }
+
         public Marchandise(int amount, Airport airport, Airport destination) : base(amount, airport, destination) { }
 
 

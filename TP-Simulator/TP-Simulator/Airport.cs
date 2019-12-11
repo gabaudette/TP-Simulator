@@ -164,9 +164,7 @@ namespace TP_Simulator
             for (int i = 0; i < Aircrafts.Count; i++)
             {
                 if (Aircrafts[i] == aircraft)
-                {
                     scenario.FlyingAicrafts.Add(aircraft);
-                }
             }
         }
 
@@ -272,7 +270,5 @@ namespace TP_Simulator
             scenario.ActiveClient.Remove(rescue.client);
 
         }
-
-
     }
 }

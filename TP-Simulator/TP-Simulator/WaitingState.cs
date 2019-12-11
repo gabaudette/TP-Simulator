@@ -10,7 +10,7 @@
         public override void Do(Aircraft aircraft)
         {
             //Valide que le aircraft est de type passager
-            if (aircraft.isPassengerAicraft())
+            if (aircraft.IsPassengerAicraft())
             {
                 PassengerAircraft passAircraft = (PassengerAircraft)aircraft;
 
@@ -27,7 +27,6 @@
                         {
                             passAircraft.destinationX = airClient.Destination.X;
                             passAircraft.destinationY = airClient.Destination.Y;
-
                         }
 
                         //Verifie si la destionation de l'avion est la meme que la destion du client
@@ -35,9 +34,7 @@
                         {
                             //Si l'avion est plein, changer l'etat
                             if (passAircraft.MaxCapacity - passAircraft.CurrentCapacity == 0)
-                            {
                                 ChangeState(passAircraft);
-                            }
                             //remplir l'avion
                             else
                             {
@@ -90,7 +87,7 @@
         /// <param name="aircraft"></param>
         public override void ChangeState(Aircraft aircraft)
         {
-            if (aircraft.isPassengerAicraft())
+            if (aircraft.IsPassengerAicraft())
                 aircraft.CurrentState = new LoadingState();
             else
                 aircraft.CurrentState = new FlyingState(aircraft.airport.X, aircraft.airport.Y, aircraft);

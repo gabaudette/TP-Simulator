@@ -3,8 +3,22 @@ namespace TP_Simulator
 {
     public class PositionableClient : Client
     {
-        public int PosX { get; set; }
-        public int PosY { get; set; }
+        protected int posX;
+        protected int posY;
+       
+
+        public int PosX
+        {
+            get { return this.posX; }
+            set { this.posX = value; }
+        }
+
+        public int PosY
+        {
+            get { return this.posY; }
+            set { this.posY = value; }
+        }
+
 
         public PositionableClient() { }
 

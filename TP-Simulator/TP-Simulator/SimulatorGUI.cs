@@ -26,7 +26,6 @@ namespace TP_Simulator
 
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -110,14 +109,14 @@ namespace TP_Simulator
         /// <param name="e"></param>
         private void LsvAirport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateLsvAircraft();
-            updateLsvClient();
+            UpdateLsvAircraft();
+            UpdateLsvClient();
         }
 
         /// <summary>
         /// Update the listview client
         /// </summary>
-        public void updateLsvClient()
+        public void UpdateLsvClient()
         {
             lsvClient.Items.Clear();
 
@@ -127,7 +126,7 @@ namespace TP_Simulator
         /// <summary>
         /// Update the list view aircraft
         /// </summary>
-        public void updateLsvAircraft()
+        public void UpdateLsvAircraft()
         {
             lsvAircraft.Items.Clear();
 
@@ -158,7 +157,7 @@ namespace TP_Simulator
             }
 
             lsvAirport.Items[0].Focused = true;
-            updateGUI();
+            UpdateGUI();
         }
 
         /// <summary>
@@ -172,13 +171,13 @@ namespace TP_Simulator
                 labTimer.Text = scenario.Timer.ToString();
                 labTimer.Refresh();
 
-                updateLsvClient();
-                updateLsvAircraft();
+                UpdateLsvClient();
+                UpdateLsvAircraft();
 
                 lsvAircraft.Refresh();
                 lsvClient.Refresh();
 
-                updateGUI();
+                UpdateGUI();
                 GC.Collect();
             };
 
@@ -188,7 +187,7 @@ namespace TP_Simulator
         /// <summary>
         /// Update the GUI to show the aircraft, airplane and the positionnable client
         /// </summary>
-        private void updateGUI()
+        private void UpdateGUI()
         {
             BufferedGraphicsContext currentContext;
             BufferedGraphics buffer;
@@ -215,21 +214,13 @@ namespace TP_Simulator
                 airportBit = new Bitmap(Properties.Resources.waterbomber);
 
                 if (scenario.FlyingAicrafts[i] is ObserverPlane)
-                {
                     airportBit = new Bitmap(Properties.Resources.observer);
-                }
                 else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
-                {
                     airportBit = new Bitmap(Properties.Resources.helicopter);
-                }
                 else if (scenario.FlyingAicrafts[i] is PassengerPlane)
-                {
                     airportBit = new Bitmap(Properties.Resources.passengerAirplane);
-                }
                 else if (scenario.FlyingAicrafts[i] is CargoPlane)
-                {
                     airportBit = new Bitmap(Properties.Resources.airplane);
-                }
 
                 FlyingState position = (FlyingState)scenario.FlyingAicrafts[i].CurrentState;
 
@@ -246,13 +237,10 @@ namespace TP_Simulator
                     airportBit = new Bitmap(Properties.Resources.fire);
 
                     if (client.GetTypeClient() == "Observer")
-                    {
                         airportBit = new Bitmap(Properties.Resources.montain);
-                    }
                     else if (client.GetTypeClient() == "RescueTeam")
-                    {
                         airportBit = new Bitmap(Properties.Resources.signal);
-                    }
+
                     g.DrawImage(airportBit, client.PosX, client.PosY, 30, 30);
                     airportBit.Dispose();
                 }
@@ -277,21 +265,13 @@ namespace TP_Simulator
 
                 Pen color = new Pen(Brushes.Gray);
                 if (scenario.FlyingAicrafts[i] is WaterBomber)
-                {
                     color = new Pen(Brushes.Yellow);
-                }
                 else if (scenario.FlyingAicrafts[i] is CargoPlane)
-                {
                     color = new Pen(Brushes.Blue);
-                }
                 else if (scenario.FlyingAicrafts[i] is PassengerPlane)
-                {
                     color = new Pen(Brushes.Green);
-                }
                 else if (scenario.FlyingAicrafts[i] is RescueHelicopter)
-                {
                     color = new Pen(Brushes.Red);
-                }
 
                 g.DrawLine(color, initial, destination);
                 color.Dispose();

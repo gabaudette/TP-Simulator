@@ -84,6 +84,6 @@ namespace TP_Simulator
         /// Return true if the plane can carry passenger
         /// </summary>
         /// <returns></returns>
-        public abstract bool isPassengerAicraft();
+        public abstract bool IsPassengerAicraft();
     }
 }

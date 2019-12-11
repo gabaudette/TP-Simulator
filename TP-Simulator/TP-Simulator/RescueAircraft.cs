@@ -74,7 +74,7 @@ namespace TP_Simulator
         /// Return true if the plane is a passenger plane
         /// </summary>
         /// <returns></returns>
-        public override bool isPassengerAicraft()
+        public override bool IsPassengerAicraft()
         {
             return false;
         }

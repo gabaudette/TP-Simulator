@@ -2,7 +2,14 @@
 {
     class Fire : PositionableClient
     {
-        public int FireSpan { get;set; }
+        private int fireSpan;
+
+        public int FireSpan
+        {
+            get { return fireSpan; }
+            set { fireSpan = value; }
+        }
+
         public Fire(int fireSpan, int posX, int posY) : base(posX, posY)
         {
             FireSpan = fireSpan;

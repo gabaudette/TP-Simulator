@@ -34,9 +34,7 @@
             if (CurrentMinute == 0)
                 return $"{CurrentHour} : {CurrentMinute}0";
             else if (CurrentMinute == 5)
-            {
                 return $"{CurrentHour} : 0{CurrentMinute}";
-            }
             else
                 return $"{CurrentHour} : {CurrentMinute}";
         }

@@ -15,7 +15,7 @@
         /// return true if the plane can carry passenger
         /// </summary>
         /// <returns></returns>
-        public override bool isPassengerAicraft()
+        public override bool IsPassengerAicraft()
         {
             return false;
         }

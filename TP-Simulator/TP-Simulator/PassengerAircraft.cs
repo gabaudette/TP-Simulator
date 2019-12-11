@@ -5,13 +5,37 @@ namespace TP_Simulator
 {
     public class PassengerAircraft : Aircraft
     {
-        public int LoadingTime { get; set; }
-        public int UnloadingTime { get; set; }
-        public int MaxCapacity { get; set; }
+        protected int loadingTime;
+        protected int unloadingTime;
+        protected int maxCapacity;
+        protected int currentCapacity;
+
+        public int LoadingTime
+        {
+            get { return this.loadingTime; }
+            set { this.loadingTime = value; }
+        }
+ 
+        public int UnloadingTime
+        {
+            get { return this.unloadingTime; }
+            set { this.unloadingTime = value; }
+        }
+
+
+
+        public int MaxCapacity
+        {
+            get { return this.maxCapacity; }
+            set { this.maxCapacity = value; }
+        }
 
         [XmlIgnore]
-        public int CurrentCapacity { get; set; }
-
+        public int CurrentCapacity
+        {
+            get { return this.currentCapacity; }
+            set { this.currentCapacity = value; }
+        }
 
         /// <summary>
         /// Move the airplane
@@ -49,7 +73,7 @@ namespace TP_Simulator
         /// Return true if the plane can carry passenger
         /// </summary>
         /// <returns></returns>
-        public override bool isPassengerAicraft()
+        public override bool IsPassengerAicraft()
         {
             return true;
         }
