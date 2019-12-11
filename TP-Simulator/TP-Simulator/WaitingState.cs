@@ -10,7 +10,7 @@
         public override void Do(Aircraft aircraft)
         {
             //Valide que le aircraft est de type passager
-            if (aircraft.IsPassengerAicraft())
+            if (aircraft.IsPassengerAircraft())
             {
                 PassengerAircraft passAircraft = (PassengerAircraft)aircraft;
 
@@ -87,7 +87,7 @@
         /// <param name="aircraft"></param>
         public override void ChangeState(Aircraft aircraft)
         {
-            if (aircraft.IsPassengerAicraft())
+            if (aircraft.IsPassengerAircraft())
                 aircraft.CurrentState = new LoadingState();
             else
                 aircraft.CurrentState = new FlyingState(aircraft.airport.X, aircraft.airport.Y, aircraft);
