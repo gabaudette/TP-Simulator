@@ -7,7 +7,7 @@ namespace TP_Simulator
     {
 
         [XmlIgnore]
-        public bool hasArrived { get; set; }
+        public bool HasArrived { get; set; }
 
         [XmlIgnore]
         public PositionableClient client { get; set; }
@@ -38,9 +38,9 @@ namespace TP_Simulator
                 position.PosX += Convert.ToInt32(XbyTick);
                 position.PosY += Convert.ToInt32(YbyTick);
             }//Sinon, l'avion est arrivé
-            else if (tickRequired < 1 && rescueAircraft.hasArrived == false)
+            else if (tickRequired < 1 && rescueAircraft.HasArrived == false)
             {
-                hasArrived = true;
+                HasArrived = true;
 
                 position.PosX = destX;
                 position.PosY = destY;
@@ -55,7 +55,7 @@ namespace TP_Simulator
                     if (airport.fireIsExtinct(aircraft)) // verifie su le feu est éteint
                     {
                         aircraft.CurrentState.ChangeState(aircraft);
-                        rescueAircraft.hasArrived = false;
+                        rescueAircraft.HasArrived = false;
                     }
                     else // si le feu n'est pas éteint, reduire son envergure
                     {
@@ -65,7 +65,7 @@ namespace TP_Simulator
                 else
                 { // sinon, changer son etat
                     aircraft.CurrentState.ChangeState(aircraft);
-                    rescueAircraft.hasArrived = false;
+                    rescueAircraft.HasArrived = false;
                 }             
             }
         }

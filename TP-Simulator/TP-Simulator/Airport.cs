@@ -221,7 +221,7 @@ namespace TP_Simulator
 
                         rescue.destinationX = fireClient.PosX;
                         rescue.destinationY = fireClient.PosY;
-                        rescue.hasArrived = false;
+                        rescue.HasArrived = false;
 
                     }
                 }
