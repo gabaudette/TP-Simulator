@@ -125,7 +125,7 @@ namespace TP_Simulator
             if (Timer.HourPassed())
             {
                 if (Timer.TowHourPassed())
-                    GeneratePossitionableClient();
+                    GeneratePositionableClient();
 
                 GenerateClient();
             }
@@ -181,7 +181,7 @@ namespace TP_Simulator
         /// <summary>
         /// Generate non airport client (fire,observer,alert)
         /// </summary>
-        public void GeneratePossitionableClient()
+        public void GeneratePositionableClient()
         {
             LastClient = new PositionableClient();
 
