@@ -167,17 +167,17 @@ namespace TP_Simulator
         public void OnTick()
         {
 
-            labTimer.Text = scenario.Timer.ToString();
-            labTimer.Refresh();
+                labTimer.Text = scenario.Timer.ToString();
+                labTimer.Refresh();
 
-            updateLsvClient();
-            updateLsvAircraft();
+                updateLsvClient();
+                updateLsvAircraft();
 
-            lsvAircraft.Refresh();
-            lsvClient.Refresh();
+                lsvAircraft.Refresh();
+                lsvClient.Refresh();
 
-            updateGUI();
-            GC.Collect();
+                updateGUI();
+                GC.Collect();
 
         }
 

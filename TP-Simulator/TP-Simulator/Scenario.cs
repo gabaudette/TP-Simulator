@@ -30,6 +30,8 @@ namespace TP_Simulator
         public PositionableClient LastClient { get; set; }
         [XmlIgnore]
         public List<PositionableClient> ActiveClient { get; set; }
+        [XmlIgnore]
+        Thread threadAction { get; set; }
 
         [XmlIgnore]
         Airport closestAirport = new Airport();
@@ -41,6 +43,7 @@ namespace TP_Simulator
             Pause = false;
             FlyingAicrafts = new List<Aircraft>();
             ActiveClient = new List<PositionableClient>();
+            threadAction = new Thread(new ThreadStart(Start));
         }
 
         /// <summary>
@@ -83,6 +86,7 @@ namespace TP_Simulator
                     airport.Reviver(this);
 
                 AirportNotifier();
+                //threadAction.Start();
 
             }
 
