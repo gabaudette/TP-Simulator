@@ -37,7 +37,7 @@ namespace TP_Simulator
             lsvAirport.Columns.Add("Nom");
 
             //Remplis les colonnes
-            lsvAirport.Columns[0].Width = 115;
+            lsvAirport.Columns[0].Width = lsvAirport.Width - 20;
 
             lsvAircraft.View = View.Details;
 
@@ -49,8 +49,8 @@ namespace TP_Simulator
 
             //Remplis les colonnes
             lsvAircraft.Columns[0].Width = 110;
-            lsvAircraft.Columns[1].Width = 60;
-            lsvAircraft.Columns[2].Width = 70;
+            lsvAircraft.Columns[1].Width = 110;
+            lsvAircraft.Columns[2].Width = 110;
 
             lsvClient.Clear();
             lsvClient.View = View.Details;
