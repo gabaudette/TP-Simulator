@@ -33,7 +33,7 @@
         {
             if (CurrentMinute == 0)
                 return $"{CurrentHour} : {CurrentMinute}0";
-            else if (CurrentMinute == 5)
+            else if (CurrentMinute == 1 || CurrentMinute == 2 || CurrentMinute == 3 || CurrentMinute == 4 || CurrentMinute == 5 || CurrentMinute == 6 || CurrentMinute == 7 || CurrentMinute == 8 || CurrentMinute == 9)
                 return $"{CurrentHour} : 0{CurrentMinute}";
             else
                 return $"{CurrentHour} : {CurrentMinute}";

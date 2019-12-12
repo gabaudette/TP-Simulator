@@ -101,7 +101,7 @@ namespace TP_Simulator
             while (!Pause)
             {
                 Loop();
-                Thread.Sleep(1000/60);
+                Thread.Sleep(1000 / 60);
             }
         }
 
@@ -234,19 +234,15 @@ namespace TP_Simulator
             //Marchandise
             for (int i = 0; i < Airports.Count; i++)
             {
-                for (int y = 0; y < 3; y++)
+                if (Airports[i].hasCargoPlane())
                 {
-                    if (Airports[i].hasCargoPlane())
+                    do
                     {
-                        do
-                        {
-                            destinationID = Rnd.Next(0, Airports.Count);
-                        } while (i == destinationID);
+                        destinationID = Rnd.Next(0, Airports.Count);
+                    } while (i == destinationID);
 
-                        Airports[i].Clients.Add(ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]));
-                    }
+                    Airports[i].Clients.Add(ClientFactory.CreateMarchandise(Airports[i], Airports[destinationID]));
                 }
-
             }
         }
 
