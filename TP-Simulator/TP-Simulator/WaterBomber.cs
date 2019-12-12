@@ -19,7 +19,7 @@
         /// return true if the plane is a passenger aircraft
         /// </summary>
         /// <returns></returns>
-        public override bool IsPassengerAicraft()
+        public override bool IsPassengerAircraft()
         {
             return false;
         }

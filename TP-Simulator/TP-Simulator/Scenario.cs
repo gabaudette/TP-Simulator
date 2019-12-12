@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace TP_Simulator
@@ -34,7 +33,7 @@ namespace TP_Simulator
         Thread ThreadAction { get; set; }
 
         [XmlIgnore]
-        Airport closestAirport = new Airport();
+        Airport closestAirport;
 
         private Scenario()
         {
@@ -44,6 +43,7 @@ namespace TP_Simulator
             FlyingAicrafts = new List<Aircraft>();
             ActiveClient = new List<PositionableClient>();
             ThreadAction = new Thread(new ThreadStart(Start));
+            closestAirport = new Airport();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace TP_Simulator
             if (Timer.HourPassed())
             {
                 if (Timer.TowHourPassed())
-                    GeneratePossitionableClient();
+                    GeneratePositionableClient();
 
                 GenerateClient();
             }
@@ -181,7 +181,7 @@ namespace TP_Simulator
         /// <summary>
         /// Generate non airport client (fire,observer,alert)
         /// </summary>
-        public void GeneratePossitionableClient()
+        public void GeneratePositionableClient()
         {
             LastClient = new PositionableClient();
 
