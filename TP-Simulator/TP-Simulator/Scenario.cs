@@ -34,7 +34,7 @@ namespace TP_Simulator
         Thread ThreadAction { get; set; }
 
         [XmlIgnore]
-        Airport closestAirport = new Airport();
+        Airport closestAirport;
 
         private Scenario()
         {
@@ -44,6 +44,7 @@ namespace TP_Simulator
             FlyingAicrafts = new List<Aircraft>();
             ActiveClient = new List<PositionableClient>();
             ThreadAction = new Thread(new ThreadStart(Start));
+            closestAirport = new Airport();
         }
 
         /// <summary>
